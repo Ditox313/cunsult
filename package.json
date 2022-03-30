@@ -1,0 +1,21 @@
+{
+    "name": "consult",
+    "version": "1.0.0",
+    "description": "Consulting club",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index",
+        "server": "nodemon index"
+    },
+    "keywords": [
+        "xsodex"
+    ],
+    "author": "Xsodex",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.3"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
+}
