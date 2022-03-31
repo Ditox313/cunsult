@@ -5,6 +5,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const keys = require('./config/keys.js');
+const passport = require('passport');
+const categoryRoutes = require('./routes/category.js');
 
 
 
@@ -23,6 +25,11 @@ mongoose.connect(keys.mongoUri)
     });
 
 
+// Инициализируем passport и подключаем файл обработчик для логики защиты и проверки роутов
+app.use(passport.initialize());
+require('./middleware/passport')(passport);
+
+
 
 
 
@@ -37,6 +44,9 @@ app.use(bodyParser.json());
 
 // Регистрируем роут auth
 app.use('/api/auth', authRoutes);
+
+// Регистрируем роут category
+app.use('/api/category', categoryRoutes);
 
 
 
