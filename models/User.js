@@ -60,7 +60,7 @@ const userSchema = new Schema({
 
     //Создаем поле для года выпуска
     year: {
-        type: String,
+        type: Number,
         required: true,
     },
 
