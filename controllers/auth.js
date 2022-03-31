@@ -1,17 +1,12 @@
 const User = require('../models/User.js');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const keys = require('../config/keys');
+
+
 
 // Контроллер для Login
 module.exports.login = async function(req, res) {
-    // res.status(200).json({
-    //     login: {
-    //         email: req.body.email,
-    //         password: req.body.password
-    //     }
-
-    // });
-
-
     const candidate = await User.findOne({
         email: req.body.email
     });
