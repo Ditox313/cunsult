@@ -93,9 +93,38 @@ input {
 }
 
 body {
-    text-align: left;
-    font-family: sans-serif;
-    font-size: 12px;
+    font-family: 'hse-500', sans-serif;
+    font-size: 16px;
     font-weight: normal;
-    line-height: 1.2;
+    line-height: 18px;
+}
+
+@font-face {
+    font-family: 'hse-300';
+    src: url(assets/fonts/hse/ttf/AnyConv.com__HSESans-Thin.ttf) format("opentype");
+}
+
+@font-face {
+    font-family: 'hse-500';
+    src: url(assets/fonts/hse/ttf/AnyConv.com__HSESans-Regular.ttf) format("opentype");
+}
+
+@font-face {
+    font-family: 'hse-600';
+    src: url(assets/fonts/hse/ttf/AnyConv.com__HSESans-SemiBold.ttf) format("opentype");
+}
+
+@font-face {
+    font-family: 'hse-700';
+    src: url(assets/fonts/hse/ttf/AnyConv.com__HSESans-SemiBold.ttf) format("opentype");
+}
+
+@font-face {
+    font-family: 'hse-800';
+    src: url(assets/fonts/hse/ttf/AnyConv.com__HSESans-Bold.ttf) format("opentype");
+}
+
+@font-face {
+    font-family: 'hse-900';
+    src: url(assets/fonts/hse/ttf/AnyConv.com__HSESans-Black.ttf) format("opentype");
 }
