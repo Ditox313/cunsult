@@ -1,7 +1,75 @@
 <header class="xs_header xs_header__main" style="background: url(../../../assets/images/xs_header_bg2.png) no-repeat center center / cover;">
+    <div class="xs_header__top___mob">
+        <div class="xs_header__top___mob___content">
+            <div class="xs_header__top___mob___logo">
+                <a href="#">
+                    <svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M42 0C18.8412 0 0 18.8395 0 41.997C0 65.1545 18.8412 84 42 84C65.1588 84 84 65.1516 84 41.9881C84 18.8247 65.1588 0 42 0ZM42 81.5728C20.1836 81.5728 2.43589 63.8179 2.43589 41.997C2.43589 20.1761 20.1836 2.43311 42 2.43311C63.8164 2.43311 81.5641 20.182 81.5641 41.997C81.5641 63.812 63.8164 81.5728 42 81.5728ZM48.9728 38.3251C51.0625 37.4562 52.8977 36.0715 54.3069 34.3006C56.1738 32.1109 57.1835 29.3185 57.1488 26.4412C57.1488 24.2659 56.5561 19.9213 52.7334 16.934C50.1167 14.9069 47.7964 13.9348 42.2519 13.9348H27.592V68.5478H60.613V58.0656C60.613 48.0339 57.3711 41.2917 48.9728 38.3251ZM53.1216 65.5368H47.177V47.3078H40.299V65.5605H35.039V16.6613H40.4442C42.4653 16.6613 45.5383 17.1177 47.7075 19.8116C48.8467 21.2561 49.5646 22.9873 49.7818 24.8141H40.299V27.5051H49.8619C49.8397 29.6117 49.0842 31.6447 47.7253 33.2544C46.8459 34.3857 45.7184 35.2998 44.4298 35.9262C43.1412 36.5526 41.7258 36.8745 40.2931 36.8671H40.2368V39.5906C49.5181 39.5906 53.1305 45.7608 53.1305 57.055L53.1216 65.5368Z"
+                            fill="white" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="xs_header__top___mob___entrance">
+                <a href="#">войти</a>
+            </div>
+
+            <div class="xs_header__top___mob___trigger" #xs_header__top___mob___trigger (click)="trigger()">
+                <svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="1.5" y1="1.5" x2="53.5" y2="1.5" stroke="white" stroke-width="3" stroke-linecap="round" />
+                    <line x1="1.5" y1="16.0139" x2="53.5" y2="16.0139" stroke="white" stroke-width="3" stroke-linecap="round" />
+                    <line x1="1.5" y1="30.5278" x2="53.5" y2="30.5278" stroke="white" stroke-width="3" stroke-linecap="round" />
+                </svg>
+            </div>
+        </div>
+
+        <div class="xs_header__top___mob____menu" #mobileMenu>
+            <div class="xs_header__top___mob____menu___wrap">
+                <div class="xs_mobile__close" #mobileMenuClose (click)="closeMobileMenu();">
+                    <svg width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M30 1.76757L28.2324 0L15 13.2324L1.76757 0L0 1.76757L13.2324 15L0 28.2324L1.76757 30L15 16.7676L28.2324 30L30 28.2324L16.7676 15L30 1.76757Z"
+                            fill="#044E8E"></path>
+                    </svg>
+                </div>
+
+                <div class="xs_mobile_navigate">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="#" class="xs_active_link_nav ">Как это работает</a>
+                            </li>
+
+                            <li>
+                                <a href="#">Все проекты</a>
+                            </li>
+
+                            <li>
+                                <a href="#">Разместить кейс</a>
+                            </li>
+
+                            <div class="xs_header_mobile_search">
+                                <input type="text" name="search">
+                                <span>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10 4C6.68629 4 4 6.68629 4 10C4 13.3137 6.68629 16 10 16C13.3137 16 16 13.3137 16 10C16 6.68629 13.3137 4 10 4ZM2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10C18 11.8487 17.3729 13.551 16.3199 14.9056L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0976 20.6834 22.0976 20.2929 21.7071L14.9056 16.3199C13.551 17.3729 11.8487 18 10 18C5.58172 18 2 14.4183 2 10Z"
+                                            fill="#002E6E" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="xs_header__content">
-            <div class="xs_header__top">
+            <div class="xs_header__top xs_header__top___desc">
                 <div class="xs_header__logo">
                     <a href="#">
                         <svg width="108" height="108" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,8 +113,22 @@
                 </div>
             </div>
 
+
             <div class="xs_header__main">
-                <h1>Consulting <br/> Club</h1>
+                <div class="xs_header__main___title">
+                    <h1>Consulting <br /> Club</h1>
+                    <span class="xs_header__main___title____date">
+                        <svg width="77" height="6" viewBox="0 0 77 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="3" y1="3" x2="74" y2="3" stroke="#BE1F4F" stroke-width="6" stroke-linecap="round" />
+                        </svg>
+
+                        <caption>Запуск клуба — май 2022</caption>
+
+                        <svg width="77" height="6" viewBox="0 0 77 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="3" y1="3" x2="74" y2="3" stroke="#BE1F4F" stroke-width="6" stroke-linecap="round" />
+                        </svg>
+                    </span>
+                </div>
                 <h2>Касса «интеллектуальной взаимопомощи» <br/> МВА-сообщества бизнес-школы</h2>
                 <a href="#" class="xs_header_btn">Разместить свой кейс</a>
                 <div class="xs_header__main___items">
