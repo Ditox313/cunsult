@@ -1,8 +1,9 @@
 .xs_header {
-    margin-top: 20px;
+    padding-top: 20px;
+    height: 100vh;
 }
 
-.xs_header__content {
+.xs_header__top {
     display: flex;
     align-items: stretch;
 }
@@ -34,4 +35,36 @@
     font-size: 20px;
     color: #002E6E;
     text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.xs_header__navigate ul li a:hover {
+    transition: all 0.3s;
+    color: #BE1F4F;
+}
+
+.xs_header__entrance a {
+    border: 3px solid #BE1F4F;
+    box-sizing: border-box;
+    border-radius: 85px;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 126.2%;
+    text-transform: uppercase;
+    color: #BE1F4F;
+    display: inline-block;
+    padding: 12px 32px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.xs_active_link_nav {
+    border-bottom: 2px solid #002E6E;
+}
+
+.xs_active_link_nav:hover {
+    color: #002E6E !important;
 }
