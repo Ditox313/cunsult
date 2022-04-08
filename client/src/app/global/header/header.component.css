@@ -1,5 +1,6 @@
                 .xs_header {
                     padding-top: 20px;
+                    position: relative;
                 }
                 
                 header {
@@ -283,6 +284,86 @@
                     justify-content: space-between;
                 }
                 
+                .xs_bg_fix_left {
+                    position: absolute;
+                    top: 0;
+                    left: -50px;
+                    z-index: -1;
+                }
+                
+                .xs_bg_fix_right {
+                    position: absolute;
+                    top: 0;
+                    right: -10px;
+                    z-index: -1;
+                }
+                
+                .xs_bg_fix_left___mob {
+                    display: none;
+                    position: absolute;
+                    top: 150px;
+                    left: 0;
+                    z-index: -1;
+                }
+                
+                .xs_bg_fix_right___mob {
+                    display: none;
+                }
+                
+                @media screen and (max-width: 1335px) {
+                    .xs_bg_fix_left {
+                        position: absolute;
+                        top: 0;
+                        left: -65px;
+                    }
+                    .xs_bg_fix_right {
+                        position: absolute;
+                        top: 0;
+                        right: -67px;
+                    }
+                }
+                
+                @media screen and (max-width: 1286px) {
+                    #xs_q {
+                        display: none;
+                    }
+                    #xs_q2 {
+                        display: none;
+                    }
+                    #xs_q3 {
+                        display: none;
+                    }
+                    #xs_q4 {
+                        display: none;
+                    }
+                }
+                
+                @media screen and (max-width: 1212px) {
+                    .xs_bg_fix_right[_ngcontent-lyl-c16] {
+                        position: absolute;
+                        top: 0;
+                        right: -132px;
+                    }
+                    .xs_bg_fix_left[_ngcontent-gxg-c16] {
+                        position: absolute;
+                        top: 0;
+                        left: -96px;
+                    }
+                }
+                
+                @media screen and (max-width: 1092px) {
+                    .xs_bg_fix_right {
+                        position: absolute;
+                        top: 0;
+                        right: -132px;
+                    }
+                    .xs_bg_fix_left {
+                        position: absolute;
+                        top: 0;
+                        left: -96px;
+                    }
+                }
+                
                 @media screen and (max-width: 992px) {
                     .xs_header__main___title {
                         flex-direction: column;
@@ -301,11 +382,23 @@
                         padding-top: 0px;
                     }
                     .xs_header__main h1 {
-                        margin-top: 40px;
+                        margin-top: 85px;
                         font-size: 90px;
                     }
                     .xs_header__main h2 {
                         font-size: 30px;
+                    }
+                    .xs_bg_fix_left {
+                        display: none;
+                    }
+                    .xs_bg_fix_right {
+                        display: none;
+                    }
+                    .xs_bg_fix_left___mob {
+                        display: block;
+                    }
+                    .xs_bg_fix_right___mob {
+                        display: block;
                     }
                 }
                 
@@ -322,6 +415,15 @@
                     }
                     .xs_header__top___mob____menu {
                         width: 65%;
+                    }
+                }
+                
+                @media screen and (max-width: 630px) {
+                    #xs_q5 {
+                        display: none;
+                    }
+                    #xs_q6 {
+                        display: none;
                     }
                 }
                 
