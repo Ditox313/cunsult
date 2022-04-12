@@ -1,1 +1,140 @@
-<p>register-page works!</p>
+<div class="xs_auth_component">
+    <div class="xs_auth_component___form">
+        <form [formGroup]="form" class="card" (ngSubmit)="onSubmit()">
+            <div class="card-content">
+                <h1>Регистрация</h1>
+
+                <div class="card_content__wrap">
+                    <div class="input-field">
+                        <input id="email" type="email" formControlName="email" [ngClass]="{'invalid': form.controls['email'].invalid && form.controls['email'].touched}">
+                        <label for="email">Email:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['email'].invalid && form.controls['email'].touched">
+                        <p *ngIf="form.controls['email'].errors?.required">
+                            Email не должен быть пустым
+                        </p>
+
+                        <p *ngIf="form.controls['email'].errors?.email">
+                            Введите корректный Email
+                        </p>
+                    </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="password" type="password" formControlName="password" [ngClass]="{'invalid': form.controls['password'].invalid && form.controls['password'].touched}">
+                        <label for="password">Пароль:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
+                        <p *ngIf="form.controls['password'].errors?.required">
+                            Пароль не должен быть пустым
+                        </p>
+
+                        <p *ngIf="form.controls['password'].errors?.minlength">
+                            Минимальная длина пароля 6 символов
+                        </p>
+                    </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="phone" type="text" formControlName="phone" [ngClass]="{'invalid': form.controls['phone'].invalid && form.controls['phone'].touched}">
+                        <label for="phone">Телефон:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['phone'].invalid && form.controls['phone'].touched">
+                        <p *ngIf="form.controls['phone'].errors?.required">
+                            Телефон не должен быть пустым
+                        </p>
+                
+                        <p *ngIf="form.controls['phone'].errors?.email">
+                            Введите корректный Телефон
+                        </p>
+                    </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="name" type="text" formControlName="name" [ngClass]="{'invalid': form.controls['name'].invalid && form.controls['name'].touched}">
+                        <label for="name">Имя:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['name'].invalid && form.controls['name'].touched">
+                        <p *ngIf="form.controls['name'].errors?.required">
+                            Имя не должно быть пустым
+                        </p>
+                
+                        <p *ngIf="form.controls['phone'].errors?.email">
+                            Введите корректный Имя
+                        </p>
+                    </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="secondName" type="text" formControlName="secondName" [ngClass]="{'invalid': form.controls['secondName'].invalid && form.controls['secondName'].touched}">
+                        <label for="secondName">Фамилия:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['secondName'].invalid && form.controls['secondName'].touched">
+                        <p *ngIf="form.controls['secondName'].errors?.required">
+                            Фамилия не должно быть пустым
+                        </p>
+                
+                        <p *ngIf="form.controls['secondName'].errors?.email">
+                            Введите корректный Фамилия
+                        </p>
+                    </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="thirdName" type="text" formControlName="thirdName" [ngClass]="{'invalid': form.controls['thirdName'].invalid && form.controls['thirdName'].touched}">
+                        <label for="thirdName">Отчество:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['thirdName'].invalid && form.controls['thirdName'].touched">
+                        <p *ngIf="form.controls['thirdName'].errors?.required">
+                            Отчество не должно быть пустым
+                        </p>
+                
+                        <p *ngIf="form.controls['thirdName'].errors?.email">
+                            Введите корректный Отчество
+                        </p>
+                    </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="groupName" type="text" formControlName="groupName" [ngClass]="{'invalid': form.controls['groupName'].invalid && form.controls['groupName'].touched}">
+                        <label for="groupName">Номер группы:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['groupName'].invalid && form.controls['groupName'].touched">
+                        <p *ngIf="form.controls['groupName'].errors?.required">
+                            Номер группы не должно быть пустым
+                        </p>
+                
+                        <p *ngIf="form.controls['groupName'].errors?.email">
+                            Введите корректный Номер группы
+                        </p>
+                    </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="specialization" type="text" formControlName="specialization" [ngClass]="{'invalid': form.controls['specialization'].invalid && form.controls['specialization'].touched}">
+                        <label for="groupName">Специализация:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['specialization'].invalid && form.controls['specialization'].touched">
+                        <p *ngIf="form.controls['specialization'].errors?.required">
+                            Специализация не должна быть пустой
+                        </p>
+                
+                        <p *ngIf="form.controls['specialization'].errors?.email">
+                            Введите корректный Специализацию
+                        </p>
+                    </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="year" type="text" formControlName="year" [ngClass]="{'invalid': form.controls['year'].invalid && form.controls['year'].touched}">
+                        <label for="groupName">Год выпуска:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['year'].invalid && form.controls['year'].touched">
+                        <p *ngIf="form.controls['year'].errors?.required">
+                            Год выпуска не должен быть пустым
+                        </p>
+                
+                        <p *ngIf="form.controls['year'].errors?.email">
+                            Введите корректный Год выпуска
+                        </p>
+                    </span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-action">
+                <button class="modal-action btn waves-effect" type="submit" [disabled]="form.invalid || form.disabled">Войти</button>
+            </div>
+        </form>
+    </div>
+</div>

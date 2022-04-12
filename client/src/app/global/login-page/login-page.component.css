@@ -1,0 +1,70 @@
+.xs_auth_component {
+    padding-top: 60px;
+}
+
+.xs_auth_component h1 {
+    text-align: center;
+    font-weight: 900;
+    font-size: 60px;
+    line-height: 70.7%;
+    color: #002E6E;
+    font-family: 'hse-900';
+    margin-bottom: 50px;
+}
+
+.xs_auth_component___form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.xs_auth_component___form form {
+    width: 500px;
+    padding: 10px 0;
+}
+
+.xs_auth_component input {
+    border: none;
+    outline: none;
+    background-color: #fff !important;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 46, 110, 0.3);
+}
+
+.xs_auth_component .input-field>label {
+    top: -7px !important;
+}
+
+.xs_auth_component .card .card-content {
+    padding-bottom: 0 !important;
+}
+
+.xs_auth_component .btn,
+.xs_auth_component .btn-large,
+.xs_auth_component.btn-small {
+    background-color: #002E6E;
+}
+
+.xs_auth_component___form form {
+    z-index: -1;
+}
+
+@media screen and (max-width: 992px) {
+    .xs_auth_component___form {
+        padding-top: 70px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .xs_auth_component___form {
+        padding-top: 70px;
+    }
+    .xs_auth_component___form form {
+        width: 300px;
+    }
+    .xs_auth_component h1 {
+        font-size: 39px;
+    }
+}
