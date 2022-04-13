@@ -37,7 +37,7 @@ const routes: Routes = [
   },
 
   {
-    path: '',
+    path: 'site',
     component: SiteLayoutComponent,
     canActivate: [AuthGuard], //Защищаем роуты которые относятся к самому приложению
   }
