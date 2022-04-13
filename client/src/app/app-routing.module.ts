@@ -3,8 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeLayoutComponent } from './shared/layouts/home-layout/home-layout.component';
 import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.component';
+
 import { LoginPageComponent } from './global/login-page/login-page.component';
 import { RegisterPageComponent } from './global/register-page/register-page.component';
+import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
+import { AuthGuard } from './shared/classes/auth.guard';
 
 
 const routes: Routes = [
@@ -31,6 +34,12 @@ const routes: Routes = [
         component: RegisterPageComponent,
       },
     ],
+  },
+
+  {
+    path: '',
+    component: SiteLayoutComponent,
+    canActivate: [AuthGuard], //Защищаем роуты которые относятся к самому приложению
   }
 ];
 

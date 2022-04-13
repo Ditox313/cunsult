@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { MaterialService } from 'src/app/shared/services/material.service';
 
 @Component({
   selector: 'app-register-page',
@@ -15,7 +17,7 @@ export class RegisterPageComponent implements OnInit {
 
 
   // Инжектируем необходимые сервисы в класс для их последующего использования
-  constructor( private router: Router, private route: ActivatedRoute) { }
+  constructor( private router: Router, private route: ActivatedRoute, private auth: AuthService) { }
 
 
 
@@ -34,26 +36,6 @@ export class RegisterPageComponent implements OnInit {
       year: new FormControl(null, [Validators.required]),
     });
 
-
-
-    // Собираем информацию о текущем роуте и выводим соответствующие сообщения(тосты)
-    this.route.queryParams.subscribe(function(params: Params){
-      if(params['registered'])
-      {
-        // Запускам метод отображения ошибки materialyze
-        //  MaterialService.toast("Теперь вы можете зайти в систему используя свои данные");
-      }
-      else if(params['accessDenied'])
-      {
-        // Запускам метод отображения ошибки materialyze
-        //  MaterialService.toast("Сначала авторизируйтесь в системе");
-      }
-      else if(params['sessionFailed'])
-      {
-        // Запускам метод отображения ошибки materialyze
-        //  MaterialService.toast("Пожалуйста войдите в систему заново");
-      }
-    });
   }
 
 
@@ -67,26 +49,37 @@ export class RegisterPageComponent implements OnInit {
 
 
 
-  // Обрабатываем отправку форму
+  // Обрабатываем отправку формы
   onSubmit(): void {
     this.form.disable();
     
-    // Создаем пользователя
+
+    // Создаем юзера(кандидата)
     const user = {
       email: this.form.value.email,
-      password:  this.form.value.password
+      password:  this.form.value.password,
+      phone:  this.form.value.phone,
+      name:  this.form.value.name,
+      secondName:  this.form.value.secondName,
+      thirdName:  this.form.value.thirdName,
+      groupName:  this.form.value.groupName,
+      specialization:  this.form.value.specialization,
+      year:  this.form.value.year,
     }
 
-    // Когда auth.login(из сервиса auth.service) успешно отработает(как промис), перенаправляем на нужную страницу и обрататываем ошибку
-    // this.uSub = this.auth.login(user).subscribe(
-    //   () => this.router.navigate(['/overview']), //Нужно создать данный компонет, иначе будет ошибка
-    //   error => {
-    //     // Запускам метод отображения ошибки materialyze
-    //     // MaterialService.toast(error.error.message);
-    //     this.form.enable();
-    //   }
+    // Выполняме метод auth.register из сервиса auth.service и в случае успеха делаем редирект на логин и обрабатываем ошибку
+    this.uSub = this.auth.register(user).subscribe(
+      () => this.router.navigate(['/login'], {
+        queryParams: {
+          registered: true
+        }
+      }),
+      error => {
+        MaterialService.toast(error.error.message);
+        this.form.enable();
+      }
       
-    // )
+    )
   }
 
 }
