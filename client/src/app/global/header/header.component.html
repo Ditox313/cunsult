@@ -12,7 +12,10 @@
             </div>
 
             <div class="xs_header__top___mob___entrance">
-                <a routerLink="/login">войти</a>
+                <a routerLink="/site" *ngIf="isAuthenticated();else user_not_auth">Кабинет</a>
+                <ng-template #user_not_auth>
+                    <a routerLink="/login">Войти</a>
+                </ng-template>
             </div>
 
             <div class="xs_header__top___mob___trigger" #xs_header__top___mob___trigger (click)="trigger()">
@@ -109,7 +112,10 @@
                             </svg>
                         </span>
                     </div>
-                    <a routerLink="/login">Войти</a>
+                    <a routerLink="/site" *ngIf="isAuthenticated();else user_not_auth">Кабинет</a>
+                    <ng-template #user_not_auth>
+                        <a routerLink="/login">Войти</a>
+                    </ng-template>
                 </div>
             </div>
 

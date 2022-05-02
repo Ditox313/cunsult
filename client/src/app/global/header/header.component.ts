@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +9,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute, private auth: AuthService) { }
 
   // Получаем триггер для переключения мобильного меню
   @ViewChild('xs_header__top___mob___trigger') xs_header__top___mob___trigger : ElementRef;
@@ -19,6 +21,10 @@ export class HeaderComponent implements OnInit {
 
   // Получаем крестик закрытия мобильного меню
   @ViewChild('mobileMenuClose') mobileMenuClose : ElementRef;
+
+
+  // Проверяем, зареган или нет
+  // xs_header__isAuthenticated: any;
 
 
 
@@ -52,7 +58,16 @@ export class HeaderComponent implements OnInit {
     }, 300);
 
     this.xs_header__top___mob___trigger.nativeElement.classList.remove('xs_trigger__rotate');
+
   }
+
+  isAuthenticated()
+  {
+    console.log(this.auth.isAuthenticated());
+    
+    return this.auth.isAuthenticated();
+  }
+
 
 
 }

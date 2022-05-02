@@ -76,5 +76,10 @@ export class AuthService
    {
       this.setToken('');
       localStorage.clear();
+      console.log('гуд');
+      
    }
+
+
+  
 }
