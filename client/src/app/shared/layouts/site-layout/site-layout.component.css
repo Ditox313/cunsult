@@ -343,6 +343,7 @@ textarea {
 
 .xs_content__sidebar {
     width: 35%;
+    position: relative;
 }
 
 .xs_content___component {
@@ -542,6 +543,19 @@ textarea {
     padding-left: 15px;
 }
 
+.xs_keyses__more {
+    text-align: center;
+}
+
+.xs_keyses__more span {
+    font-size: 20px;
+    color: #BE1F4F;
+    cursor: pointer;
+    display: inline-block;
+    border-bottom: 1px solid #BE1F4F;
+    padding-bottom: 5px;
+}
+
 
 /* Component style */
 
@@ -615,6 +629,7 @@ textarea {
     display: flex;
     align-items: center;
     margin-right: 20px;
+    cursor: pointer;
 }
 
 .xs_keyses__list___item___info div:last-child {
@@ -662,7 +677,7 @@ textarea {
         top: 0;
         right: -132px;
     }
-    .xs_bg_fix_left[_ngcontent-gxg-c16] {
+    .xs_bg_fix_left {
         position: absolute;
         top: 0;
         left: -96px;
@@ -672,6 +687,29 @@ textarea {
 @media screen and (max-width: 1200px) {
     .xs_header__navigate ul li {
         margin-right: 15px;
+    }
+    .xs_content__profile_block_1 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .xs_content__profile___item_1 {
+        width: 62%;
+    }
+    .xs_content__profile___item_2 {
+        width: 38%;
+    }
+    .xs_content__profile_block_2___item button {
+        padding: 12px;
+    }
+    .xs_content__profile_block_2___item p {
+        margin: 0;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 125%;
+        color: #9B9B9B;
+    }
+    .xs_content__profile_block_3 span {
+        font-size: 16px;
     }
 }
 
@@ -685,6 +723,11 @@ textarea {
         position: absolute;
         top: 0;
         left: -96px;
+    }
+    .xs_header__site .xs_bg_fix_left {
+        position: absolute;
+        top: 0;
+        left: -139px;
     }
 }
 
@@ -724,6 +767,24 @@ textarea {
     .xs_bg_fix_right___mob {
         display: block;
     }
+    .xs_header__top___mob {
+        margin-bottom: 100px;
+    }
+    .xs_content__sidebar {
+        width: 100%;
+    }
+    .xs_content___component {
+        width: 100%;
+    }
+    .xs_content {
+        flex-direction: column;
+    }
+    .xs_content__sidebar {
+        margin-bottom: 70px;
+    }
+    .xs_add_keys {
+        margin-right: 15px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -739,6 +800,17 @@ textarea {
     }
     .xs_header__top___mob____menu {
         width: 65%;
+        z-index: 999;
+    }
+    .xs_keyses__list___item___info div {
+        font-size: 11px;
+    }
+    .xs_keyses__list___item___info div svg {
+        width: 18px;
+        height: 18px;
+    }
+    .xs_keyses__list___item h3 {
+        font-size: 22px;
     }
 }
 
@@ -776,6 +848,18 @@ textarea {
     header {
         padding-bottom: 0;
     }
+    .xs_content___component {
+        padding-left: 0px;
+    }
+}
+
+@media screen and (max-width: 485px) {
+    .xs_keyses__list___item___info div {
+        display: flex;
+        align-items: center;
+        margin-right: 11px;
+        cursor: pointer;
+    }
 }
 
 @media screen and (max-width: 475px) {
@@ -793,6 +877,24 @@ textarea {
     }
     .xs_header__top___mob____menu {
         width: 80%;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .xs_keyses__list___item___info {
+        flex-wrap: wrap;
+    }
+    .xs_keyses__list___item___info div:last-child {
+        margin-left: 0;
+    }
+    .xs_keyses__list___item___info div {
+        margin-bottom: 5px;
+    }
+    .xs_keyses__list___item h3 {
+        font-size: 18px;
+    }
+    .xs_keyses__nav ul li {
+        font-size: 15px;
     }
 }
 
@@ -824,5 +926,23 @@ textarea {
     }
     .xs_header__top___mob____menu {
         width: 90%;
+    }
+    .xs_keyses__nav ul li {
+        font-size: 13px;
+    }
+    .xs_content__profile___item___name img {
+        margin-right: 8px;
+    }
+    .xs_content__profile___item_1 {
+        width: 55%;
+    }
+    .xs_content__profile___item_2 {
+        width: 45%;
+    }
+    .xs_content__profile_block_2___item p {
+        font-size: 13px;
+    }
+    .xs_content__profile_block_2___item button {
+        padding: 10px;
     }
 }

@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { FooterComponent } from '../../global/footer/footer.component';
 
 @Component({
   selector: 'app-header',

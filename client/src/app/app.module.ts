@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
 import { TokenInterceptor } from './shared/classes/token.interceptor';
+import { FooterComponent } from './global/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TokenInterceptor } from './shared/classes/token.interceptor';
     AuthLayoutComponent,
     RegisterPageComponent,
     SiteLayoutComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
