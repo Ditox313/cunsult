@@ -1,12 +1,16 @@
-// import { MaterialInstance } from './../interfaces';
-// import { ElementRef, OnInit } from '@angular/core';
+
 // // Сервис для работы с materialyze.css
+
+import { ElementRef } from "@angular/core";
+import { MaterialInstance } from "../other/interfaces";
 
 
 // // Декларируем переменную "m" и необходимые свойста и методы, что бы избежать ошибок
 declare var M: {
   toast: (arg0: { html: string }) => void;
   updateTextFields: any;
+  Modal: any;
+  init: (arg0: { html: ElementRef }) => void;
 };
 
 
@@ -32,6 +36,13 @@ export class MaterialService
     static updateTextInputs()
     {
         M.updateTextFields();
+    }
+
+
+    // Инициализируем модальное окно
+    static initModalPos(ref: ElementRef): MaterialInstance
+    {
+        return M.Modal.init(ref.nativeElement); 
     }
 
 

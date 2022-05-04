@@ -13,7 +13,7 @@ import { MaterialService } from 'src/app/shared/services/material.service';
 export class RegisterPageComponent implements OnInit {
 
     form!: FormGroup; //Инициализируем нашу форму
-  uSub!: Subscription; //Создаем переменную, в которую помещаем наш стим, что бы потом отписаться от него
+    uSub!: Subscription; //Создаем переменную, в которую помещаем наш стим, что бы потом отписаться от него
 
 
   // Инжектируем необходимые сервисы в класс для их последующего использования
@@ -33,6 +33,7 @@ export class RegisterPageComponent implements OnInit {
       thirdName: new FormControl(null, [Validators.required]),
       groupName: new FormControl(null, [Validators.required]),
       specialization: new FormControl(null, [Validators.required]),
+      workPos: new FormControl(null, []),
       year: new FormControl(null, [Validators.required]),
     });
 
@@ -64,6 +65,7 @@ export class RegisterPageComponent implements OnInit {
       thirdName:  this.form.value.thirdName,
       groupName:  this.form.value.groupName,
       specialization:  this.form.value.specialization,
+      workPos:  this.form.value.workPos,
       year:  this.form.value.year,
     }
 

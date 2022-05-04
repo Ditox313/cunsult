@@ -91,7 +91,7 @@
 
                     <div class="input-field">
                         <input id="groupName" type="text" formControlName="groupName" [ngClass]="{'invalid': form.controls['groupName'].invalid && form.controls['groupName'].touched}">
-                        <label for="groupName">Номер группы:</label>
+                        <label for="groupName">Название группы:</label>
                         <span class="helper-text red-text" *ngIf="form.controls['groupName'].invalid && form.controls['groupName'].touched">
                         <p *ngIf="form.controls['groupName'].errors?.required">
                             Номер группы не должно быть пустым
@@ -115,6 +115,20 @@
                             Введите корректный Специализацию
                         </p>
                     </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="workPos" type="text" formControlName="workPos" [ngClass]="{'invalid': form.controls['workPos'].invalid && form.controls['workPos'].touched}">
+                        <label for="groupName">Должность:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['workPos'].invalid && form.controls['workPos'].touched">
+                            <p *ngIf="form.controls['workPos'].errors?.required">
+                                Специализация не должна быть пустой
+                            </p>
+                    
+                            <p *ngIf="form.controls['workPos'].errors?.email">
+                                Введите корректную Специализацию
+                            </p>
+                        </span>
                     </div>
 
                     <div class="input-field">

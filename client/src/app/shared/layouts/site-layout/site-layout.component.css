@@ -538,7 +538,6 @@ textarea {
 
 .xs_content___component {
     position: relative;
-    z-index: 9999;
     background-color: #fff;
     padding-left: 15px;
 }
@@ -642,6 +641,71 @@ textarea {
 
 
 /* End Component style */
+
+.modal .card_content__wrap input {
+    border: none;
+    outline: none;
+    background-color: #fff !important;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 46, 110, 0.3);
+}
+
+.xs_modal__title h2 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 46px;
+    line-height: 125%;
+    color: #002E6E;
+    text-align: right;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.modal .card_content__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card_content__wrap>div {
+    width: 45%;
+}
+
+.xs_edit_profile_btn_1 {
+    margin-right: 20px;
+}
+
+.card-close {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.xs_modal_profile {
+    position: relative;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    /* ширина scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+    /* цвет дорожки */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #BE1F4F;
+    /* цвет плашки */
+    border-radius: 30px;
+    /* закругления плашки */
+    border: 1px solid #fff;
+    /* padding вокруг плашки */
+}
 
 @media screen and (max-width: 1335px) {
     .xs_bg_fix_left {

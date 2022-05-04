@@ -57,11 +57,25 @@ const userSchema = new Schema({
         required: false,
     },
 
+    //Создаем поле для сдолжности
+    workPos: {
+        type: String,
+        required: false,
+    },
+
 
     //Создаем поле для года выпуска
     year: {
         type: Number,
         required: true,
+    },
+
+
+    // Создаем поле изображения юзера
+    xsAvatar: {
+        type: String,
+        default: '',
+        required: false,
     },
 
 });

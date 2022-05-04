@@ -116,46 +116,6 @@
                     <a routerLink="/login" (click)="logout($event)">Выйти</a>
                 </div>
             </div>
-
-
-            <!-- <div class="xs_header__main">
-                <div class="xs_header__main___title">
-                    <h1>Consulting <br /> Club</h1>
-                    <span class="xs_header__main___title____date">
-                        <svg width="77" height="6" viewBox="0 0 77 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="3" y1="3" x2="74" y2="3" stroke="#BE1F4F" stroke-width="6"
-                                stroke-linecap="round" />
-                        </svg>
-
-                        <caption>Запуск клуба — май 2022</caption>
-
-                        <svg width="77" height="6" viewBox="0 0 77 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="3" y1="3" x2="74" y2="3" stroke="#BE1F4F" stroke-width="6"
-                                stroke-linecap="round" />
-                        </svg>
-                    </span>
-                </div>
-                <h2>Касса «интеллектуальной взаимопомощи» <br /> МВА-сообщества бизнес-школы</h2>
-                <a href="#" class="xs_header_btn">Разместить свой кейс</a>
-                <div class="xs_header__main___items">
-                    <div class="xs_header__main___items___block">
-                        <span class="xs_header__main___items___block___num">35</span>
-                        <span class="xs_header__main___items___block___text">Экспертов из разных <br /> отраслей
-                            экономики</span>
-                    </div>
-
-                    <div class="xs_header__main___items___block">
-                        <span class="xs_header__main___items___block___num">1500</span>
-                        <span class="xs_header__main___items___block___text">Резидентов – слушателей <br /> и
-                            выпускников бизнес-школы</span>
-                    </div>
-
-                    <div class="xs_header__main___items___block">
-                        <span class="xs_header__main___items___block___num">150</span>
-                        <span class="xs_header__main___items___block___text">Кейсов успешно <br /> решено</span>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 
@@ -349,7 +309,7 @@
                     </div>
 
                     <div class="xs_content__profile___item xs_content__profile___item_2">
-                        <div>
+                        <div (click)="modalEditProfile()">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M12 16.5C14.4853 16.5 16.5 14.4853 16.5 12C16.5 9.51472 14.4853 7.5 12 7.5C9.51472 7.5 7.5 9.51472 7.5 12C7.5 14.4853 9.51472 16.5 12 16.5Z"
@@ -357,7 +317,7 @@
                             <path
                                 d="M17.2181 6.10186C17.4583 6.31452 17.6854 6.54157 17.898 6.78175L20.4595 7.14752C20.8749 7.87084 21.1951 8.64476 21.4123 9.4501L19.8604 11.5193C19.8604 11.5193 19.8799 12.1605 19.8604 12.4807L21.413 14.5506C21.1953 15.3558 20.8745 16.1295 20.4586 16.8525L17.898 17.2183C17.898 17.2183 17.4584 17.6855 17.2183 17.8981L16.8525 20.4596C16.1292 20.875 15.3552 21.1952 14.5499 21.4124L12.4808 19.8605C12.1606 19.88 11.8395 19.88 11.5193 19.8605L9.44944 21.4131C8.64425 21.1954 7.87054 20.8746 7.1475 20.4587L6.7818 17.8982C6.54162 17.6856 6.31457 17.4585 6.10191 17.2184L3.54044 16.8526C3.12505 16.1293 2.80479 15.3553 2.58759 14.55L4.13957 12.4808C4.13957 12.4808 4.12005 11.8396 4.13951 11.5194L2.58691 9.44953C2.80466 8.64434 3.12545 7.87063 3.54132 7.14759L6.10177 6.78189C6.31443 6.54171 6.54148 6.31466 6.78166 6.102L7.14743 3.54053C7.87075 3.12514 8.64467 2.80488 9.45001 2.58768L11.5191 4.13961C11.8393 4.12014 12.1604 4.12014 12.4806 4.1396L14.5505 2.58701C15.3557 2.80475 16.1294 3.12554 16.8524 3.54141L17.2181 6.10186Z"
                                 stroke="#9B9B9B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+                            </svg>
 
                             <span>Редактировать</span>
                         </div>
@@ -1016,5 +976,174 @@
     </div>
     <div class="xs_bg_fix_right___mob"></div>
 </header>
+
+
+
+
+<form [formGroup]="form" (ngSubmit)="onSubmitProfile()">
+    <div class="modal" #modal>
+        <div class="modal-content xs_modal_profile">
+            <div class="xs_modal__title">
+                <h2>Редактировать профиль</h2>
+            </div>
+
+            <div class="card-content">
+                <div class="card_content__wrap">
+                    <div class="input-field">
+                        <input id="email" type="email" formControlName="email" [ngClass]="{'invalid': form.controls['email'].invalid && form.controls['email'].touched}">
+                        <label for="email">Email:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['email'].invalid && form.controls['email'].touched">
+                            <p *ngIf="form.controls['email'].errors?.required">
+                                Email не должен быть пустым
+                            </p>
+            
+                            <p *ngIf="form.controls['email'].errors?.email">
+                                Введите корректный Email
+                            </p>
+                        </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="password" type="password" formControlName="password" [ngClass]="{'invalid': form.controls['password'].invalid && form.controls['password'].touched}">
+                        <label for="password">Пароль:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
+                            <p *ngIf="form.controls['password'].errors?.required">
+                                Пароль не должен быть пустым
+                            </p>
+            
+                            <p *ngIf="form.controls['password'].errors?.minlength">
+                                Минимальная длина пароля 6 символов
+                            </p>
+                        </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="phone" type="text" formControlName="phone" [ngClass]="{'invalid': form.controls['phone'].invalid && form.controls['phone'].touched}">
+                        <label for="phone">Телефон:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['phone'].invalid && form.controls['phone'].touched">
+                            <p *ngIf="form.controls['phone'].errors?.required">
+                                Телефон не должен быть пустым
+                            </p>
+            
+                            <p *ngIf="form.controls['phone'].errors?.email">
+                                Введите корректный Телефон
+                            </p>
+                        </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="name" type="text" formControlName="name" [ngClass]="{'invalid': form.controls['name'].invalid && form.controls['name'].touched}">
+                        <label for="name">Имя:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['name'].invalid && form.controls['name'].touched">
+                            <p *ngIf="form.controls['name'].errors?.required">
+                                Имя не должно быть пустым
+                            </p>
+            
+                            <p *ngIf="form.controls['phone'].errors?.email">
+                                Введите корректный Имя
+                            </p>
+                        </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="secondName" type="text" formControlName="secondName" [ngClass]="{'invalid': form.controls['secondName'].invalid && form.controls['secondName'].touched}">
+                        <label for="secondName">Фамилия:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['secondName'].invalid && form.controls['secondName'].touched">
+                            <p *ngIf="form.controls['secondName'].errors?.required">
+                                Фамилия не должно быть пустым
+                            </p>
+            
+                            <p *ngIf="form.controls['secondName'].errors?.email">
+                                Введите корректный Фамилия
+                            </p>
+                        </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="thirdName" type="text" formControlName="thirdName" [ngClass]="{'invalid': form.controls['thirdName'].invalid && form.controls['thirdName'].touched}">
+                        <label for="thirdName">Отчество:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['thirdName'].invalid && form.controls['thirdName'].touched">
+                            <p *ngIf="form.controls['thirdName'].errors?.required">
+                                Отчество не должно быть пустым
+                            </p>
+            
+                            <p *ngIf="form.controls['thirdName'].errors?.email">
+                                Введите корректный Отчество
+                            </p>
+                        </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="groupName" type="text" formControlName="groupName" [ngClass]="{'invalid': form.controls['groupName'].invalid && form.controls['groupName'].touched}">
+                        <label for="groupName">Номер группы:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['groupName'].invalid && form.controls['groupName'].touched">
+                            <p *ngIf="form.controls['groupName'].errors?.required">
+                                Номер группы не должно быть пустым
+                            </p>
+            
+                            <p *ngIf="form.controls['groupName'].errors?.email">
+                                Введите корректный Номер группы
+                            </p>
+                        </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="specialization" type="text" formControlName="specialization" [ngClass]="{'invalid': form.controls['specialization'].invalid && form.controls['specialization'].touched}">
+                        <label for="groupName">Специализация:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['specialization'].invalid && form.controls['specialization'].touched">
+                            <p *ngIf="form.controls['specialization'].errors?.required">
+                                Специализация не должна быть пустой
+                            </p>
+            
+                            <p *ngIf="form.controls['specialization'].errors?.email">
+                                Введите корректный Специализацию
+                            </p>
+                        </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="workPos" type="text" formControlName="workPos" [ngClass]="{'invalid': form.controls['workPos'].invalid && form.controls['workPos'].touched}">
+                        <label for="groupName">Должность:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['workPos'].invalid && form.controls['workPos'].touched">
+                            <p *ngIf="form.controls['workPos'].errors?.required">
+                                Специализация не должна быть пустой
+                            </p>
+                    
+                            <p *ngIf="form.controls['workPos'].errors?.email">
+                                Введите корректную Специализацию
+                            </p>
+                        </span>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="year" type="text" formControlName="year" [ngClass]="{'invalid': form.controls['year'].invalid && form.controls['year'].touched}">
+                        <label for="groupName">Год выпуска:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['year'].invalid && form.controls['year'].touched">
+                            <p *ngIf="form.controls['year'].errors?.required">
+                                Год выпуска не должен быть пустым
+                            </p>
+            
+                            <p *ngIf="form.controls['year'].errors?.email">
+                                Введите корректный Год выпуска
+                            </p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-action">
+                <button class="modal-action btn waves-effect xs_edit_profile_btn_1" type="submit" [disabled]="form.invalid || form.disabled">Редактировать</button>
+            </div>
+
+            <div class="card-close" (click)="closeModalEditProfile()">
+                <svg _ngcontent-oem-c51="" width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path _ngcontent-oem-c51=""
+                        d="M30 1.76757L28.2324 0L15 13.2324L1.76757 0L0 1.76757L13.2324 15L0 28.2324L1.76757 30L15 16.7676L28.2324 30L30 28.2324L16.7676 15L30 1.76757Z"
+                        fill="#BE1F4F"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+</form>
 
 <app-footer></app-footer>

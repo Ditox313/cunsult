@@ -14,4 +14,9 @@ router.post('/login', controller.login);
 // Роут на register
 router.post('/register', controller.register);
 
+
+
+
+
+
 module.exports = router;

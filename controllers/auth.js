@@ -28,7 +28,8 @@ module.exports.login = async function(req, res) {
 
             // Отправляем ответ
             res.status(200).json({
-                token: `Bearer ${token}`
+                token: `Bearer ${token}`,
+                token_mod: token
             });
         } else {
             res.status(401).json({
@@ -77,6 +78,8 @@ module.exports.register = async function(req, res) {
             thirdName: req.body.thirdName,
             groupName: req.body.groupName,
             specialization: req.body.specialization,
+            workPos: req.body.workPos,
+            xsAvatar: req.body.xsAvatar,
             year: req.body.year
         });
 

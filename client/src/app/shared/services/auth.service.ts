@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import jwt_decode from "jwt-decode";
 
 
 // Даем возможность инжектировать сервисы в класс
@@ -20,17 +21,21 @@ export class AuthService
 
    private token = ''; //В эту переменную получим токет, который придет как ответ из функции login
 
+   public xsUserId : any = ''; //Положит токен без Bearer для экстракта id пользователя
+
+
    constructor(private http: HttpClient){}
 
 
 
    // Делаем запрос на сервис. ПОлучаем или не получаем токен, который потом будем использовать в запросах
-   login(user: User) : Observable<{ token : string }> //Возвращаем резульат стрима(Ответ), из которого вернется token типа string
+   login(user: User) : Observable<{ token : string, token_mod: string }> //Возвращаем резульат стрима(Ответ), из которого вернется token типа string
    {
-      return this.http.post<{ token : string }>('/api/auth/login', user).pipe(  //Делаем ajax на нужный бэкэнд роут. Отдаем user
-         tap(({token})=> { //Сохраням токен в переменную
+      return this.http.post<{ token : string, token_mod: string }>('/api/auth/login', user).pipe(  //Делаем ajax на нужный бэкэнд роут. Отдаем user
+         tap(({token, token_mod})=> { //Сохраням токен в переменную
             localStorage.setItem('auth-token', token);//Добавляем токен в localStorage
             this.setToken(token);
+            this.xsUserId = jwt_decode(token_mod);
          })
       );
    } 

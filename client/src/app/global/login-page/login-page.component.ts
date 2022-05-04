@@ -4,6 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { MaterialService } from 'src/app/shared/services/material.service';
+import jwt_decode from "jwt-decode";
 
 
 @Component({
@@ -75,7 +76,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
     // Когда auth.login(из сервиса auth.service) успешно отработает(как промис), перенаправляем на нужную страницу и обрататываем ошибку
     this.uSub = this.auth.login(user).subscribe(
-      () => this.router.navigate(['/site']),
+      (res) => this.router.navigate(['/site']),
       error => {
         // Запускам метод отображения ошибки materialyze
         MaterialService.toast(error.error.message);
