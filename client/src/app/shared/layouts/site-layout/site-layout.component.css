@@ -642,27 +642,6 @@ textarea {
 
 /* End Component style */
 
-.modal .card_content__wrap input {
-    border: none;
-    outline: none;
-    background-color: #fff !important;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid rgba(0, 46, 110, 0.3);
-}
-
-.xs_modal__title h2 {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 46px;
-    line-height: 125%;
-    color: #002E6E;
-    text-align: right;
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-
 .modal .card_content__wrap {
     display: flex;
     flex-wrap: wrap;
@@ -675,6 +654,7 @@ textarea {
 
 .xs_edit_profile_btn_1 {
     margin-right: 20px;
+    background-color: #BE1F4F;
 }
 
 .card-close {

@@ -6,6 +6,7 @@ import { FooterComponent } from '../../../global/footer/footer.component';
 import {MaterialInstance} from '../../other/interfaces'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {UserProfile} from '../../other/interfaces'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-site-layout',
@@ -36,7 +37,7 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   modal: MaterialInstance;
   form!: FormGroup; //Инициализируем нашу форму
-  user: any;
+  user$: any;
 
 
 
@@ -53,23 +54,16 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       specialization: new FormControl(null, [Validators.required]),
       workPos: new FormControl(null, []),
       year: new FormControl(null, [Validators.required]),
-    });
-
-    
+    }); 
   }
+
+
+
+
 
   ngAfterViewInit(): void {
     // Инициализируем модальное окно
    this.modal =  MaterialService.initModalPos(this.modalRef);
-
-   //  Получаем пользователя
-   this.user = this.auth.get_user().subscribe(function(res){
-    console.log(res);
-   });
-
-
-  
-   
   }
 
   ngOnDestroy(): void {
@@ -125,6 +119,23 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   modalEditProfile()
   {
     this.modal.open();
+    //  Получаем пользователя
+   this.user$ = this.auth.get_user().subscribe((res) => {
+    this.form.patchValue({ 
+      email: res.email, 
+      password: res.password, 
+      phone: res.phone, 
+      name: res.name, 
+      secondName: res.secondName, 
+      thirdName: res.thirdName, 
+      groupName: res.groupName, 
+      specialization: res.specialization, 
+      workPos: res.workPos,
+      year: res.year
+    })
+
+    MaterialService.updateTextInputs();
+   });
   }
 
 // Открываем модалку для редактирования профиля
@@ -140,10 +151,5 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     
   }
 
-
-  get_user(id: any)
-  { 
-    
-  }
 
 }

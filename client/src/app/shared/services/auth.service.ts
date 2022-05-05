@@ -5,7 +5,7 @@ import { User } from '../other/interfaces';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import jwt_decode from "jwt-decode";
 import {UserProfile} from './../other/interfaces'
 
@@ -22,7 +22,6 @@ export class AuthService
 
    private token = ''; //В эту переменную получим токет, который придет как ответ из функции login
 
-   public xs_user_profile : UserProfile; 
 
 
    constructor(private http: HttpClient){}
@@ -37,7 +36,8 @@ export class AuthService
             localStorage.setItem('auth-token', token);//Добавляем токен в localStorage
             this.setToken(token);
          })
-      );
+
+      )
    } 
 
 

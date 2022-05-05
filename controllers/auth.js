@@ -80,7 +80,7 @@ module.exports.register = async function(req, res) {
             specialization: req.body.specialization,
             workPos: req.body.workPos,
             xsAvatar: req.body.xsAvatar,
-            xsAvatar: req.body.year
+            year: req.body.year
         });
 
         try {
@@ -119,10 +119,4 @@ module.exports.get_user = async function(req, res) {
             errorHandler(res, error);
         }
     }
-
-    // res.status(200).json({
-    //     "name": req.user
-    // });
-
-
 }

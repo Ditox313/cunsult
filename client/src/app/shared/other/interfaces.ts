@@ -48,6 +48,7 @@ export interface UserProfile
     specialization: string
     workPos?: string
     xsAvatar?: string
+    year? : string
 }
 
 
