@@ -35,6 +35,23 @@ export interface MaterialInstance
 
 
 
+// Интерфейс для Юзера
+export interface UserProfile
+{
+    email: string
+    password: string
+    phone: string
+    name: string
+    secondName: string
+    thirdName: string
+    groupName: string
+    specialization: string
+    workPos?: string
+    xsAvatar?: string
+}
+
+
+
 
 
 

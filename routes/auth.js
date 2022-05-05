@@ -16,6 +16,14 @@ router.post('/register', controller.register);
 
 
 
+// Роут на get_user
+router.get('/user', passport.authenticate('jwt', { session: false }), controller.get_user);
+
+
+// router.get('/:id', passport.authenticate('jwt', { session: false }), controller.get_user);
+
+
+
 
 
 

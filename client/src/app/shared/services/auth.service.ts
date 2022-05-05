@@ -7,6 +7,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import jwt_decode from "jwt-decode";
+import {UserProfile} from './../other/interfaces'
 
 
 // Даем возможность инжектировать сервисы в класс
@@ -21,7 +22,7 @@ export class AuthService
 
    private token = ''; //В эту переменную получим токет, который придет как ответ из функции login
 
-   public xsUserId : any = ''; //Положит токен без Bearer для экстракта id пользователя
+   public xs_user_profile : UserProfile; 
 
 
    constructor(private http: HttpClient){}
@@ -35,7 +36,6 @@ export class AuthService
          tap(({token, token_mod})=> { //Сохраням токен в переменную
             localStorage.setItem('auth-token', token);//Добавляем токен в localStorage
             this.setToken(token);
-            this.xsUserId = jwt_decode(token_mod);
          })
       );
    } 
@@ -49,6 +49,17 @@ export class AuthService
    {
       return this.http.post<User>('/api/auth/register', user);
    }
+
+
+
+   // Делаем запрос на сервер, получаем  ответ типа User
+   get_user(): Observable<UserProfile> {
+    return this.http.get<UserProfile>('/api/auth/user')
+  }
+
+
+   
+
 
 
 
@@ -81,8 +92,6 @@ export class AuthService
    {
       this.setToken('');
       localStorage.clear();
-      console.log('гуд');
-      
    }
 
 

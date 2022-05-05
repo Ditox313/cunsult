@@ -64,8 +64,6 @@ export class HeaderComponent implements OnInit {
 
   isAuthenticated()
   {
-    console.log(this.auth.isAuthenticated());
-    
     return this.auth.isAuthenticated();
   }
 

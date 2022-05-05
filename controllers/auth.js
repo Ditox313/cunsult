@@ -80,7 +80,7 @@ module.exports.register = async function(req, res) {
             specialization: req.body.specialization,
             workPos: req.body.workPos,
             xsAvatar: req.body.xsAvatar,
-            year: req.body.year
+            xsAvatar: req.body.year
         });
 
         try {
@@ -90,6 +90,39 @@ module.exports.register = async function(req, res) {
             errorHandler(res, error);
         }
     }
+
+
+}
+
+
+
+
+
+// Контроллер для get_user
+module.exports.get_user = async function(req, res) {
+    // Делаем проверку на наличие пользователя в БД
+    const user = await User.findOne({
+        _id: req.user,
+    });
+
+
+
+
+    if (!user) {
+        res.status(409).json({
+            message: "Нет такого юзера"
+        });
+    } else {
+        try {
+            res.status(200).json(user);
+        } catch (error) {
+            errorHandler(res, error);
+        }
+    }
+
+    // res.status(200).json({
+    //     "name": req.user
+    // });
 
 
 }

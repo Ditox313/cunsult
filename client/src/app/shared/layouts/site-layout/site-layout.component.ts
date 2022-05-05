@@ -5,6 +5,7 @@ import { MaterialService } from '../../services/material.service';
 import { FooterComponent } from '../../../global/footer/footer.component';
 import {MaterialInstance} from '../../other/interfaces'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {UserProfile} from '../../other/interfaces'
 
 @Component({
   selector: 'app-site-layout',
@@ -35,6 +36,7 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   modal: MaterialInstance;
   form!: FormGroup; //Инициализируем нашу форму
+  user: any;
 
 
 
@@ -57,7 +59,17 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    // Инициализируем модальное окно
    this.modal =  MaterialService.initModalPos(this.modalRef);
+
+   //  Получаем пользователя
+   this.user = this.auth.get_user().subscribe(function(res){
+    console.log(res);
+   });
+
+
+  
+   
   }
 
   ngOnDestroy(): void {
@@ -125,6 +137,12 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   onSubmitProfile()
   {
     console.log('Отправлено');
+    
+  }
+
+
+  get_user(id: any)
+  { 
     
   }
 
