@@ -44,6 +44,8 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   form!: FormGroup; //Инициализируем нашу форму
   user$: any;
   userUpdate$ : any
+  xs_avatar: File
+  avatarPreview : any= 'https://static.tildacdn.com/tild3633-6532-4233-a631-363261663462/profile.png'
 
 
 
@@ -194,6 +196,23 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   triggerClick()
   {
     this.inputRef.nativeElement.click();
+  }
+
+
+  //Обрабатываем загрузку аватарки
+  onAvatarFileUpload(event: any)
+  {
+    const file = event.target.files[0]
+    // Сохраняем выбранный файл
+    this.xs_avatar = file
+
+    const reader = new FileReader()
+
+    // Когда загрузится картинка
+    reader.onload = () => {
+      this.avatarPreview = reader.result
+    }
+    reader.readAsDataURL(file)
   }
 
 }

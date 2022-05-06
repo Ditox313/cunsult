@@ -986,9 +986,9 @@
             <div class="xs_user_profile__avatar">
                 <div>
                     <figure>
-                        <img src="https://avatars.mds.yandex.net/get-zen_doc/3413519/pub_5ff887b2fe4e686f6ae6ba3f_5ff887d7f906b16872a69755/scale_1200" alt="Изображение">
+                        <img [src]="[avatarPreview]" alt="Изображение">
                     </figure>
-                    <input type="file" class="xs_file" #input>
+                    <input type="file" class="xs_file" #input (change)="onAvatarFileUpload($event)">
                     <button type="button" class="waves-effect waves-light btn orange lighten-2 mb2" (click)="triggerClick()">
                         Изменить аватар
                     </button>
