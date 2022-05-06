@@ -130,10 +130,20 @@ module.exports.get_user = async function(req, res) {
 module.exports.update = async function(req, res) {
     try {
 
+        const updated = req.body;
+
+
+        // Если объект file есть,то заполняем параметр путем фала
+        if (req.file) {
+            updated.xsAvatar = req.file.path;
+
+        }
+
+
 
         // Находим и обновляем позицию. 
         const UserUpdate = await User.findOneAndUpdate({ _id: req.user._id, }, //Ищем по id
-            { $set: req.body }, //Обновлять мы будем body запроса. В req.body находятся данные на которые будем менять старые
+            { $set: updated }, //Обновлять мы будем body запроса. В req.body находятся данные на которые будем менять старые
             { new: true } //обновит позицию и верет нам уже обновленную
         );
 

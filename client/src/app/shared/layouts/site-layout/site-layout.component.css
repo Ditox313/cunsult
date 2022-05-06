@@ -687,6 +687,19 @@ textarea {
     /* padding вокруг плашки */
 }
 
+.xs_user_profile__avatar {
+    margin-bottom: 40px;
+}
+
+.xs_user_profile__avatar figure img {
+    width: 100px;
+    height: 100px;
+}
+
+.xs_file {
+    display: none;
+}
+
 @media screen and (max-width: 1335px) {
     .xs_bg_fix_left {
         position: absolute;

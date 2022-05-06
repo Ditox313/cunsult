@@ -6,7 +6,6 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const keys = require('./config/keys.js');
 const passport = require('passport');
-const categoryRoutes = require('./routes/category.js');
 
 
 
@@ -31,6 +30,9 @@ require('./middleware/passport')(passport);
 
 
 
+// Добавляем возможность отдавать с сервера картинки по запросу. (Когда будет запрос к uploads, делай эту папку статической)
+app.use('/uploads', express.static('uploads'));
+
 
 
 // Регистрируем Morgan 
@@ -45,8 +47,7 @@ app.use(bodyParser.json());
 // Регистрируем роут auth
 app.use('/api/auth', authRoutes);
 
-// Регистрируем роут category
-app.use('/api/category', categoryRoutes);
+
 
 
 

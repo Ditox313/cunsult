@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/auth.js');
 const passport = require('passport');
+const upload = require('../middleware/upload');
 
 
 
@@ -21,7 +22,7 @@ router.get('/user', passport.authenticate('jwt', { session: false }), controller
 
 
 // Роут на update
-router.patch('/update', passport.authenticate('jwt', { session: false }), controller.update);
+router.patch('/update', passport.authenticate('jwt', { session: false }), upload.single('xsAvatar'), controller.update);
 
 
 

@@ -36,6 +36,9 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   // Получаем модальное окно
   @ViewChild('modal') modalRef : ElementRef;
 
+  // Получаем input загрузки файлов в профиле
+  @ViewChild('input') inputRef : ElementRef;
+
 
   modal: MaterialInstance;
   form!: FormGroup; //Инициализируем нашу форму
@@ -185,5 +188,12 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     
   }
 
+
+
+  // Тригер кнопки загрузки файла
+  triggerClick()
+  {
+    this.inputRef.nativeElement.click();
+  }
 
 }
