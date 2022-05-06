@@ -20,7 +20,10 @@ router.post('/register', controller.register);
 router.get('/user', passport.authenticate('jwt', { session: false }), controller.get_user);
 
 
-// router.get('/:id', passport.authenticate('jwt', { session: false }), controller.get_user);
+// Роут на update
+router.patch('/update', passport.authenticate('jwt', { session: false }), controller.update);
+
+
 
 
 

@@ -8,6 +8,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {UserProfile} from '../../other/interfaces'
 import { Observable } from 'rxjs';
 
+import * as bcrypt from 'bcryptjs';
+
 @Component({
   selector: 'app-site-layout',
   templateUrl: './site-layout.component.html',
@@ -38,6 +40,7 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   modal: MaterialInstance;
   form!: FormGroup; //Инициализируем нашу форму
   user$: any;
+  userUpdate$ : any
 
 
 
@@ -122,8 +125,7 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     //  Получаем пользователя
    this.user$ = this.auth.get_user().subscribe((res) => {
     this.form.patchValue({ 
-      email: res.email, 
-      password: res.password, 
+      email: res.email,  
       phone: res.phone, 
       name: res.name, 
       secondName: res.secondName, 
@@ -147,7 +149,39 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   // Отправляем форму редактирования профиля
   onSubmitProfile()
   {
-    console.log('Отправлено');
+    const salt = bcrypt.genSaltSync(10);
+    const password = this.form.value.password;
+
+    // Формируем объект юзера
+    const user = {
+      email: this.form.value.email,
+      password:   bcrypt.hashSync(password, salt),
+      phone:  this.form.value.phone,
+      name:  this.form.value.name,
+      secondName:  this.form.value.secondName,
+      thirdName:  this.form.value.thirdName,
+      groupName:  this.form.value.groupName,
+      specialization:  this.form.value.specialization,
+      workPos:  this.form.value.workPos,
+      year:  this.form.value.year,
+    }
+
+
+    this.userUpdate$ = this.auth.update(user).subscribe((res)=> {
+        this.form.patchValue({ 
+        email: res.email, 
+        phone: res.phone, 
+        name: res.name, 
+        secondName: res.secondName, 
+        thirdName: res.thirdName, 
+        groupName: res.groupName, 
+        specialization: res.specialization, 
+        workPos: res.workPos,
+        year: res.year
+      })
+
+      MaterialService.toast("Данные изменены");
+    })
     
   }
 

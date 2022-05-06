@@ -102,7 +102,7 @@ module.exports.register = async function(req, res) {
 module.exports.get_user = async function(req, res) {
     // Делаем проверку на наличие пользователя в БД
     const user = await User.findOne({
-        _id: req.user,
+        _id: req.user._id,
     });
 
 
@@ -120,3 +120,26 @@ module.exports.get_user = async function(req, res) {
         }
     }
 }
+
+
+
+
+
+
+// Контроллер для update
+module.exports.update = async function(req, res) {
+    try {
+
+
+        // Находим и обновляем позицию. 
+        const UserUpdate = await User.findOneAndUpdate({ _id: req.user._id, }, //Ищем по id
+            { $set: req.body }, //Обновлять мы будем body запроса. В req.body находятся данные на которые будем менять старые
+            { new: true } //обновит позицию и верет нам уже обновленную
+        );
+
+        // Возвращаем пользователю обновленную позицию 
+        res.status(200).json(UserUpdate);
+    } catch (e) {
+        errorHandler(res, e);
+    }
+};

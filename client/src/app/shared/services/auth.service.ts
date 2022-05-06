@@ -58,6 +58,13 @@ export class AuthService
   }
 
 
+
+
+  // Редактируем позицию
+  update(user: UserProfile): Observable<UserProfile> {
+    return this.http.patch<UserProfile>('/api/auth/update/', user);
+  }
+
    
 
 
