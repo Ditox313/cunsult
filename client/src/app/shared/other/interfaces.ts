@@ -47,7 +47,7 @@ export interface UserProfile
     groupName: string
     specialization: string
     workPos?: string
-    xsAvatar?: string
+    xsAvatar?: any
     year? : string
 }
 

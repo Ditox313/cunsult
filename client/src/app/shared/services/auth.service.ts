@@ -61,8 +61,28 @@ export class AuthService
 
 
   // Редактируем позицию
-  update(user: UserProfile): Observable<UserProfile> {
-    return this.http.patch<UserProfile>('/api/auth/update/', user);
+  update(user: UserProfile, image?: File): Observable<UserProfile> {
+
+   const fd = new FormData(); 
+   fd.append('email', user.email);
+   fd.append('password', user.password);
+   fd.append('phone', user.phone);
+   fd.append('name', user.name);
+   fd.append('secondName', user.secondName);
+   fd.append('thirdName', user.thirdName);
+   fd.append('groupName', user.groupName);
+   fd.append('specialization', user.specialization);
+   fd.append('workPos', user.workPos);
+   fd.append('year', user.year);
+  
+   if(image)
+   {
+      fd.append('xsAvatar', image, image.name);
+   }
+
+
+
+    return this.http.patch<UserProfile>('/api/auth/update/', fd);
   }
 
    

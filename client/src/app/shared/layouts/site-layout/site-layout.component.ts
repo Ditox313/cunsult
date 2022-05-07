@@ -42,10 +42,20 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   modal: MaterialInstance;
   form!: FormGroup; //Инициализируем нашу форму
+
+  // Переменная для стрима при получении юзера
   user$: any;
+  // Переменная для стрима при обновлении юзера
   userUpdate$ : any
+  // Храним файл который будем сохранять на сервер
   xs_avatar: File
+  // Переменная для превью аватарки
   avatarPreview : any= 'https://static.tildacdn.com/tild3633-6532-4233-a631-363261663462/profile.png'
+  // Данные  пользователя в сайдбаре
+  userNameSidebar : string
+  userSecondnameSidebar : string
+  userGroupnameSidebar : string
+  userWorkposSidebar : string
 
 
 
@@ -63,6 +73,19 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       workPos: new FormControl(null, []),
       year: new FormControl(null, [Validators.required]),
     }); 
+
+
+    this.user$ = this.auth.get_user().subscribe((res) => {
+      if(res.xsAvatar)
+      {
+        this.avatarPreview = res.xsAvatar
+      }
+
+      this.userNameSidebar = res.name
+      this.userSecondnameSidebar = res.secondName
+      this.userGroupnameSidebar = res.groupName
+      this.userWorkposSidebar = res.workPos
+   });
   }
 
 
@@ -141,6 +164,11 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       year: res.year
     })
 
+    if(res.xsAvatar)
+    {
+      this.avatarPreview = res.xsAvatar
+    }
+
     MaterialService.updateTextInputs();
    });
   }
@@ -172,7 +200,8 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
 
-    this.userUpdate$ = this.auth.update(user).subscribe((res)=> {
+  
+    this.userUpdate$ = this.auth.update(user, this.xs_avatar).subscribe((res)=> {
         this.form.patchValue({ 
         email: res.email, 
         phone: res.phone, 
@@ -184,6 +213,12 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
         workPos: res.workPos,
         year: res.year
       })
+
+      if(res.xsAvatar)
+      {
+        this.avatarPreview = res.xsAvatar
+      }
+      
 
       MaterialService.toast("Данные изменены");
     })

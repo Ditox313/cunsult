@@ -294,17 +294,17 @@
                 <div class="xs_content__profile_block_1">
                     <div class="xs_content__profile___item xs_content__profile___item_1">
                         <div class="xs_content__profile___item___name">
-                            <img src="../../../../assets/images/profile_primer.png" alt="Изображение">
+                            <img [src]="[avatarPreview]" alt="Изображение">
 
                             <div>
-                                <span>Имя</span>
-                                <span>Фамилия</span>
+                                <span>{{userNameSidebar}}</span>
+                                <span>{{userSecondnameSidebar}}</span>
                             </div>
                         </div>
 
                         <div class="xs_content__profile___item___position">
-                            <span>МВА - Маркетинг и продажи (2021)</span>
-                            <span>Генеральный Директор РОСАТОМ</span>
+                            <span>{{userGroupnameSidebar}}</span>
+                            <span>{{userWorkposSidebar}}</span>
                         </div>
                     </div>
 
