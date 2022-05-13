@@ -9,6 +9,7 @@ import {UserProfile} from '../../other/interfaces'
 import { Observable } from 'rxjs';
 
 import * as bcrypt from 'bcryptjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-site-layout',
@@ -56,6 +57,8 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   userSecondnameSidebar : string
   userGroupnameSidebar : string
   userWorkposSidebar : string
+  userCitySidebar : string
+  userDateSidebar : any
 
 
 
@@ -72,6 +75,7 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       specialization: new FormControl(null, [Validators.required]),
       workPos: new FormControl(null, []),
       year: new FormControl(null, [Validators.required]),
+      city: new FormControl(null, []),
     }); 
 
 
@@ -85,6 +89,8 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       this.userSecondnameSidebar = res.secondName
       this.userGroupnameSidebar = res.groupName
       this.userWorkposSidebar = res.workPos
+      this.userCitySidebar = res.city
+      this.userDateSidebar = res.date
    });
   }
 
@@ -161,7 +167,8 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       groupName: res.groupName, 
       specialization: res.specialization, 
       workPos: res.workPos,
-      year: res.year
+      year: res.year,
+      city: res.city
     })
 
     if(res.xsAvatar)
@@ -197,6 +204,7 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       specialization:  this.form.value.specialization,
       workPos:  this.form.value.workPos,
       year:  this.form.value.year,
+      city: this.form.value.city,
     }
 
 
@@ -211,8 +219,11 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
         groupName: res.groupName, 
         specialization: res.specialization, 
         workPos: res.workPos,
-        year: res.year
+        year: res.year,
+        city: res.city
       })
+
+      this.userCitySidebar = res.city
 
       if(res.xsAvatar)
       {

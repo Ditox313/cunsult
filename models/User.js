@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+// Пакет для удобной работы с данными в js
+const moment = require('moment');
+moment.locale('ru');
 
 
 // Создаем схему для таблицы users
@@ -77,6 +80,23 @@ const userSchema = new Schema({
         default: '',
         required: false,
     },
+
+
+    // Поле даты
+    date: {
+        type: String,
+        default: moment().format('LL'),
+        unique: true
+    },
+
+
+    //Создаем поле для города
+    city: {
+        type: String,
+        required: false,
+        default: '',
+    },
+
 
 });
 

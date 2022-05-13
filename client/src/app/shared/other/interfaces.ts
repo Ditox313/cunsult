@@ -49,6 +49,8 @@ export interface UserProfile
     workPos?: string
     xsAvatar?: any
     year? : string
+    city? : string
+    date? : Date
 }
 
 

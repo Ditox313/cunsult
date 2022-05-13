@@ -74,13 +74,14 @@ module.exports.register = async function(req, res) {
             password: bcrypt.hashSync(password, salt),
             phone: req.body.phone,
             name: req.body.name,
-            secondName: req.body.name,
+            secondName: req.body.secondName,
             thirdName: req.body.thirdName,
             groupName: req.body.groupName,
             specialization: req.body.specialization,
             workPos: req.body.workPos,
             xsAvatar: req.body.xsAvatar,
-            year: req.body.year
+            year: req.body.year,
+            city: req.body.city
         });
 
         try {

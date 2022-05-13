@@ -74,6 +74,7 @@ export class AuthService
    fd.append('specialization', user.specialization);
    fd.append('workPos', user.workPos);
    fd.append('year', user.year);
+   fd.append('city', user.city);
   
    if(image)
    {

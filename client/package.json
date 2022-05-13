@@ -23,6 +23,7 @@
         "bcrypt": "^5.0.1",
         "bcryptjs": "^2.4.3",
         "materialize-css": "^1.0.0-rc.2",
+        "moment": "^2.29.3",
         "rxjs": "~6.6.0",
         "tslib": "^2.0.0",
         "zone.js": "~0.11.3"
