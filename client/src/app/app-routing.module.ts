@@ -8,6 +8,10 @@ import { LoginPageComponent } from './global/login-page/login-page.component';
 import { RegisterPageComponent } from './global/register-page/register-page.component';
 import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
 import { AuthGuard } from './shared/classes/auth.guard';
+import { CasesComponent } from './site/cases/cases.component';
+import { FavouritesComponent } from './site/favourites/favourites.component';
+import { TapeComponent } from './site/tape/tape.component';
+import { MessagesComponent } from './site/messages/messages.component';
 
 
 const routes: Routes = [
@@ -39,6 +43,24 @@ const routes: Routes = [
   {
     path: 'site',
     component: SiteLayoutComponent,
+    children: [
+      {
+        path: 'cases',
+        component: CasesComponent,
+      },
+      {
+        path: 'favourites',
+        component: FavouritesComponent,
+      },
+      {
+        path: 'tape',
+        component: TapeComponent,
+      },
+      {
+        path: 'messages',
+        component: MessagesComponent,
+      },
+    ],
     canActivate: [AuthGuard], //Защищаем роуты которые относятся к самому приложению
   }
 ];

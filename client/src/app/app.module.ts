@@ -12,6 +12,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
 import { TokenInterceptor } from './shared/classes/token.interceptor';
 import { FooterComponent } from './global/footer/footer.component';
+import { CasesComponent } from './site/cases/cases.component';
+import { FavouritesComponent } from './site/favourites/favourites.component';
+import { TapeComponent } from './site/tape/tape.component';
+import { MessagesComponent } from './site/messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,10 @@ import { FooterComponent } from './global/footer/footer.component';
     RegisterPageComponent,
     SiteLayoutComponent,
     FooterComponent,
+    CasesComponent,
+    FavouritesComponent,
+    TapeComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,

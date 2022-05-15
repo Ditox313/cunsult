@@ -1,0 +1,105 @@
+/* Component style */
+
+.xs_content___component___title h1 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 46px;
+    line-height: 125%;
+    color: #002E6E;
+    text-align: right;
+    margin-bottom: 20px;
+    margin-top: -10px;
+}
+
+.xs_keyses__nav {
+    margin-bottom: 33px;
+}
+
+.xs_keyses__nav ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.xs_keyses__nav ul li {
+    margin-left: 10px;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 125%;
+    /* identical to box height, or 22px */
+    text-align: center;
+    color: #002E6E;
+}
+
+.xs_keyses__nav___active {
+    color: #BE1F4F !important;
+}
+
+.xs_keyses__list___item {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 40px rgba(0, 46, 110, 0.1);
+    padding: 15px 15px 30px 15px;
+    margin-bottom: 33px;
+}
+
+.xs_keys_dots {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.xs_keyses__list___item h3 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 125%;
+    color: #000000;
+    width: 90%;
+    margin-bottom: 20px;
+}
+
+.xs_keyses__list___item___info {
+    display: flex;
+    align-items: center;
+}
+
+.xs_keyses__list___item___info div {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.xs_keyses__list___item___info div:last-child {
+    margin-left: auto;
+}
+
+.xs_keyses__list___item___info div span {
+    margin-left: 5px;
+}
+
+.xs_content___component {
+    position: relative;
+    background-color: #fff;
+    padding-left: 15px;
+}
+
+.xs_keyses__more {
+    text-align: center;
+}
+
+.xs_keyses__more span {
+    font-size: 20px;
+    color: #BE1F4F;
+    cursor: pointer;
+    display: inline-block;
+    border-bottom: 1px solid #BE1F4F;
+    padding-bottom: 5px;
+}
+
+
+/* End Component style */
