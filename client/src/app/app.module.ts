@@ -16,6 +16,12 @@ import { CasesComponent } from './site/cases/cases.component';
 import { FavouritesComponent } from './site/favourites/favourites.component';
 import { TapeComponent } from './site/tape/tape.component';
 import { MessagesComponent } from './site/messages/messages.component';
+import { LoaderComponent } from './shared/other/loader/loader.component';
+import { registerLocaleData } from '@angular/common';
+import rulocale from '@angular/common/locales/ru';
+
+
+registerLocaleData(rulocale, 'ru');
 
 @NgModule({
   declarations: [
@@ -31,6 +37,7 @@ import { MessagesComponent } from './site/messages/messages.component';
     FavouritesComponent,
     TapeComponent,
     MessagesComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

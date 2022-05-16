@@ -1,5 +1,6 @@
 const express = require('express');
 const authRoutes = require('./routes/auth.js');
+const caseRoutes = require('./routes/case.js');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -46,6 +47,9 @@ app.use(bodyParser.json());
 
 // Регистрируем роут auth
 app.use('/api/auth', authRoutes);
+
+// Регистрируем роут case
+app.use('/api/cases', caseRoutes);
 
 
 

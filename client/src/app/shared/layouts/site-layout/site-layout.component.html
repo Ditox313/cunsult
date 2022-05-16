@@ -387,7 +387,7 @@
                                 stroke="black" stroke-width="2" stroke-miterlimit="10" />
                             <path d="M12 6.75V12H17.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        <span>На сайте с {{userDateSidebar}}</span>
+                        <span>В платформе с {{userDateSidebar | date: 'mediumDate':null:'ru'}}</span>
                     </div>
 
                     <!-- <div>
@@ -477,7 +477,7 @@
                 </div>
 
                 <div class="xs_content__profile_btns">
-                    <button class="xs_add_keys">Разместить кейс</button>
+                    <button [routerLink]="['/site','cases','new']" class="xs_add_keys">Разместить кейс</button>
                     <button class="xs_expert">Подать заявку на эксперта</button>
                 </div>
             </div>

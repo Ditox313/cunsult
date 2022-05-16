@@ -56,6 +56,19 @@ export interface UserProfile
 
 
 
+// Интерфейс для Юзера
+export interface Case
+{
+    title: string
+    content: string
+    date: Date
+    imageSrc?: any
+    user?: any
+}
+
+
+
+
 
 
 

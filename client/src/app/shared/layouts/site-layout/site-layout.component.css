@@ -618,6 +618,12 @@ textarea {
 
 .xs_content__profile_navigate li a {
     color: inherit;
+    display: flex;
+}
+
+.xs_header_search input {
+    margin: 0 !important;
+    height: 30px;
 }
 
 @media screen and (max-width: 1335px) {
