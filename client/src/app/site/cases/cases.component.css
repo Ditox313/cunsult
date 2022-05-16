@@ -101,5 +101,9 @@
     padding-bottom: 5px;
 }
 
+.xs_keyses__list___item a {
+    color: inherit;
+}
+
 
 /* End Component style */
