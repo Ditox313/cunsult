@@ -8,9 +8,16 @@ const errorHandler = require('../Utils/errorHendler');
 
 module.exports.getAll = async function(req, res) {
     try {
-        const cases = await Case.find({
-            user: req.user.id //Ищем категории по пользователю который их создал
-        });
+        // Создаем объект запроса
+        const query = {
+            user: req.user.id
+        }
+
+        const cases = await Case.find(query)
+            .skip(+req.query.offset) //Отступ для бесконечного скрола на фронтенде. Приводим к числу
+            .limit(+req.query.limit); //Сколько выводить на фронтенде. Приводим к числу
+
+
         res.status(200).json(cases);
     } catch (e) {
         errorHandler(res, e);

@@ -1,4 +1,4 @@
-<div *ngIf="cases$ | async as cases; else loader">
+<div *ngIf="loading === false; else loader">
     <div class="xs_content___component___title">
         <h1>Мои кейсы</h1>
     </div>
@@ -110,8 +110,8 @@
             </div>
         </div>
 
-        <div class="xs_keyses__more">
-            <span>Загрузить еще...</span>
+        <div class="xs_keyses__more" *ngIf="!noMoreCases">
+            <span (click)="loadmore()">Загрузить еще...</span>
         </div>
     </main>
 

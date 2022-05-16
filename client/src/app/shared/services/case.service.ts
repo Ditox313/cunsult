@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import {Case} from './../other/interfaces'
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 
@@ -16,9 +16,13 @@ export class CaseService
     constructor(private http: HttpClient){}
 
 
-    fetch(): Observable<Case []>
+    fetch(params: any = {}): Observable<Case []>
     {
-       return this.http.get<Case []>('/api/cases');
+       return this.http.get<Case []>('/api/cases', {
+          params: new HttpParams({ //Даем возможность передавать параметры для пагинации
+             fromObject: params
+          })
+       });
     }
 
 
