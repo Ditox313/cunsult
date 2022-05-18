@@ -13,6 +13,9 @@ const passport = require('passport');
 const app = express();
 
 
+// Регистрируем Cors
+app.use(cors());
+
 
 
 // Подключаемся к MongoDB
@@ -55,8 +58,9 @@ app.use('/api/cases', caseRoutes);
 
 
 
-// Регистрируем Cors
-app.use(cors());
+
+
+
 
 
 // Экспортируем наружу

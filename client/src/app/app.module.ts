@@ -46,7 +46,7 @@ registerLocaleData(rulocale, 'ru');
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     {

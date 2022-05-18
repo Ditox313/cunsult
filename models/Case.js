@@ -21,7 +21,7 @@ const caseSchema = new Schema({
 
 
     content: {
-        type: String,
+        type: Object,
         required: true,
         default: '',
     },

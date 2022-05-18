@@ -15,17 +15,10 @@ router.get('/', passport.authenticate('jwt', { session: false }), controller.get
 router.post('/', passport.authenticate('jwt', { session: false }), upload.single('image'), controller.create);
 
 
-// Роут на getById
-// router.get('/:id', passport.authenticate('jwt', { session: false }), controller.getById);
 
+//Роут для загрузки изображений при создании кейса
+router.post('/upload', upload.single('image'), controller.uploadEditor);
 
-// Роут на remove
-// router.delete('/:id', passport.authenticate('jwt', { session: false }), controller.remove);
-
-
-
-// Роут на update
-// router.patch('/:id', passport.authenticate('jwt', { session: false }), upload.single('image'), controller.update);
 
 
 

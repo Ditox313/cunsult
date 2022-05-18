@@ -48,6 +48,8 @@ export class CasesComponent implements OnInit, OnDestroy {
        
       this.loading = false
       this.cases = this.cases.concat(cases)
+      console.log(this.cases);
+      
     });
     
   }
