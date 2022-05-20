@@ -13,6 +13,7 @@ import { FavouritesComponent } from './site/favourites/favourites.component';
 import { TapeComponent } from './site/tape/tape.component';
 import { MessagesComponent } from './site/messages/messages.component';
 import { CaseFormComponent } from './site/case-form/case-form.component';
+import { CaseEditComponent } from './site/case-edit/case-edit.component';
 
 
 const routes: Routes = [
@@ -64,6 +65,10 @@ const routes: Routes = [
       {
         path: 'cases/new',
         component: CaseFormComponent,
+      },
+      {
+        path: 'cases/edit/:id',
+        component: CaseEditComponent,
       },
     ],
     canActivate: [AuthGuard], //Защищаем роуты которые относятся к самому приложению

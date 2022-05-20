@@ -41,5 +41,34 @@ export class CaseService
 
 
 
+   update(id:string, xscase: Case, image?: File): Observable<Case> {
+
+      // const fd = new FormData(); 
+      // fd.append('title', xscase.title);
+      // fd.append('content', xscase.content);
+      // fd.append('caseId', xscase.caseId);
+
+
+      // if(image)
+      // {
+      //    fd.append('casePreview', image, image.name);
+      // }
+
+
+
+      return this.http.patch<Case>(`/api/cases/update/${id}`, xscase);
+   }
+
+   
+
+   getById(id: string): Observable<Case>
+   {
+      return this.http.get<Case>(`api/cases/${id}`);
+   }
+
+
+
+
+
 
 }

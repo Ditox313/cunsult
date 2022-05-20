@@ -20,6 +20,7 @@ import { LoaderComponent } from './shared/other/loader/loader.component';
 import { registerLocaleData } from '@angular/common';
 import rulocale from '@angular/common/locales/ru';
 import { CaseFormComponent } from './site/case-form/case-form.component';
+import { CaseEditComponent } from './site/case-edit/case-edit.component';
 
 
 registerLocaleData(rulocale, 'ru');
@@ -40,6 +41,7 @@ registerLocaleData(rulocale, 'ru');
     MessagesComponent,
     LoaderComponent,
     CaseFormComponent,
+    CaseEditComponent,
   ],
   imports: [
     BrowserModule,

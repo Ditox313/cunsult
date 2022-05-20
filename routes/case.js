@@ -21,6 +21,17 @@ router.post('/upload', upload.single('image'), controller.uploadEditor);
 
 
 
+// Роут на update
+router.patch('/update/:id', passport.authenticate('jwt', { session: false }), upload.single('image'), controller.update);
+
+
+
+// Роут на getById
+router.get('/:id', passport.authenticate('jwt', { session: false }), controller.getById);
+
+
+
+
 
 
 module.exports = router;

@@ -1,0 +1,37 @@
+<div class="xs_add_case">
+    <div class="container">
+        <div class="xs_content___component___title">
+            <h1>Редактировать кейс</h1>
+        </div>
+
+        <main class="xs_add_case">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="input-field">
+                    <input id="title" type="text" formControlName="title" [ngClass]="{'invalid': form.controls['title'].invalid && form.controls['title'].touched}">
+                    <label for="title">Заголовок:</label>
+                    <span class="helper-text red-text" *ngIf="form.controls['title'].invalid && form.controls['title'].touched">
+                        <p *ngIf="form.controls['title'].errors?.required">
+                            Заголовок не должен быть пустым
+                        </p>
+
+                        <p *ngIf="form.controls['title'].errors?.email">
+                            Введите корректный Заголовок
+                        </p>
+                    </span>
+                </div>
+
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div id="editor-js"></div>
+                    </div>
+                </div>
+
+
+
+
+                <button type="submit" [disabled]="form.invalid || form.disabled">Сохранить форму</button>
+            </form>
+        </main>
+    </div>
+</div>

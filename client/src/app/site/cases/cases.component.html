@@ -14,13 +14,13 @@
 
         <div class="xs_keyses__list">
             <div class="xs_keyses__list___item" *ngFor="let case of cases">
-                <a [routerLink]="['/site','cases',case._id]">
+                <a [routerLink]="['/site','cases','edit',case._id]">
                     <div class="xs_keys_dots">
                         <svg width="21" height="5" viewBox="0 0 21 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <ellipse cx="18.5" cy="2.5" rx="2.50001" ry="2.5" fill="#002E6E" />
-                                        <ellipse cx="10.5" cy="2.5" rx="2.50001" ry="2.5" fill="#002E6E" />
-                                        <ellipse cx="2.50001" cy="2.5" rx="2.50001" ry="2.5" fill="#002E6E" />
-                                    </svg>
+                            <ellipse cx="18.5" cy="2.5" rx="2.50001" ry="2.5" fill="#002E6E" />
+                            <ellipse cx="10.5" cy="2.5" rx="2.50001" ry="2.5" fill="#002E6E" />
+                            <ellipse cx="2.50001" cy="2.5" rx="2.50001" ry="2.5" fill="#002E6E" />
+                        </svg>
                     </div>
 
                     <h3>{{case.title}}</h3>

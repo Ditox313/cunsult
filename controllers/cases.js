@@ -13,7 +13,7 @@ module.exports.getAll = async function(req, res) {
             user: req.user.id
         }
 
-        const cases = await Case.find(query)
+        const cases = await Case.find(query).sort({ _id: -1 })
             .skip(+req.query.offset) //Отступ для бесконечного скрола на фронтенде. Приводим к числу
             .limit(+req.query.limit); //Сколько выводить на фронтенде. Приводим к числу
 
@@ -61,6 +61,52 @@ module.exports.uploadEditor = async function(req, res) {
             }
         });
 
+    } catch (e) {
+        errorHandler(res, e);
+    }
+};
+
+
+
+
+// Контроллер для update
+module.exports.update = async function(req, res) {
+    try {
+
+        const updated = req.body;
+
+
+        // Если объект file есть,то заполняем параметр путем фала
+        if (req.file) {
+            updated.xsAvatar = req.file.path;
+
+        }
+
+
+
+        // Находим и обновляем позицию. 
+        const caseUpdate = await Case.findOneAndUpdate({ _id: updated.caseId }, //Ищем по id
+            { $set: updated }, //Обновлять мы будем body запроса. В req.body находятся данные на которые будем менять старые
+            { new: true } //обновит позицию и верет нам уже обновленную
+        );
+
+        // Возвращаем пользователю обновленную позицию 
+        res.status(200).json(req.body);
+    } catch (e) {
+        errorHandler(res, e);
+    }
+};
+
+
+
+
+
+
+// Контроллер для getById
+module.exports.getById = async function(req, res) {
+    try {
+        const xscase = await Case.findById(req.params.id); //Ищем категорию по id из переданных параметров
+        res.status(200).json(xscase);
     } catch (e) {
         errorHandler(res, e);
     }

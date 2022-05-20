@@ -64,6 +64,7 @@ export interface Case
     date?: Date
     imageSrc?: any
     user?: any
+    caseId?: any
 }
 
 

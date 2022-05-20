@@ -49,15 +49,15 @@ export class CaseFormComponent implements OnInit {
           class: Marker,
           shortcut: 'CMD+SHIFT+M'
         },
-        // image: SimpleImage,
-        image: {
-          class: ImageTool,
-          config: {
-            endpoints: {
-              byFile: 'http://localhost:5000/api/cases/upload ', // Your backend file uploader endpoint
-            }
-          }
-        }
+        image: SimpleImage,
+        // image: {
+        //   class: ImageTool,
+        //   config: {
+        //     endpoints: {
+        //       byFile: 'http://localhost:5000/api/cases/upload ', // Your backend file uploader endpoint
+        //     }
+        //   }
+        // }
         // image: {
         //   class: ImageTool,
         //   config: {
