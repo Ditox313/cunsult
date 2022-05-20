@@ -8,6 +8,8 @@ import List from '@editorjs/list';
 import { CaseService } from 'src/app/shared/services/case.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {Case} from '../../shared/other/interfaces'
+import { MaterialService } from 'src/app/shared/services/material.service';
+import { Router } from '@angular/router';
 
 
 
@@ -19,7 +21,7 @@ import {Case} from '../../shared/other/interfaces'
 export class CaseFormComponent implements OnInit {
   editor: any
   form!: FormGroup; //Инициализируем нашу форму
-  constructor(public caseServise: CaseService ) { }
+  constructor(public caseServise: CaseService, private router: Router ) { }
 
   ngOnInit(): void {
     // Инициализируем форму
@@ -105,13 +107,11 @@ export class CaseFormComponent implements OnInit {
           content: res
         }
 
-        console.log(xscase);
-        console.log('Данный Editor: ', res);
-
         this.caseServise.create(xscase).subscribe((res)=>{
-          console.log(res);
-          
+          MaterialService.toast('Кейс успешно создан')
+          this.router.navigate(['/site/cases'])
         })
+
       })
       .catch((error) => {
         console.log('Ошибка ', error);
@@ -120,16 +120,5 @@ export class CaseFormComponent implements OnInit {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-  
 
 }

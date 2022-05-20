@@ -14,29 +14,28 @@
 
         <div class="xs_keyses__list">
             <div class="xs_keyses__list___item" *ngFor="let case of cases">
+                <div class="xs_keys_dots xs_keys_dots_open">
+                    <svg width="21" height="5" viewBox="0 0 21 5" fill="none" xmlns="http://www.w3.org/2000/svg" #dot_trigger (click)="openArea()">
+                        <ellipse cx="18.5" cy="2.5" rx="2.50001" ry="2.5" fill="#002E6E" />
+                        <ellipse cx="10.5" cy="2.5" rx="2.50001" ry="2.5" fill="#002E6E" />
+                        <ellipse cx="2.50001" cy="2.5" rx="2.50001" ry="2.5" fill="#002E6E" />
+                    </svg>
+                </div>
                 <a [routerLink]="['/site','cases','edit',case._id]">
-                    <div class="xs_keys_dots">
-                        <svg width="21" height="5" viewBox="0 0 21 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <ellipse cx="18.5" cy="2.5" rx="2.50001" ry="2.5" fill="#002E6E" />
-                            <ellipse cx="10.5" cy="2.5" rx="2.50001" ry="2.5" fill="#002E6E" />
-                            <ellipse cx="2.50001" cy="2.5" rx="2.50001" ry="2.5" fill="#002E6E" />
-                        </svg>
-                    </div>
-
                     <h3>{{case.title}}</h3>
 
                     <div class="xs_keyses__list___item___info">
                         <div>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M19.5 3.75H4.5C4.08579 3.75 3.75 4.08579 3.75 4.5V19.5C3.75 19.9142 4.08579 20.25 4.5 20.25H19.5C19.9142 20.25 20.25 19.9142 20.25 19.5V4.5C20.25 4.08579 19.9142 3.75 19.5 3.75Z"
-                                                stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                            <rect x="11.0625" y="11.0625" width="1.125" height="1.125" stroke="black" stroke-width="1.125" />
-                                            <rect x="15.5625" y="15.5625" width="1.125" height="1.125" stroke="black" stroke-width="1.125" />
-                                            <path d="M16.5 2.25V5.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M7.5 2.25V5.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M3.75 8.25H20.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
+                                <path
+                                    d="M19.5 3.75H4.5C4.08579 3.75 3.75 4.08579 3.75 4.5V19.5C3.75 19.9142 4.08579 20.25 4.5 20.25H19.5C19.9142 20.25 20.25 19.9142 20.25 19.5V4.5C20.25 4.08579 19.9142 3.75 19.5 3.75Z"
+                                    stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <rect x="11.0625" y="11.0625" width="1.125" height="1.125" stroke="black" stroke-width="1.125" />
+                                <rect x="15.5625" y="15.5625" width="1.125" height="1.125" stroke="black" stroke-width="1.125" />
+                                <path d="M16.5 2.25V5.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M7.5 2.25V5.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M3.75 8.25H20.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
                             <span>{{case.date | date: 'mediumDate':null:'ru'}}</span>
                         </div>
 
@@ -107,6 +106,17 @@
                         </div>
                     </div>
                 </a>
+
+                <div class="xs_keyses__list___item____setting" #dot_area>
+                    <div class="xs_keys_dots xs_keys_dots_close">
+                        <svg width="15" height="15" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" (click)="closeArea()" #dotAreaClose>
+                            <path
+                                d="M30 1.76757L28.2324 0L15 13.2324L1.76757 0L0 1.76757L13.2324 15L0 28.2324L1.76757 30L15 16.7676L28.2324 30L30 28.2324L16.7676 15L30 1.76757Z"
+                                fill="#fff"></path>
+                        </svg>
+                    </div>
+                    <span (click)="onDeleteCase($event, case._id)">Удалить</span>
+                </div>
             </div>
         </div>
 

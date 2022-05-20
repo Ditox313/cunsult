@@ -16,3 +16,29 @@
 .codex-editor--empty {
     display: none !important;
 }
+
+.edit_case {
+    background: #002E6E;
+    border-radius: 4px;
+    padding: 15px 14px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 97.7%;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.row .col {
+    padding-left: 0 !important;
+}
+
+.ce-block__content {
+    max-width: 0 !important;
+}
+
+#editor-js {
+    background-color: #f2f2f2;
+}

@@ -8,7 +8,7 @@ import List from '@editorjs/list';
 import { CaseService } from 'src/app/shared/services/case.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {Case} from '../../shared/other/interfaces'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MaterialService } from 'src/app/shared/services/material.service';
 
 @Component({
@@ -22,7 +22,7 @@ editor: any
   form!: FormGroup; //Инициализируем нашу форму
   caseId: string; //Для хранения id кейса
   xsActualCase: Case;//Текущий кейс, который будем редактировать
-  constructor(public caseServise: CaseService, private rote: ActivatedRoute ) { }
+  constructor(public caseServise: CaseService, private rote: ActivatedRoute, private router: Router ) { }
 
   ngOnInit(): void {
     // Инициализируем форму
@@ -90,7 +90,7 @@ editor: any
         const xscaseUpdate = {
           title: this.form.value.title,
           content: res,
-          caseId: this.caseId
+          caseId: this.caseId,
         }
         this.editor.clear();
         this.editor.destroy();
@@ -128,6 +128,9 @@ editor: any
           });
 
           MaterialService.updateTextInputs();
+
+          MaterialService.toast('Данные успешно обновлены')
+          this.router.navigate(['/site/cases'])
           
         });
       })

@@ -59,6 +59,7 @@ export interface UserProfile
 // Интерфейс для case
 export interface Case
 {
+    _id?: any
     title: any
     content: any
     date?: Date

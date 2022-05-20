@@ -71,4 +71,15 @@ export class CaseService
 
 
 
+    // Удаление категории
+   delete(id: any): Observable<any>
+   {
+      return this.http.delete<any>(`/api/cases/${id}`);
+   }
+
+
+
+
+
+
 }

@@ -43,6 +43,8 @@
     box-shadow: 0px 0px 40px rgba(0, 46, 110, 0.1);
     padding: 15px 15px 30px 15px;
     margin-bottom: 33px;
+    position: relative;
+    overflow: hidden;
 }
 
 .xs_keys_dots {
@@ -50,6 +52,13 @@
     justify-content: flex-end;
     cursor: pointer;
     margin-bottom: 20px;
+    position: relative;
+}
+
+.xs_keys_dots_close {
+    position: absolute;
+    right: 8px;
+    top: 10px;
 }
 
 .xs_keyses__list___item h3 {
@@ -103,6 +112,40 @@
 
 .xs_keyses__list___item a {
     color: inherit;
+}
+
+.xs_keyses__list___item____setting {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #002E6E;
+    color: #fff;
+    width: auto;
+    height: auto;
+    border-radius: 3px;
+    padding: 15px 25px;
+    padding-top: 35px;
+    text-align: right;
+    transform: translateX(101%);
+    transition: all 0.3s;
+}
+
+.xs_keyses__list___item____setting span {
+    border-bottom: 1px solid #fff;
+    cursor: pointer;
+}
+
+.xs_trigger__rotate {
+    transform: rotate(90deg);
+    transition: all 0.3s;
+}
+
+.xs_area_on {
+    transform: translateX(0%);
+}
+
+.xs_keys_dots_open {
+    padding: 10px;
 }
 
 
