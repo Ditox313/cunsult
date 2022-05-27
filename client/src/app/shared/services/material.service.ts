@@ -11,6 +11,7 @@ declare var M: {
   updateTextFields: any;
   Modal: any;
   init: (arg0: { html: ElementRef }) => void;
+  FormSelect: any;
 };
 
 
@@ -44,6 +45,7 @@ export class MaterialService
     {
         return M.Modal.init(ref.nativeElement); 
     }
+
 
 
     

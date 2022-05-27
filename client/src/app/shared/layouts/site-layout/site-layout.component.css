@@ -626,6 +626,32 @@ textarea {
     height: 30px;
 }
 
+select {
+    display: block !important;
+}
+
+.input-field-program label {
+    top: -32px;
+}
+
+.input-field-specialization label {
+    top: -32px;
+}
+
+.input-otraslSpec label {
+    top: -32px;
+}
+
+.input-functionsNapravlenie label {
+    top: -32px;
+}
+
+
+/* textarea.materialize-textarea {
+    min-height: 100% !important;
+    height: 100% !important;
+} */
+
 @media screen and (max-width: 1335px) {
     .xs_bg_fix_left {
         position: absolute;

@@ -76,12 +76,27 @@ module.exports.register = async function(req, res) {
             name: req.body.name,
             secondName: req.body.secondName,
             thirdName: req.body.thirdName,
-            groupName: req.body.groupName,
+            program: req.body.program,
             specialization: req.body.specialization,
             workPos: req.body.workPos,
             xsAvatar: req.body.xsAvatar,
             year: req.body.year,
-            city: req.body.city
+            city: req.body.city,
+            company: req.body.company,
+            otraslSpec: req.body.otraslSpec,
+            functionsNapravlenie: req.body.functionsNapravlenie,
+            opyt: req.body.opyt,
+            education: req.body.education,
+            skills: req.body.skills,
+            languages: req.body.languages,
+            dopInfo: req.body.dopInfo,
+            family: req.body.family,
+            hobby: req.body.hobby,
+            publication: req.body.publication,
+            compitations: req.body.compitations,
+            socials: req.body.socials,
+
+
         });
 
         try {

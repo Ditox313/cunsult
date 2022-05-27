@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -16,6 +16,7 @@ export class RegisterPageComponent implements OnInit {
     uSub!: Subscription; //Создаем переменную, в которую помещаем наш стим, что бы потом отписаться от него
 
 
+
   // Инжектируем необходимые сервисы в класс для их последующего использования
   constructor( private router: Router, private route: ActivatedRoute, private auth: AuthService) { }
 
@@ -31,12 +32,18 @@ export class RegisterPageComponent implements OnInit {
       name: new FormControl(null, [Validators.required]),
       secondName: new FormControl(null, [Validators.required]),
       thirdName: new FormControl(null, [Validators.required]),
-      groupName: new FormControl(null, [Validators.required]),
+      program: new FormControl(null, [Validators.required]),
       specialization: new FormControl(null, [Validators.required]),
       workPos: new FormControl(null, []),
       year: new FormControl(null, [Validators.required]),
+      company: new FormControl(null, [Validators.required]),
+      otraslSpec: new FormControl(null, [Validators.required]),
+      functionsNapravlenie: new FormControl(null, [Validators.required]),
     });
 
+    
+
+    
   }
 
 
@@ -63,10 +70,13 @@ export class RegisterPageComponent implements OnInit {
       name:  this.form.value.name,
       secondName:  this.form.value.secondName,
       thirdName:  this.form.value.thirdName,
-      groupName:  this.form.value.groupName,
+      program:  this.form.value.program,
       specialization:  this.form.value.specialization,
       workPos:  this.form.value.workPos,
       year:  this.form.value.year,
+      company:  this.form.value.company,
+      otraslSpec:  this.form.value.otraslSpec,
+      functionsNapravlenie:  this.form.value.functionsNapravlenie,
     }
 
     // Выполняме метод auth.register из сервиса auth.service и в случае успеха делаем редирект на логин и обрабатываем ошибку

@@ -70,11 +70,29 @@ export class AuthService
    fd.append('name', user.name);
    fd.append('secondName', user.secondName);
    fd.append('thirdName', user.thirdName);
-   fd.append('groupName', user.groupName);
+   fd.append('program', user.program);
    fd.append('specialization', user.specialization);
    fd.append('workPos', user.workPos);
    fd.append('year', user.year);
    fd.append('city', user.city);
+   fd.append('company', user.company);
+   fd.append('otraslSpec', user.otraslSpec);
+   fd.append('functionsNapravlenie', user.functionsNapravlenie);
+   fd.append('opyt', user.opyt);
+   fd.append('education', user.education);
+   fd.append('skills', user.skills);
+   fd.append('languages', user.languages);
+   fd.append('dopInfo', user.dopInfo);
+   fd.append('family', user.family);
+   fd.append('hobby', user.hobby);
+   fd.append('publication', user.publication);
+   fd.append('compitations', user.compitations);
+   fd.append('socials', user.socials);
+   
+   
+   
+   
+   
   
    if(image)
    {

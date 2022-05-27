@@ -300,8 +300,8 @@
                         </div>
 
                         <div class="xs_content__profile___item___position">
-                            <span>{{userGroupnameSidebar}}</span>
-                            <span>{{userWorkposSidebar}}</span>
+                            <span>{{userProgramSidebar}}</span>
+                            <span>{{userSpecialyzationSidebar}}</span>
                         </div>
                     </div>
 
@@ -389,15 +389,6 @@
                         </svg>
                         <span>В платформе с {{userDateSidebar | date: 'mediumDate':null:'ru'}}</span>
                     </div>
-
-                    <!-- <div>
-                        <svg width="20" height="20" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="9" cy="9" r="8.5" fill="#0AD536" stroke="#0AD436" />
-                            <path d="M13.25 6L7.74997 11.25L5 8.625" stroke="white" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-                        <span>Онлайн</span>
-                    </div> -->
                 </div>
 
                 <div class="xs_content__profile_navigate">
@@ -608,7 +599,7 @@
                         <label for="email">Email:</label>
                         <span class="helper-text red-text" *ngIf="form.controls['email'].invalid && form.controls['email'].touched">
                             <p *ngIf="form.controls['email'].errors?.required">
-                                Email не должен быть пустым
+                                Поле не должно быть пустым
                             </p>
             
                             <p *ngIf="form.controls['email'].errors?.email">
@@ -622,7 +613,7 @@
                         <label for="password">Новый пароль:</label>
                         <span class="helper-text red-text" *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
                             <p *ngIf="form.controls['password'].errors?.required">
-                                Пароль не должен быть пустым
+                                Поле не должно быть пустым
                             </p>
             
                             <p *ngIf="form.controls['password'].errors?.minlength">
@@ -636,12 +627,9 @@
                         <label for="phone">Телефон:</label>
                         <span class="helper-text red-text" *ngIf="form.controls['phone'].invalid && form.controls['phone'].touched">
                             <p *ngIf="form.controls['phone'].errors?.required">
-                                Телефон не должен быть пустым
+                                Поле не должно быть пустым
                             </p>
             
-                            <p *ngIf="form.controls['phone'].errors?.email">
-                                Введите корректный Телефон
-                            </p>
                         </span>
                     </div>
 
@@ -650,12 +638,9 @@
                         <label for="name">Имя:</label>
                         <span class="helper-text red-text" *ngIf="form.controls['name'].invalid && form.controls['name'].touched">
                             <p *ngIf="form.controls['name'].errors?.required">
-                                Имя не должно быть пустым
+                                Поле не должно быть пустым
                             </p>
             
-                            <p *ngIf="form.controls['phone'].errors?.email">
-                                Введите корректный Имя
-                            </p>
                         </span>
                     </div>
 
@@ -664,12 +649,9 @@
                         <label for="secondName">Фамилия:</label>
                         <span class="helper-text red-text" *ngIf="form.controls['secondName'].invalid && form.controls['secondName'].touched">
                             <p *ngIf="form.controls['secondName'].errors?.required">
-                                Фамилия не должно быть пустым
+                                Поле не должно быть пустым
                             </p>
             
-                            <p *ngIf="form.controls['secondName'].errors?.email">
-                                Введите корректный Фамилия
-                            </p>
                         </span>
                     </div>
 
@@ -678,30 +660,34 @@
                         <label for="thirdName">Отчество:</label>
                         <span class="helper-text red-text" *ngIf="form.controls['thirdName'].invalid && form.controls['thirdName'].touched">
                             <p *ngIf="form.controls['thirdName'].errors?.required">
-                                Отчество не должно быть пустым
-                            </p>
-            
-                            <p *ngIf="form.controls['thirdName'].errors?.email">
-                                Введите корректный Отчество
+                                Поле не должно быть пустым
                             </p>
                         </span>
                     </div>
 
-                    <div class="input-field">
-                        <input id="groupName" type="text" formControlName="groupName" [ngClass]="{'invalid': form.controls['groupName'].invalid && form.controls['groupName'].touched}">
-                        <label for="groupName">Название группы:</label>
-                        <span class="helper-text red-text" *ngIf="form.controls['groupName'].invalid && form.controls['groupName'].touched">
-                            <p *ngIf="form.controls['groupName'].errors?.required">
-                                Номер группы не должно быть пустым
+                    <!-- <div class="input-field">
+                        <input id="program" type="text" formControlName="program" [ngClass]="{'invalid': form.controls['program'].invalid && form.controls['program'].touched}">
+                        <label for="program">Программа:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['program'].invalid && form.controls['program'].touched">
+                            <p *ngIf="form.controls['program'].errors?.required">
+                                Программа группы не должно быть пустым
                             </p>
             
-                            <p *ngIf="form.controls['groupName'].errors?.email">
-                                Введите корректный Номер группы
-                            </p>
                         </span>
+                    </div> -->
+
+                    <div class="input-field input-field-program">
+                        <label for="program">Программа:</label>
+                        <select id="program" formControlName="program" [ngClass]="{'invalid': form.controls['program'].invalid && form.controls['program'].touched}">
+                            <option value="" disabled selected>Выберите программу</option>
+                            <option value="MBA">MBA</option>
+                            <option value="EMBA">EMBA</option>
+                            <option value="DBA">DBA</option>
+                            <option value="ExeMast in HR">ExeMast in HR</option>
+                        </select>
                     </div>
 
-                    <div class="input-field">
+                    <!-- <div class="input-field">
                         <input id="specialization" type="text" formControlName="specialization" [ngClass]="{'invalid': form.controls['specialization'].invalid && form.controls['specialization'].touched}">
                         <label for="groupName">Специализация:</label>
                         <span class="helper-text red-text" *ngIf="form.controls['specialization'].invalid && form.controls['specialization'].touched">
@@ -709,10 +695,21 @@
                                 Специализация не должна быть пустой
                             </p>
             
-                            <p *ngIf="form.controls['specialization'].errors?.email">
-                                Введите корректный Специализацию
-                            </p>
                         </span>
+                    </div> -->
+
+
+
+                    <div class="input-field input-field-specialization">
+                        <label for="specialization">Специализация программы:</label>
+                        <select id="specialization" formControlName="specialization" [ngClass]="{'invalid': form.controls['specialization'].invalid && form.controls['specialization'].touched}">
+                            <option value="" disabled selected>Выберите специализацию</option>
+                            <option value="Стратегия">Стратегия</option>
+                            <option value="Стратегический менеджмент">Стратегический менеджмент</option>
+                            <option value="Маркетинг и продажи">Маркетинг и продажи</option>
+                            <option value="Финансы">Финансы</option>
+                            <option value="Управление продажами и маркетингом">Управление продажами и маркетингом</option>
+                        </select>
                     </div>
 
                     <div class="input-field">
@@ -720,12 +717,9 @@
                         <label for="groupName">Должность:</label>
                         <span class="helper-text red-text" *ngIf="form.controls['workPos'].invalid && form.controls['workPos'].touched">
                             <p *ngIf="form.controls['workPos'].errors?.required">
-                                Специализация не должна быть пустой
+                                Поле не должно быть пустым
                             </p>
                     
-                            <p *ngIf="form.controls['workPos'].errors?.email">
-                                Введите корректную Специализацию
-                            </p>
                         </span>
                     </div>
 
@@ -734,12 +728,9 @@
                         <label for="groupName">Год выпуска:</label>
                         <span class="helper-text red-text" *ngIf="form.controls['year'].invalid && form.controls['year'].touched">
                             <p *ngIf="form.controls['year'].errors?.required">
-                                Год выпуска не должен быть пустым
+                                Поле не должно быть пустым
                             </p>
             
-                            <p *ngIf="form.controls['year'].errors?.email">
-                                Введите корректный Год выпуска
-                            </p>
                         </span>
                     </div>
 
@@ -748,14 +739,162 @@
                         <label for="groupName">Город:</label>
                         <span class="helper-text red-text" *ngIf="form.controls['city'].invalid && form.controls['city'].touched">
                             <p *ngIf="form.controls['city'].errors?.required">
-                                Год выпуска не должен быть пустым
-                            </p>
-            
-                            <p *ngIf="form.controls['city'].errors?.email">
-                                Введите корректный Год выпуска
+                                Поле не должно быть пустым
                             </p>
                         </span>
                     </div>
+
+
+
+                    <div class="input-field">
+                        <input id="company" type="text" formControlName="company" [ngClass]="{'invalid': form.controls['company'].invalid && form.controls['company'].touched}">
+                        <label for="groupName">Компания:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['company'].invalid && form.controls['company'].touched">
+                            <p *ngIf="form.controls['company'].errors?.required">
+                                Поле не должно быть пустым
+                            </p>
+                        </span>
+                    </div>
+
+
+
+                    <div class="input-field input-otraslSpec">
+                        <label for="otraslSpec">Отрасль профессиональной специализации:</label>
+                        <select id="otraslSpec" formControlName="otraslSpec" [ngClass]="{'invalid': form.controls['otraslSpec'].invalid && form.controls['otraslSpec'].touched}">
+                            <option value="" disabled selected>Выберите отрасль</option>
+                            <option value="Образование">Образование</option>
+                            <option value="Медицина">Медицина</option>
+                            <option value="Строительство">Строительство</option>
+                            <option value="Экономика">Экономика</option>
+                            <option value="IT">IT</option>
+                        </select>
+                    </div>
+
+
+
+                    <div class="input-field input-functionsNapravlenie">
+                        <label for="functionsNapravlenie">Функциональное направление:</label>
+                        <select id="functionsNapravlenie" formControlName="functionsNapravlenie" [ngClass]="{'invalid': form.controls['functionsNapravlenie'].invalid && form.controls['functionsNapravlenie'].touched}">
+                            <option value="" disabled selected>Выберите направление:</option>
+                            <option value="HR">HR</option>
+                            <option value="Маркетинг">Медицина</option>
+                            <option value="Строительство">Маркетинг</option>
+                            <option value="Логистика">Логистика</option>
+                        </select>
+                    </div>
+
+
+
+                    <div class="input-field">
+                        <input id="opyt" type="text" formControlName="opyt" [ngClass]="{'invalid': form.controls['opyt'].invalid && form.controls['opyt'].touched}">
+                        <label for="groupName">Опыт работы:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['opyt'].invalid && form.controls['opyt'].touched">
+                            <p *ngIf="form.controls['opyt'].errors?.required">
+                                Поле не должно быть пустым
+                            </p>
+                        </span>
+                    </div>
+
+
+                    <div class="input-field">
+                        <input id="education" type="text" formControlName="education" [ngClass]="{'invalid': form.controls['education'].invalid && form.controls['education'].touched}">
+                        <label for="education">Образование:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['education'].invalid && form.controls['education'].touched">
+                            <p *ngIf="form.controls['education'].errors?.required">
+                                Поле не должно быть пустым
+                            </p>
+                        </span>
+                    </div>
+
+
+                    <div class="input-field">
+                        <textarea id="skills" type="textarea" formControlName="skills" class="materialize-textarea" [ngClass]="{'invalid': form.controls['skills'].invalid && form.controls['skills'].touched}"></textarea>
+                        <label for="skills">Знания и навыки:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['skills'].invalid && form.controls['skills'].touched">
+                            <p *ngIf="form.controls['skills'].errors?.required">
+                                Поле не должно быть пустым
+                            </p>
+                        </span>
+                    </div>
+
+
+
+                    <div class="input-field">
+                        <input id="languages" type="text" formControlName="languages" [ngClass]="{'invalid': form.controls['languages'].invalid && form.controls['languages'].touched}">
+                        <label for="languages">Какими языками владеете:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['languages'].invalid && form.controls['languages'].touched">
+                            <p *ngIf="form.controls['languages'].errors?.required">
+                                Поле не должно быть пустым
+                            </p>
+                        </span>
+                    </div>
+
+
+                    <div class="input-field">
+                        <textarea id="dopInfo" type="textarea" formControlName="dopInfo" class="materialize-textarea" [ngClass]="{'invalid': form.controls['dopInfo'].invalid && form.controls['dopInfo'].touched}"></textarea>
+                        <label for="skills">Дополнительная информация:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['dopInfo'].invalid && form.controls['dopInfo'].touched">
+                            <p *ngIf="form.controls['dopInfo'].errors?.required">
+                                Поле не должны быть пустыми
+                            </p>
+                        </span>
+                    </div>
+
+
+
+                    <div class="input-field">
+                        <input id="family" type="text" formControlName="family" [ngClass]="{'invalid': form.controls['family'].invalid && form.controls['family'].touched}">
+                        <label for="family">Семейное положение:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['family'].invalid && form.controls['family'].touched">
+                            <p *ngIf="form.controls['family'].errors?.required">
+                                Поле не должно быть пустым
+                            </p>
+                        </span>
+                    </div>
+
+
+                    <div class="input-field">
+                        <textarea id="hobby" type="textarea" formControlName="hobby" class="materialize-textarea" [ngClass]="{'invalid': form.controls['hobby'].invalid && form.controls['hobby'].touched}"></textarea>
+                        <label for="hobby">Ваши увлечения:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['hobby'].invalid && form.controls['hobby'].touched">
+                            <p *ngIf="form.controls['hobby'].errors?.required">
+                                Поле не должны быть пустыми
+                            </p>
+                        </span>
+                    </div>
+
+
+                    <div class="input-field">
+                        <textarea id="publication" type="textarea" formControlName="publication" class="materialize-textarea" [ngClass]="{'invalid': form.controls['publication'].invalid && form.controls['publication'].touched}"></textarea>
+                        <label for="publication">Ваши публикации,статьи:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['publication'].invalid && form.controls['publication'].touched">
+                            <p *ngIf="form.controls['publication'].errors?.required">
+                                Поле не должны быть пустыми
+                            </p>
+                        </span>
+                    </div>
+
+
+                    <div class="input-field">
+                        <textarea id="compitations" type="textarea" formControlName="compitations" class="materialize-textarea" [ngClass]="{'invalid': form.controls['compitations'].invalid && form.controls['compitations'].touched}"></textarea>
+                        <label for="compitations">Корневые компетенции в бизнесе:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['compitations'].invalid && form.controls['compitations'].touched">
+                            <p *ngIf="form.controls['compitations'].errors?.required">
+                                Поле не должны быть пустыми
+                            </p>
+                        </span>
+                    </div>
+
+                    <div class="input-field">
+                        <textarea id="socials" type="textarea" formControlName="socials" class="materialize-textarea" [ngClass]="{'invalid': form.controls['socials'].invalid && form.controls['socials'].touched}"></textarea>
+                        <label for="socials">Социальные сети:</label>
+                        <span class="helper-text red-text" *ngIf="form.controls['socials'].invalid && form.controls['socials'].touched">
+                            <p *ngIf="form.controls['socials'].errors?.required">
+                                Поле не должны быть пустыми
+                            </p>
+                        </span>
+                    </div>
+
                 </div>
             </div>
 

@@ -17,6 +17,8 @@ import * as moment from 'moment';
   styleUrls: ['./site-layout.component.css']
 })
 export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
+  userProgramSidebar: any;
+  userSpecialyzationSidebar: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private auth: AuthService) { }
 
@@ -71,11 +73,24 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       name: new FormControl(null, [Validators.required]),
       secondName: new FormControl(null, [Validators.required]),
       thirdName: new FormControl(null, [Validators.required]),
-      groupName: new FormControl(null, [Validators.required]),
+      program: new FormControl(null, [Validators.required]),
       specialization: new FormControl(null, [Validators.required]),
       workPos: new FormControl(null, []),
       year: new FormControl(null, [Validators.required]),
       city: new FormControl(null, []),
+      company: new FormControl(null, []),
+      otraslSpec: new FormControl(null, []),
+      functionsNapravlenie: new FormControl(null, []),
+      opyt: new FormControl(null, []),
+      education: new FormControl(null, []),
+      skills: new FormControl(null, []),
+      languages: new FormControl(null, []),
+      dopInfo: new FormControl(null, []),
+      family: new FormControl(null, []),
+      hobby: new FormControl(null, []),
+      publication: new FormControl(null, []),
+      compitations: new FormControl(null, []),
+      socials: new FormControl(null, []),
     }); 
 
 
@@ -87,8 +102,8 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
       this.userNameSidebar = res.name
       this.userSecondnameSidebar = res.secondName
-      this.userGroupnameSidebar = res.groupName
-      this.userWorkposSidebar = res.workPos
+      this.userProgramSidebar = res.program
+      this.userSpecialyzationSidebar = res.specialization
       this.userCitySidebar = res.city
       this.userDateSidebar = res.date
    });
@@ -164,11 +179,26 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       name: res.name, 
       secondName: res.secondName, 
       thirdName: res.thirdName, 
-      groupName: res.groupName, 
+      program: res.program, 
       specialization: res.specialization, 
       workPos: res.workPos,
       year: res.year,
-      city: res.city
+      city: res.city,
+      company: res.company,
+      otraslSpec: res.otraslSpec,
+      functionsNapravlenie: res.functionsNapravlenie,
+      opyt: res.opyt,
+      education: res.education,
+      skills: res.skills,
+      languages: res.languages,
+      dopInfo: res.dopInfo,
+      family: res.family,
+      hobby: res.hobby,
+      publication: res.publication,
+      compitations: res.compitations,
+      socials: res.socials,
+      
+      
     })
 
     if(res.xsAvatar)
@@ -200,11 +230,25 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       name:  this.form.value.name,
       secondName:  this.form.value.secondName,
       thirdName:  this.form.value.thirdName,
-      groupName:  this.form.value.groupName,
+      program:  this.form.value.program,
       specialization:  this.form.value.specialization,
       workPos:  this.form.value.workPos,
       year:  this.form.value.year,
       city: this.form.value.city,
+      company: this.form.value.company,
+      otraslSpec: this.form.value.otraslSpec,
+      functionsNapravlenie: this.form.value.functionsNapravlenie,
+      opyt: this.form.value.opyt,
+      education: this.form.value.education,
+      skills: this.form.value.skills,
+      languages: this.form.value.languages,
+      dopInfo: this.form.value.dopInfo,
+      family: this.form.value.family,
+      hobby: this.form.value.hobby,
+      publication: this.form.value.publication,
+      compitations: this.form.value.compitations,
+      socials: this.form.value.socials,
+      
     }
 
 
@@ -216,14 +260,33 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
         name: res.name, 
         secondName: res.secondName, 
         thirdName: res.thirdName, 
-        groupName: res.groupName, 
+        program: res.program, 
         specialization: res.specialization, 
         workPos: res.workPos,
         year: res.year,
-        city: res.city
+        city: res.city,
+        company: res.company,
+        otraslSpec: res.otraslSpec,
+        functionsNapravlenie: res.functionsNapravlenie,
+        opyt: res.opyt,
+        education: res.education,
+        skills: res.skills,
+        languages: res.languages,
+        dopInfo: res.dopInfo,
+        family: res.family,
+        hobby: res.hobby,
+        publication: res.publication,
+        compitations: res.compitations,
+        socials: res.socials,
+        
       })
 
+      this.userNameSidebar = res.name
+      this.userSecondnameSidebar = res.secondName
+      this.userProgramSidebar = res.program
+      this.userSpecialyzationSidebar = res.specialization
       this.userCitySidebar = res.city
+      this.userDateSidebar = res.date
 
       if(res.xsAvatar)
       {

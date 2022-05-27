@@ -51,17 +51,14 @@
     z-index: 0;
 }
 
-
-/* .card_content__wrap {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 500px;
+select {
+    display: block;
+    margin-bottom: 15px;
 }
 
-.card_content__wrap>div {
-    width: 47%;
-} */
+label.active {
+    margin-top: 30px;
+}
 
 @media screen and (max-width: 992px) {
     .xs_auth_component___form {

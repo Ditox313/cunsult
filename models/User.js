@@ -45,8 +45,8 @@ const userSchema = new Schema({
     },
 
 
-    //Создаем поле для номера группы МВА
-    groupName: {
+    //Создаем поле для программы
+    program: {
         type: String,
         required: false,
     },
@@ -93,6 +93,108 @@ const userSchema = new Schema({
         required: false,
         default: '',
     },
+
+    //Создаем поле для названия компании
+    company: {
+        type: String,
+        required: false,
+        default: '',
+    },
+
+    //Создаем поле для отрасли профессиональной специализации
+    otraslSpec: {
+        type: String,
+        required: false,
+        default: '',
+    },
+
+    //Создаем поле для функционального направления
+    functionsNapravlenie: {
+        type: String,
+        required: false,
+        default: '',
+    },
+
+
+    //Создаем поле для опыта работы
+    opyt: {
+        type: String,
+        required: false,
+        default: '',
+    },
+
+
+    //Создаем поле для образования
+    education: {
+        type: String,
+        required: false,
+        default: '',
+    },
+
+
+    //Создаем поле для знаний и навыков
+    skills: {
+        type: String,
+        required: false,
+        default: '',
+    },
+
+
+    //Создаем поле для языков
+    languages: {
+        type: String,
+        required: false,
+        default: '',
+    },
+
+    //Создаем поле для дополнительной информации
+    dopInfo: {
+        type: String,
+        required: false,
+        default: '',
+    },
+
+
+    //Создаем поле для семейного положения
+    family: {
+        type: String,
+        required: false,
+        default: '',
+    },
+
+
+    //Создаем поле для увлечений
+    hobby: {
+        type: String,
+        required: false,
+        default: '',
+    },
+
+
+    //Создаем поле для публикаций и статей
+    publication: {
+        type: String,
+        required: false,
+        default: '',
+    },
+
+    //Создаем поле для компитенций в бизнесе
+    compitations: {
+        type: String,
+        required: false,
+        default: '',
+    },
+
+
+    //Создаем поле для соцсетей
+    socials: {
+        type: String,
+        required: false,
+        default: '',
+    },
+
+
+
 
 
 });
