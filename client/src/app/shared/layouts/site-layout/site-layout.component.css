@@ -251,7 +251,7 @@ header {
     -webkit-box-shadow: 3px 2px 12px 0px rgba(4, 78, 142, 0.74);
     -moz-box-shadow: 3px 2px 12px 0px rgba(4, 78, 142, 0.74);
     box-shadow: 3px 2px 12px 0px rgba(4, 78, 142, 0.74);
-    z-index: 999;
+    z-index: 999999;
 }
 
 .xs_mob_menu_on {
@@ -874,12 +874,8 @@ textarea {
         margin: 0 25px;
     }
     .xs_content___toggler {
-        top: 48px;
-        z-index: 9999;
-    }
-    .xs_content___toggler {
         top: 33px;
-        z-index: 9999;
+        z-index: 99;
         left: -42px;
     }
 }
@@ -897,7 +893,7 @@ textarea {
     }
     .xs_header__top___mob____menu {
         width: 65%;
-        z-index: 999;
+        z-index: 997;
     }
     .xs_keyses__list___item___info div {
         font-size: 11px;
