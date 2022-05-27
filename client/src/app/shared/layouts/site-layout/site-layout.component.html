@@ -196,29 +196,13 @@
 
     <div class="xs_bg_fix_right">
         <svg width="262" height="1275" viewBox="0 0 262 1275" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- <path
-                d="M130 325C130 289.101 100.898 260 65 260C29.1015 260 0 289.101 0 325C0 360.899 29.1015 390 65 390C100.898 390 130 360.899 130 325Z"
-                fill="#BE1F4F" /> -->
-            <!-- <path
-                d="M65.5041 354.729C57.7532 354.729 50.3198 351.651 44.839 346.171C39.3583 340.692 36.2793 333.261 36.2793 325.512C36.2793 317.762 39.3578 310.329 44.8381 304.847C50.3183 299.365 57.7517 296.283 65.5041 296.279C73.2564 296.283 80.6899 299.365 86.1701 304.847C91.6504 310.329 94.7289 317.762 94.7289 325.512V325.512C94.7289 333.261 91.6499 340.692 86.1692 346.171C80.6885 351.651 73.255 354.729 65.5041 354.729V354.729Z"
-                fill="#FBBEA7" /> -->
+
             <path
                 d="M261 910H131C130.998 892.929 134.359 876.025 140.891 860.252C147.423 844.48 156.999 830.149 169.071 818.077C181.142 806.005 195.474 796.429 211.248 789.896C227.021 783.363 243.927 780 261 780V910Z"
                 fill="#CA6260" />
             <path d="M131 0H261C261 34.4781 247.304 67.5442 222.924 91.9239C198.544 116.304 165.478 130 131 130V0V0Z"
                 id="xs_q" fill="#BE1F4F" />
-            <!-- <path
-                d="M131.037 648.074C96.8143 648.074 63.9932 634.581 39.7941 610.562C15.5949 586.544 2 553.967 2 520H131.037V648.074Z"
-                fill="#BE1F4F" /> -->
-            <!-- <path
-                d="M131.148 594.148C121.412 594.15 111.77 592.234 102.774 588.508C93.7781 584.783 85.6039 579.322 78.7184 572.436C71.8329 565.551 66.371 557.376 62.6445 548.379C58.9181 539.382 57 529.739 57 520H131.148V594.148Z"
-                fill="#FBBEA7" /> -->
-            <!-- <path
-                d="M131.037 648.074C96.8143 648.074 63.9932 634.581 39.7941 610.562C15.5949 586.544 2 553.967 2 520H131.037V648.074Z"
-                fill="#BE1F4F" /> -->
-            <!-- <path
-                d="M131.148 594.148C121.412 594.15 111.77 592.234 102.774 588.508C93.7781 584.783 85.6039 579.322 78.7184 572.436C71.8329 565.551 66.371 557.376 62.6445 548.379C58.9181 539.382 57 529.739 57 520H131.148V594.148Z"
-                fill="#FBBEA7" /> -->
+
             <path
                 d="M131 130C148.072 130 164.977 133.363 180.749 139.896C196.521 146.429 210.852 156.005 222.924 168.076C234.995 180.148 244.571 194.479 251.104 210.251C257.637 226.023 261 242.928 261 260H131V130Z"
                 fill="#FBBEA7" />
@@ -277,10 +261,6 @@
             <path
                 d="M132 1212.64V1152.86H196C196.01 1160.71 194.362 1168.48 191.15 1175.73C187.938 1182.99 183.225 1189.58 177.281 1195.13C171.337 1200.68 164.278 1205.09 156.508 1208.09C148.739 1211.09 140.41 1212.64 132 1212.64V1212.64Z"
                 fill="#002E6E" />
-            <!-- <path d="M130 390H0V520H130V390Z" fill="#FBBEA7" /> -->
-            <!-- <path d="M130 445H55V520H130V445Z" fill="#BE1F4F" />
-            <path d="M132 1031H2V1153H132V1031Z" fill="#FBBEA7" />
-            <path d="M132 1093H57V1153H132V1093Z" fill="#BE1F4F" /> -->
         </svg>
     </div>
 
@@ -351,17 +331,18 @@
                 </div>
 
                 <div class="xs_content__profile_block_2">
-                    <div class="xs_content__profile_block_2___item">
-                        <button class="xs_content__profile_block_2___item_expert">Эксперт</button>
-                        <div>
-                            <p>Функциональный менеджмент: <span>HR</span></p>
-                            <p>Отрасль <span>Образование</span></p>
-                        </div>
-                    </div>
-                    <div class="xs_content__profile_block_2___item">
+                    <div class="xs_content__profile_item xs_content__profile_block_2___item">
                         <button class="xs_content__profile_block_2___item_spec">Спец</button>
                         <div>
-                            <p>Функциональный менеджмент: <span>HR</span></p>
+                            <p>Функц. менеджмент: <span>{{userBtnSpecMenedgment}}</span></p>
+                            <p>Отрасль <span>{{userBtnSpecOtrasl}}</span></p>
+                        </div>
+                    </div>
+
+                    <div class="xs_content__profile_block_2___item">
+                        <button class="xs_content__profile_item xs_content__profile_block_2___item_expert">Эксперт</button>
+                        <div>
+                            <p>Функц. менеджмент: <span>HR</span></p>
                             <p>Отрасль <span>Образование</span></p>
                         </div>
                     </div>
@@ -665,16 +646,7 @@
                         </span>
                     </div>
 
-                    <!-- <div class="input-field">
-                        <input id="program" type="text" formControlName="program" [ngClass]="{'invalid': form.controls['program'].invalid && form.controls['program'].touched}">
-                        <label for="program">Программа:</label>
-                        <span class="helper-text red-text" *ngIf="form.controls['program'].invalid && form.controls['program'].touched">
-                            <p *ngIf="form.controls['program'].errors?.required">
-                                Программа группы не должно быть пустым
-                            </p>
-            
-                        </span>
-                    </div> -->
+
 
                     <div class="input-field input-field-program">
                         <label for="program">Программа:</label>
@@ -687,16 +659,6 @@
                         </select>
                     </div>
 
-                    <!-- <div class="input-field">
-                        <input id="specialization" type="text" formControlName="specialization" [ngClass]="{'invalid': form.controls['specialization'].invalid && form.controls['specialization'].touched}">
-                        <label for="groupName">Специализация:</label>
-                        <span class="helper-text red-text" *ngIf="form.controls['specialization'].invalid && form.controls['specialization'].touched">
-                            <p *ngIf="form.controls['specialization'].errors?.required">
-                                Специализация не должна быть пустой
-                            </p>
-            
-                        </span>
-                    </div> -->
 
 
 
@@ -808,7 +770,7 @@
 
 
                     <div class="input-field">
-                        <textarea id="skills" type="textarea" formControlName="skills" class="materialize-textarea" [ngClass]="{'invalid': form.controls['skills'].invalid && form.controls['skills'].touched}"></textarea>
+                        <textarea id="skills" type="textarea" formControlName="skills" [ngClass]="{'invalid': form.controls['skills'].invalid && form.controls['skills'].touched}"></textarea>
                         <label for="skills">Знания и навыки:</label>
                         <span class="helper-text red-text" *ngIf="form.controls['skills'].invalid && form.controls['skills'].touched">
                             <p *ngIf="form.controls['skills'].errors?.required">
@@ -831,7 +793,7 @@
 
 
                     <div class="input-field">
-                        <textarea id="dopInfo" type="textarea" formControlName="dopInfo" class="materialize-textarea" [ngClass]="{'invalid': form.controls['dopInfo'].invalid && form.controls['dopInfo'].touched}"></textarea>
+                        <textarea id="dopInfo" type="textarea" formControlName="dopInfo" [ngClass]="{'invalid': form.controls['dopInfo'].invalid && form.controls['dopInfo'].touched}"></textarea>
                         <label for="skills">Дополнительная информация:</label>
                         <span class="helper-text red-text" *ngIf="form.controls['dopInfo'].invalid && form.controls['dopInfo'].touched">
                             <p *ngIf="form.controls['dopInfo'].errors?.required">
@@ -854,7 +816,7 @@
 
 
                     <div class="input-field">
-                        <textarea id="hobby" type="textarea" formControlName="hobby" class="materialize-textarea" [ngClass]="{'invalid': form.controls['hobby'].invalid && form.controls['hobby'].touched}"></textarea>
+                        <textarea id="hobby" type="textarea" formControlName="hobby" [ngClass]="{'invalid': form.controls['hobby'].invalid && form.controls['hobby'].touched}"></textarea>
                         <label for="hobby">Ваши увлечения:</label>
                         <span class="helper-text red-text" *ngIf="form.controls['hobby'].invalid && form.controls['hobby'].touched">
                             <p *ngIf="form.controls['hobby'].errors?.required">
@@ -865,7 +827,7 @@
 
 
                     <div class="input-field">
-                        <textarea id="publication" type="textarea" formControlName="publication" class="materialize-textarea" [ngClass]="{'invalid': form.controls['publication'].invalid && form.controls['publication'].touched}"></textarea>
+                        <textarea id="publication" type="textarea" formControlName="publication" [ngClass]="{'invalid': form.controls['publication'].invalid && form.controls['publication'].touched}"></textarea>
                         <label for="publication">Ваши публикации,статьи:</label>
                         <span class="helper-text red-text" *ngIf="form.controls['publication'].invalid && form.controls['publication'].touched">
                             <p *ngIf="form.controls['publication'].errors?.required">
@@ -876,7 +838,7 @@
 
 
                     <div class="input-field">
-                        <textarea id="compitations" type="textarea" formControlName="compitations" class="materialize-textarea" [ngClass]="{'invalid': form.controls['compitations'].invalid && form.controls['compitations'].touched}"></textarea>
+                        <textarea id="compitations" type="textarea" formControlName="compitations" [ngClass]="{'invalid': form.controls['compitations'].invalid && form.controls['compitations'].touched}"></textarea>
                         <label for="compitations">Корневые компетенции в бизнесе:</label>
                         <span class="helper-text red-text" *ngIf="form.controls['compitations'].invalid && form.controls['compitations'].touched">
                             <p *ngIf="form.controls['compitations'].errors?.required">
@@ -886,7 +848,7 @@
                     </div>
 
                     <div class="input-field">
-                        <textarea id="socials" type="textarea" formControlName="socials" class="materialize-textarea" [ngClass]="{'invalid': form.controls['socials'].invalid && form.controls['socials'].touched}"></textarea>
+                        <textarea id="socials" type="textarea" formControlName="socials" [ngClass]="{'invalid': form.controls['socials'].invalid && form.controls['socials'].touched}"></textarea>
                         <label for="socials">Социальные сети:</label>
                         <span class="helper-text red-text" *ngIf="form.controls['socials'].invalid && form.controls['socials'].touched">
                             <p *ngIf="form.controls['socials'].errors?.required">

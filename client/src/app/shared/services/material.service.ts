@@ -12,6 +12,7 @@ declare var M: {
   Modal: any;
   init: (arg0: { html: ElementRef }) => void;
   FormSelect: any;
+  textareaAutoResize: any;
 };
 
 
@@ -47,6 +48,12 @@ export class MaterialService
     }
 
 
+
+     // Обновляем текстовые инпуты
+    static initTextarea(ref: ElementRef)
+    {
+        return M.textareaAutoResize(ref.nativeElement);
+    }
 
     
 }

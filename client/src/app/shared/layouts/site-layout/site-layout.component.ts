@@ -17,9 +17,6 @@ import * as moment from 'moment';
   styleUrls: ['./site-layout.component.css']
 })
 export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
-  userProgramSidebar: any;
-  userSpecialyzationSidebar: string;
-
   constructor(private router: Router, private route: ActivatedRoute, private auth: AuthService) { }
 
 
@@ -39,6 +36,8 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   // Получаем модальное окно
   @ViewChild('modal') modalRef : ElementRef;
 
+
+
   // Получаем input загрузки файлов в профиле
   @ViewChild('input') inputRef : ElementRef;
 
@@ -54,13 +53,18 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   xs_avatar: File
   // Переменная для превью аватарки
   avatarPreview : any= 'https://static.tildacdn.com/tild3633-6532-4233-a631-363261663462/profile.png'
+
   // Данные  пользователя в сайдбаре
   userNameSidebar : string
   userSecondnameSidebar : string
-  userGroupnameSidebar : string
-  userWorkposSidebar : string
   userCitySidebar : string
   userDateSidebar : any
+  userProgramSidebar: any;
+  userSpecialyzationSidebar: string;
+  userBtnSpecMenedgment: string
+  userBtnSpecOtrasl: string
+  // userGroupnameSidebar : string
+  // userWorkposSidebar : string
 
 
 
@@ -106,7 +110,13 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       this.userSpecialyzationSidebar = res.specialization
       this.userCitySidebar = res.city
       this.userDateSidebar = res.date
+      this.userBtnSpecMenedgment = res.functionsNapravlenie
+      this.userBtnSpecOtrasl = res.otraslSpec
+
    });
+
+
+   
   }
 
 
@@ -287,6 +297,8 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       this.userSpecialyzationSidebar = res.specialization
       this.userCitySidebar = res.city
       this.userDateSidebar = res.date
+      this.userBtnSpecMenedgment = res.functionsNapravlenie
+      this.userBtnSpecOtrasl = res.otraslSpec
 
       if(res.xsAvatar)
       {
