@@ -251,6 +251,7 @@ header {
     -webkit-box-shadow: 3px 2px 12px 0px rgba(4, 78, 142, 0.74);
     -moz-box-shadow: 3px 2px 12px 0px rgba(4, 78, 142, 0.74);
     box-shadow: 3px 2px 12px 0px rgba(4, 78, 142, 0.74);
+    z-index: 999;
 }
 
 .xs_mob_menu_on {
@@ -650,11 +651,29 @@ select {
     top: -32px;
 }
 
+.xs_content {
+    position: relative;
+}
 
-/* textarea.materialize-textarea {
-    min-height: 100% !important;
-    height: 100% !important;
-} */
+.xs_content___toggler {
+    position: absolute;
+    top: 0;
+    left: -52px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dn {
+    display: none;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.cb {
+    fill: #002E6E;
+}
 
 textarea {
     overflow-y: visible;
@@ -671,6 +690,26 @@ textarea {
     box-shadow: none;
     box-sizing: content-box;
     transition: box-shadow .3s, border .3s;
+}
+
+.xs_content__sidebar_close___avatar {
+    width: 50px;
+    height: 50px;
+}
+
+.xs_content__sidebar_close {
+    border: 2px solid rgba(190, 31, 79, 0.8);
+    border-radius: 7px;
+    padding: 2px;
+    max-height: 335px;
+}
+
+.xs_content__sidebar_close___btns {
+    text-align: center;
+}
+
+.xs_content__sidebar_close___btns button {
+    padding: 5px;
 }
 
 @media screen and (max-width: 1335px) {
@@ -815,6 +854,22 @@ textarea {
     .xs_add_keys {
         margin-right: 15px;
     }
+    .xs_content__sidebar_close___nav ul {
+        display: flex;
+    }
+    .xs_content__sidebar_close {
+        display: flex;
+        align-items: center;
+        margin-bottom: 50px;
+        justify-content: flex-end;
+    }
+    .xs_content__sidebar_close___btns {
+        display: flex;
+        align-items: center;
+    }
+    .xs_content__sidebar_close___nav {
+        margin: 0 25px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -881,6 +936,9 @@ textarea {
     .xs_content___component {
         padding-left: 0px;
     }
+    .card_content__wrap>div {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 485px) {
@@ -925,6 +983,9 @@ textarea {
     }
     .xs_keyses__nav ul li {
         font-size: 15px;
+    }
+    .input-field label {
+        font-size: 10px;
     }
 }
 

@@ -42,6 +42,24 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('input') inputRef : ElementRef;
 
 
+  // Получаем триггер для сайдбара
+  @ViewChild('sigebarTrigger') sigebarTrigger : ElementRef;
+
+  // Получаем триггер для сайдбара тег path
+  @ViewChild('sidebarTriggerPath') sidebarTriggerPath : ElementRef;
+
+  // // Получаем открытый сайдбар
+  @ViewChild('sidebar_open') sidebar_open : ElementRef;
+
+
+  // // Получаем закрытый сайдбар
+  @ViewChild('sidebar_close') sidebar_close : ElementRef;
+
+
+  // // Получаем обертку компонента
+  @ViewChild('component') xscomponent : ElementRef;
+
+
   modal: MaterialInstance;
   form!: FormGroup; //Инициализируем нашу форму
 
@@ -63,8 +81,7 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   userSpecialyzationSidebar: string;
   userBtnSpecMenedgment: string
   userBtnSpecOtrasl: string
-  // userGroupnameSidebar : string
-  // userWorkposSidebar : string
+
 
 
 
@@ -115,17 +132,18 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
    });
 
-
    
+  
   }
-
-
 
 
 
   ngAfterViewInit(): void {
     // Инициализируем модальное окно
    this.modal =  MaterialService.initModalPos(this.modalRef);
+
+   
+   
   }
 
   ngOnDestroy(): void {
@@ -334,6 +352,17 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       this.avatarPreview = reader.result
     }
     reader.readAsDataURL(file)
+  }
+
+
+  // Скрывать сайдбар при клике
+  sidebarToggle()
+  {
+    this.sidebar_open.nativeElement.classList.toggle('dn')
+    this.sidebar_close.nativeElement.classList.toggle('dn')
+    this.xscomponent.nativeElement.classList.toggle('w100');
+    this.sigebarTrigger.nativeElement.classList.toggle('xs_trigger__rotate');
+    this.sidebarTriggerPath.nativeElement.classList.toggle('cb');
   }
 
 }
