@@ -30,8 +30,18 @@ module.exports.getAll = async function(req, res) {
 
 module.exports.create = async function(req, res) {
     try {
+        // Ищем номер последнего заказа
+        const lastOrder = await Case.findOne({
+                // user: req.user.id
+            })
+            .sort({ date: -1 });
+
+        // Если мы нашли предполагаемы последнйи заказ, то устанвливает поле order
+        const maxOrder = lastOrder ? lastOrder.order : 0;
+
 
         const xscase = new Case({
+            order: maxOrder + 1,
             title: req.body.title,
             content: req.body.content,
             user: req.user.id,

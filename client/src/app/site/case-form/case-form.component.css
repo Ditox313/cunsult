@@ -34,3 +34,15 @@
 #editor-js {
     background-color: #f2f2f2;
 }
+
+.xs_file {
+    display: none;
+}
+
+.xs_preview {
+    margin-bottom: 20px;
+}
+
+.xs_add_case__preview {
+    margin-bottom: 70px;
+}

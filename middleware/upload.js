@@ -13,11 +13,11 @@ const moment = require('moment');
 
 // Создаем переменную storage. Она описывает как будут хранится и где будут хранится загруженный файлы. 
 const storage = multer.diskStorage({
-    destination(req,file,cb){
+    destination(req, file, cb) {
         cb(null, 'uploads/');
     },
     filename(req, file, cb) {
-        const date = moment().format('DDMMYYYY-HHmmss_SS') ;
+        const date = moment().format('DDMMYYYY-HHmmss_SS');
         cb(null, `${date}-${file.originalname}`);
     }
 });
@@ -25,13 +25,10 @@ const storage = multer.diskStorage({
 
 
 // Валидатор
-const fileFilter = function (req, file, cb) {
-    if (file.mimetype === 'image/png' || file.mimetype === 'image/jpeg')
-    {
-         cb(null, true);
-    }
-    else
-    {
+const fileFilter = function(req, file, cb) {
+    if (file.mimetype === 'image/png' || file.mimetype === 'image/jpeg') {
+        cb(null, true);
+    } else {
         cb(null, false);
     }
 };
@@ -43,7 +40,7 @@ const fileFilter = function (req, file, cb) {
 
 // Лимитирование размера
 const limits = {
-    fileSize: 1024 * 1024 *5
+    fileSize: 1024 * 1024 * 5
 };
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import EditorJS from '@editorjs/editorjs';
 import* as  Header from '@editorjs/header';
 import* as  Marker from '@editorjs/marker';
@@ -20,7 +20,17 @@ import { Router } from '@angular/router';
 })
 export class CaseFormComponent implements OnInit {
   editor: any
-  form!: FormGroup; //Инициализируем нашу форму
+  form!: FormGroup; 
+
+  // Получаем input загрузки файлов в профиле
+  @ViewChild('input') inputRef : ElementRef;
+
+  // Храним файл который будем сохранять на сервер
+  xs_preview__file: File
+  // Переменная для превью аватарки
+  avatarPreview : any= 'https://hrono.su/wp-content/uploads/2022/06/group-732.jpg'
+
+
   constructor(public caseServise: CaseService, private router: Router ) { }
 
   ngOnInit(): void {
@@ -118,6 +128,38 @@ export class CaseFormComponent implements OnInit {
       });
     
   }
+
+
+
+
+
+
+  // Тригер кнопки загрузки файла
+  triggerClick()
+  {
+    this.inputRef.nativeElement.click();
+  }
+
+
+  //Обрабатываем загрузку аватарки
+  onPreviewFileUpload(event: any)
+  {
+    const file = event.target.files[0]
+
+    console.log(file);
+    
+    // Сохраняем выбранный файл
+    this.xs_preview__file = file
+
+    const reader = new FileReader()
+
+    // Когда загрузится картинка
+    reader.onload = () => {
+      this.avatarPreview = reader.result
+    }
+    reader.readAsDataURL(file)
+  }
+
 
 
 

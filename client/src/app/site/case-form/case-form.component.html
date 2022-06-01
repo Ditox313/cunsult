@@ -5,6 +5,20 @@
         </div>
 
         <main class="xs_add_case">
+            <div class="xs_add_case__preview">
+                <div class="xs_user_profile__avatar">
+                    <div>
+                        <figure class="xs_preview">
+                            <img [src]="[avatarPreview]" alt="Изображение">
+                        </figure>
+                        <input type="file" class="xs_file" #input (change)="onPreviewFileUpload($event)">
+                        <button type="button" class="waves-effect waves-light btn orange lighten-2 mb2" (click)="triggerClick()">
+                            Загрузить обложку кейса
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="input-field">
                     <input id="title" type="text" formControlName="title" [ngClass]="{'invalid': form.controls['title'].invalid && form.controls['title'].touched}">

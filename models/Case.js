@@ -7,10 +7,10 @@ const Schema = mongoose.Schema;
 
 const caseSchema = new Schema({
 
-    // order: {
-    //     type: Number,
-    //     required: true,
-    // },
+    order: {
+        type: Number,
+        required: true,
+    },
 
 
     title: {
