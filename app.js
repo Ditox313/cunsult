@@ -35,7 +35,8 @@ require('./middleware/passport')(passport);
 
 
 // Добавляем возможность отдавать с сервера картинки по запросу. (Когда будет запрос к uploads, делай эту папку статической)
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads/avatars', express.static('uploads/avatars'));
+app.use('/uploads/cases', express.static('uploads/cases'));
 
 
 

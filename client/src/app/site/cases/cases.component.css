@@ -53,12 +53,14 @@
     cursor: pointer;
     margin-bottom: 20px;
     position: relative;
+    /* z-index: 99; */
 }
 
 .xs_keys_dots_close {
     position: absolute;
-    right: 8px;
+    right: 21px;
     top: 10px;
+    z-index: 99999;
 }
 
 .xs_keyses__list___item h3 {
@@ -118,17 +120,24 @@
     position: absolute;
     right: 0;
     top: 0;
-    background-color: #002E6E;
+    background-color: rgba(0, 46, 110, 0.8);
     color: #fff;
     width: auto;
     height: auto;
     border-radius: 3px;
     padding: 15px 25px;
     padding-top: 35px;
-    text-align: right;
+    /* text-align: right; */
     transform: translateX(101%);
     transition: all 0.3s;
+    width: 100%;
+    height: 100%;
 }
+
+
+/* .xs_keyses__list___item:hover .xs_keyses__list___item____setting {
+    transform: translateX(0%);
+} */
 
 .xs_keyses__list___item____setting span {
     border-bottom: 1px solid #fff;
@@ -146,6 +155,28 @@
 
 .xs_keys_dots_open {
     padding: 10px;
+}
+
+.xs_keyses__list___item____setting___btns {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: space-around;
+}
+
+.xs_keyses__list___item____setting___btns a {
+    padding: 10px 25px;
+    background-color: #fff;
+    color: #111;
+    font-weight: 600;
+}
+
+.xs_keyses__list___item____setting___btns span {
+    padding: 10px 25px;
+    background-color: #BE1F4F;
+    color: #fff;
+    font-weight: 400;
+    border: none;
 }
 
 

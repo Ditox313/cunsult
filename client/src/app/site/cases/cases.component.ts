@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Case } from 'src/app/shared/other/interfaces';
@@ -27,7 +27,7 @@ export class CasesComponent implements OnInit, OnDestroy {
   xsSub: Subscription
   noMoreCases: Boolean = false
 
-  constructor(public caseServise: CaseService, private rote: ActivatedRoute, router: Router) { }
+  constructor(public caseServise: CaseService, private rote: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.loading = true
@@ -72,17 +72,19 @@ export class CasesComponent implements OnInit, OnDestroy {
 
 
   // Удалить позицию
-  onDeleteCase(event: Event, xscaseId): void
+  onDeleteCase(event: Event, xscase): void
   {
     event.stopPropagation();
-  
+
+
     const dicision = window.confirm(`Удалить кейс?`);
 
     if (dicision) {
-      this.caseServise.delete(xscaseId).subscribe(res => {
-        const idxPos = this.cases.findIndex(xscase => xscase._id === xscase._id);
+      this.caseServise.delete(xscase._id).subscribe(res => {
+        const idxPos = this.cases.findIndex(p => p._id === xscase._id);
         this.cases.splice(idxPos, 1);
         MaterialService.toast(res.message)
+        
       }, error => {
         MaterialService.toast(error.error.message);
       })
@@ -92,53 +94,68 @@ export class CasesComponent implements OnInit, OnDestroy {
 
 
 
-
-
-  // Получаем триггер для переключения мобильного меню
-  @ViewChild('dot_trigger') dot_trigger : ElementRef;
-
-
-  // Получаем мобильное меню
-  @ViewChild('dot_area') dot_area : ElementRef;
-
-
-  // Получаем крестик закрытия мобильного меню
-  @ViewChild('dotAreaClose') dotAreaClose : ElementRef;
-
-
-  // Переключаем мобильное меню
-  openArea() {
-    console.log('Открыть');
-    
-    setTimeout(()=> {
-      this.dot_trigger.nativeElement.classList.add('xs_trigger__rotate');
-      setTimeout(()=>{
-        this.dot_area.nativeElement.classList.add('xs_area_on');
-      },300);
-    }, 300);
-    this.dotAreaClose.nativeElement.classList.add('xs_trigger__rotate');
-    // this.dotAreaClose.nativeElement.classList.remove('xs_trigger__rotate');
+  openArea(el)
+  {
+    console.log(el.nextSibling.classList.add('xs_area_on'));
   }
+
+  closeArea(el)
+  {
+    console.log(el.parentElement.classList.remove('xs_area_on'));
+    
+  }
+
+
+
+
+  // // Получаем триггер для переключения мобильного меню
+  // @ViewChildren('dot_trigger') dot_trigger : QueryList<ElementRef>;
+
+
+  // // Получаем мобильное меню
+  // @ViewChild('dot_area') dot_area : ElementRef;
+
+
+  // // Получаем крестик закрытия мобильного меню
+  // @ViewChildren('dotAreaClose') dotAreaClose : QueryList<ElementRef>;
+
+
+  // // Переключаем мобильное меню
+  // openArea() {
+  //   setTimeout(()=> {
+  //     this.dot_trigger.nativeElement.classList.add('xs_trigger__rotate');
+  //     setTimeout(()=>{
+  //       this.dot_area.nativeElement.classList.add('xs_area_on');
+  //     },300);
+  //   }, 300);
+
+  //   // this.dotAreaClose.nativeElement.classList.add('xs_trigger__rotate');
+    
+  //   // this.dotAreaClose.nativeElement.classList.remove('xs_trigger__rotate');
+  // }
+
+
+
 
 
 
   
 
 
-  // Закрываем мобильное меню
-  closeArea()
-  {
-    setTimeout(()=> {
-      this.dotAreaClose.nativeElement.classList.add('xs_trigger__rotate');
-      setTimeout(() => {
-        this.dot_area.nativeElement.classList.remove('xs_area_on');
-      }, 100);
-      this.dotAreaClose.nativeElement.classList.remove('xs_trigger__rotate');
-    }, 100);
 
-    this.dot_trigger.nativeElement.classList.remove('xs_trigger__rotate');
+  // closeArea()
+  // {
+  //   setTimeout(()=> {
+  //     this.dotAreaClose.nativeElement.classList.add('xs_trigger__rotate');
+  //     setTimeout(() => {
+  //       this.dot_area.nativeElement.classList.remove('xs_area_on');
+  //     }, 100);
+  //     this.dotAreaClose.nativeElement.classList.remove('xs_trigger__rotate');
+  //   }, 100);
+
+  //   this.dot_trigger.nativeElement.classList.remove('xs_trigger__rotate');
     
 
-  }
+  // }
 
 }

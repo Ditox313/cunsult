@@ -14,7 +14,7 @@ const moment = require('moment');
 // Создаем переменную storage. Она описывает как будут хранится и где будут хранится загруженный файлы. 
 const storage = multer.diskStorage({
     destination(req, file, cb) {
-        cb(null, 'uploads/avatars');
+        cb(null, 'uploads/cases');
     },
     filename(req, file, cb) {
         const date = moment().format('DDMMYYYY-HHmmss_SS');
