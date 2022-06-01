@@ -12,7 +12,7 @@ router.get('/', passport.authenticate('jwt', { session: false }), controller.get
 
 
 // Роут на create с загрузкой картинки
-router.post('/', passport.authenticate('jwt', { session: false }), upload.single('image'), controller.create);
+router.post('/', passport.authenticate('jwt', { session: false }), upload.single('previewSrc'), controller.create);
 
 
 
@@ -22,7 +22,7 @@ router.post('/upload', upload.single('image'), controller.uploadEditor);
 
 
 // Роут на update
-router.patch('/update/:id', passport.authenticate('jwt', { session: false }), upload.single('image'), controller.update);
+router.patch('/update/:id', passport.authenticate('jwt', { session: false }), upload.single('previewSrc'), controller.update);
 
 
 

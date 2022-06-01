@@ -46,3 +46,11 @@
 .xs_add_case__preview {
     margin-bottom: 70px;
 }
+
+.prevEmpty {
+    padding: 25px;
+    font-size: 33px;
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.1);
+    padding-left: 0;
+}

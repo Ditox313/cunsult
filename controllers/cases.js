@@ -30,22 +30,31 @@ module.exports.getAll = async function(req, res) {
 
 module.exports.create = async function(req, res) {
     try {
-        // Ищем номер последнего заказа
+        // Ищем номер последнего заказа глобального
         const lastOrder = await Case.findOne({
                 // user: req.user.id
             })
             .sort({ date: -1 });
 
+
+        // Ищем номер последнего заказа локального
+        const lastOrderLocal = await Case.findOne({
+                user: req.user.id
+            })
+            .sort({ date: -1 });
+
         // Если мы нашли предполагаемы последнйи заказ, то устанвливает поле order
         const maxOrder = lastOrder ? lastOrder.order : 0;
+        const maxOrderLocal = lastOrderLocal ? lastOrderLocal.orderLocal : 0;
 
 
         const xscase = new Case({
             order: maxOrder + 1,
+            orderLocal: maxOrderLocal + 1,
             title: req.body.title,
-            content: req.body.content,
+            content: JSON.parse(req.body.content),
             user: req.user.id,
-            imageSrc: req.file ? req.file.path : '' //Если файл загружен то задаем путь до файла
+            previewSrc: req.file ? req.file.path : '' //Если файл загружен то задаем путь до файла
         });
 
         await xscase.save(); //Сохраняем кейс
@@ -62,8 +71,6 @@ module.exports.create = async function(req, res) {
 
 module.exports.uploadEditor = async function(req, res) {
     try {
-
-
         res.status(201).json({
             "success": 1,
             "file": {
@@ -88,9 +95,10 @@ module.exports.update = async function(req, res) {
 
         // Если объект file есть,то заполняем параметр путем фала
         if (req.file) {
-            updated.xsAvatar = req.file.path;
-
+            updated.previewSrc = req.file.path;
         }
+
+        updated.content = JSON.parse(req.body.content)
 
 
 

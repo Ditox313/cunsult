@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import EditorJS from '@editorjs/editorjs';
 import* as  Header from '@editorjs/header';
 import* as  Marker from '@editorjs/marker';
@@ -22,6 +22,17 @@ editor: any
   form!: FormGroup; //Инициализируем нашу форму
   caseId: string; //Для хранения id кейса
   xsActualCase: Case;//Текущий кейс, который будем редактировать
+
+  // Храним файл который будем сохранять на сервер
+  xs_preview__file: File
+  // Переменная для превью аватарки
+  previewSrc : any= ''
+
+
+  // Получаем input загрузки файлов в профиле
+  @ViewChild('input') inputRef : ElementRef;
+
+
   constructor(public caseServise: CaseService, private rote: ActivatedRoute, private router: Router ) { }
 
   ngOnInit(): void {
@@ -45,6 +56,11 @@ editor: any
       this.form.patchValue({ 
         title: res.title, 
       })
+
+      if(res.previewSrc)
+      {
+        this.previewSrc = res.previewSrc
+      }
 
     
 
@@ -81,6 +97,35 @@ editor: any
 
 
 
+  //Обрабатываем загрузку аватарки
+  onPreviewFileUpload(event: any)
+  {
+    const file = event.target.files[0]
+
+    
+    // Сохраняем выбранный файл
+    this.xs_preview__file = file
+
+    const reader = new FileReader()
+
+    // Когда загрузится картинка
+    reader.onload = () => {
+      this.previewSrc = reader.result
+    }
+    reader.readAsDataURL(file)
+  }
+
+
+
+  // Тригер кнопки загрузки файла
+  triggerClick()
+  {
+    this.inputRef.nativeElement.click();
+  }
+
+
+
+
 
   onSubmit(){
     this.editor
@@ -95,14 +140,16 @@ editor: any
         this.editor.clear();
         this.editor.destroy();
 
-        console.log('Сохраняем', xscaseUpdate);
 
-        this.caseServise.update(this.caseId, xscaseUpdate ).subscribe((res)=>{
-          console.log('Обновленный',res); 
-
+        this.caseServise.update(this.caseId, xscaseUpdate, this.xs_preview__file ).subscribe((res)=>{
           this.form.patchValue({ 
             title: res.title, 
           })
+
+          if(res.previewSrc)
+          {
+            this.previewSrc = res.previewSrc
+          }
 
           this.editor = new EditorJS( {
             holderId: 'editor-js',

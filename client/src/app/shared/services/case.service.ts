@@ -27,10 +27,23 @@ export class CaseService
 
    
 
-    create(xscase: any): Observable<Case>
+    create(xscase: any, image?: File): Observable<Case>
     {
-       return this.http.post<Case>('/api/cases/', xscase);
+      const fd = new FormData(); 
+      fd.append('title', xscase.title);
+      fd.append('content',  JSON.stringify(xscase.content) );
+
+      
+      if(image)
+      {
+         fd.append('previewSrc', image, image.name);
+      }
+
+
+
+      return this.http.post<Case>('/api/cases/', fd);
     }
+
 
 
 
@@ -43,20 +56,22 @@ export class CaseService
 
    update(id:string, xscase: Case, image?: File): Observable<Case> {
 
-      // const fd = new FormData(); 
-      // fd.append('title', xscase.title);
-      // fd.append('content', xscase.content);
-      // fd.append('caseId', xscase.caseId);
+      const fd = new FormData(); 
+      fd.append('title', xscase.title);
+      fd.append('content',  JSON.stringify(xscase.content) );
+      fd.append('caseId', xscase.caseId);
+
+      
+      if(image)
+      {
+         fd.append('previewSrc', image, image.name);
+      }
+
+      
 
 
-      // if(image)
-      // {
-      //    fd.append('casePreview', image, image.name);
-      // }
 
-
-
-      return this.http.patch<Case>(`/api/cases/update/${id}`, xscase);
+      return this.http.patch<Case>(`/api/cases/update/${id}`, fd);
    }
 
    

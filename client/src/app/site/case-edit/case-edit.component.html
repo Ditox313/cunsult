@@ -6,6 +6,21 @@
 
         <main class="xs_add_case">
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="xs_add_case__preview">
+                    <div class="xs_user_profile__avatar">
+                        <div>
+                            <figure class="xs_preview">
+                                <img [src]="[previewSrc]" alt="Изображение" *ngIf="previewSrc !== ''">
+                                <div class="prevEmpty" *ngIf="previewSrc == ''">Загрузить обложку кейса</div>
+                            </figure>
+                            <input type="file" class="xs_file" #input (change)="onPreviewFileUpload($event)">
+                            <button type="button" class="waves-effect waves-light btn orange lighten-2 mb2" (click)="triggerClick()">
+                                ИЗМЕНИТЬ ОБЛОЖКУ КЕЙСА
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="input-field">
                     <input id="title" type="text" formControlName="title" [ngClass]="{'invalid': form.controls['title'].invalid && form.controls['title'].touched}">
                     <label for="title">Заголовок:</label>

@@ -18,6 +18,9 @@ import { Router } from '@angular/router';
   templateUrl: './case-form.component.html',
   styleUrls: ['./case-form.component.css']
 })
+
+
+
 export class CaseFormComponent implements OnInit {
   editor: any
   form!: FormGroup; 
@@ -28,7 +31,8 @@ export class CaseFormComponent implements OnInit {
   // Храним файл который будем сохранять на сервер
   xs_preview__file: File
   // Переменная для превью аватарки
-  avatarPreview : any= 'https://hrono.su/wp-content/uploads/2022/06/group-732.jpg'
+  avatarPreview : any= ''
+  
 
 
   constructor(public caseServise: CaseService, private router: Router ) { }
@@ -37,7 +41,6 @@ export class CaseFormComponent implements OnInit {
     // Инициализируем форму
     this.form = new FormGroup({
       title: new FormControl(null, [Validators.required]),
-      // content: new FormControl(null, [Validators.required]),
     }); 
 
 
@@ -114,10 +117,10 @@ export class CaseFormComponent implements OnInit {
         // Формируем объект юзера
         const xscase = {
           title: this.form.value.title,
-          content: res
-        }
+          content: res,
+        } 
 
-        this.caseServise.create(xscase).subscribe((res)=>{
+        this.caseServise.create(xscase, this.xs_preview__file).subscribe((res)=>{
           MaterialService.toast('Кейс успешно создан')
           this.router.navigate(['/site/cases'])
         })
@@ -126,6 +129,7 @@ export class CaseFormComponent implements OnInit {
       .catch((error) => {
         console.log('Ошибка ', error);
       });
+
     
   }
 
@@ -146,7 +150,6 @@ export class CaseFormComponent implements OnInit {
   {
     const file = event.target.files[0]
 
-    console.log(file);
     
     // Сохраняем выбранный файл
     this.xs_preview__file = file

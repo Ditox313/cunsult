@@ -238,7 +238,7 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
    });
   }
 
-// Открываем модалку для редактирования профиля
+// Закрываем модалку для редактирования профиля
   closeModalEditProfile()
   {
     this.modal.close();

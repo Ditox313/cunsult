@@ -12,6 +12,11 @@ const caseSchema = new Schema({
         required: true,
     },
 
+    orderLocal: {
+        type: Number,
+        required: true,
+    },
+
 
     title: {
         type: String,
@@ -32,7 +37,7 @@ const caseSchema = new Schema({
         default: Date.now,
     },
 
-    imageSrc: {
+    previewSrc: {
         type: String,
         default: '',
         required: false,
