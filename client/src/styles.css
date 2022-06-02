@@ -130,6 +130,10 @@ body {
     src: url(assets/fonts/hse/ttf/AnyConv.com__HSESans-Black.ttf) format("opentype");
 }
 
+.codex-editor__redactor {
+    padding-bottom: 20px !important;
+}
+
 .container {
     width: 100%;
     padding-right: 15px;

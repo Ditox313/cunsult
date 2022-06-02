@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="xs_keyses__list___item____setting___btns">
-                        <a href="#">Смотреть</a>
+                        <a [routerLink]="['/site','cases','show',case._id]">Смотреть</a>
                         <a [routerLink]="['/site','cases','edit',case._id]">Редактировать</a>
                         <span (click)="onDeleteCase($event, case)">Удалить</span>
                     </div>

@@ -18,7 +18,7 @@ import { MaterialService } from 'src/app/shared/services/material.service';
 })
 export class CaseEditComponent implements OnInit {
 
-editor: any
+  editor: any
   form!: FormGroup; //Инициализируем нашу форму
   caseId: string; //Для хранения id кейса
   xsActualCase: Case;//Текущий кейс, который будем редактировать

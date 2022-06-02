@@ -72,6 +72,7 @@ export interface UserProfile
 // Интерфейс для case
 export interface Case
 {
+    order?: any
     previewSrc?: any
     _id?: any
     title: any
