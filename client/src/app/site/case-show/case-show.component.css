@@ -62,3 +62,11 @@ h1 {
 .codex-editor__redactor {
     padding-bottom: 0 !important;
 }
+
+.codex-editor__redactor {
+    padding-bottom: 20px !important;
+}
+
+.xs_show_case___preview img {
+    width: 100%;
+}

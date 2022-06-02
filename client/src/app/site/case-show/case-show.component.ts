@@ -54,25 +54,28 @@ export class CaseShowComponent implements OnInit {
     this.editor = new EditorJS( {
       holderId: 'editor-js',
       tools: {
-        header: {
-          class: Header,
-          inlineToolbar: ['link', 'bold']
-        },
-        list: {
-          class: List,
-          inlineToolbar: true,
-          config: {
-            defaultStyle: 'unordered'
-          }
-        },
-        marker: {
-          class: Marker,
-          shortcut: 'CMD+SHIFT+M'
-        },
+        // header: {
+        //   class: Header,
+        //   inlineToolbar: ['link', 'bold']
+        // },
+        // list: {
+        //   class: List,
+        //   inlineToolbar: true,
+        //   config: {
+        //     defaultStyle: 'unordered'
+        //   }
+        // },
+        // marker: {
+        //   class: Marker,
+        //   shortcut: 'CMD+SHIFT+M'
+        // },
         image: SimpleImage,
       },
       data: res.content
     });
+
+    console.log(res);
+    
 
     });
     MaterialService.updateTextInputs();

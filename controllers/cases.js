@@ -43,6 +43,7 @@ module.exports.create = async function(req, res) {
             })
             .sort({ date: -1 });
 
+
         // Если мы нашли предполагаемы последнйи заказ, то устанвливает поле order
         const maxOrder = lastOrder ? lastOrder.order : 0;
         const maxOrderLocal = lastOrderLocal ? lastOrderLocal.orderLocal : 0;
@@ -54,7 +55,7 @@ module.exports.create = async function(req, res) {
             title: req.body.title,
             content: JSON.parse(req.body.content),
             user: req.user.id,
-            previewSrc: req.file ? req.file.path : '' //Если файл загружен то задаем путь до файла
+            previewSrc: req.file ? req.file.path : '', //Если файл загружен то задаем путь до файла
         });
 
         await xscase.save(); //Сохраняем кейс

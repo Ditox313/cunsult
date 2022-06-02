@@ -134,6 +134,11 @@ body {
     padding-bottom: 20px !important;
 }
 
+.ce-block__content {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
 .container {
     width: 100%;
     padding-right: 15px;

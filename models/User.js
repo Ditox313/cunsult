@@ -194,6 +194,14 @@ const userSchema = new Schema({
     },
 
 
+    //Создаем поле для соцсетей
+    casesCount: {
+        type: String,
+        required: false,
+        default: '',
+    },
+
+
 
 
 
