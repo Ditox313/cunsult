@@ -152,3 +152,32 @@ module.exports.remove = async function(req, res) {
         errorHandler(res, e);
     }
 };
+
+
+
+
+
+module.exports.addView = async function(req, res) {
+    try {
+
+        const xsFindOne = await Case.findOne({ _id: req.body.caseId })
+
+        const updated = {
+            orderViews: xsFindOne.orderViews + 1
+        }
+
+
+
+        // Находим и обновляем позицию. 
+        const caseUpdate = await Case.updateOne({ _id: req.body.caseId }, //Ищем по id
+            { $set: updated }, //Обновлять мы будем body запроса. В req.body находятся данные на которые будем менять старые
+            { new: true } //обновит позицию и верет нам уже обновленную
+        );
+
+        // Возвращаем пользователю обновленную позицию 
+        res.status(200).json("+1 просмотр");
+
+    } catch (e) {
+        errorHandler(res, e);
+    }
+};

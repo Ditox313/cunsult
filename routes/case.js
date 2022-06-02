@@ -37,6 +37,11 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), controll
 
 
 
+// Роут на изменение колличество просмотров
+router.patch('/addView/:id', passport.authenticate('jwt', { session: false }), controller.addView);
+
+
+
 
 
 

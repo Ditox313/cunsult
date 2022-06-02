@@ -23,6 +23,7 @@ export class CaseShowComponent implements OnInit {
   caseTitle: string //Заголовок кейса
   caseDate: any //Дата создания 
   previewSrc : any= '';  // Переменная для превью аватарки
+  orderViews: any //Колличество просмотров
   editor: any;
 
 
@@ -30,10 +31,16 @@ export class CaseShowComponent implements OnInit {
   constructor(public caseServise: CaseService, private rote: ActivatedRoute, private router: Router ) { }
 
   ngOnInit(): void {
+    
 
     // Достаем параметры
     this.rote.params.subscribe((params)=>{
       this.caseId = params['id'];
+    });
+
+    // Прибавляем просмотр
+    this.caseServise.addShowCase(this.caseId).subscribe((res)=>{
+      console.log(res);
     });
 
 
@@ -49,6 +56,7 @@ export class CaseShowComponent implements OnInit {
       this.caseOrder = res.order
       this.caseTitle = res.title
       this.caseDate = res.date
+      this.orderViews = res.orderViews
 
       // Настройки Editor
     this.editor = new EditorJS( {

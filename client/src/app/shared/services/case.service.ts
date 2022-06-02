@@ -94,6 +94,18 @@ export class CaseService
 
 
 
+   // Добавляем 1 к колличеству просмотров
+   addShowCase( id)
+   {
+      const obj = {
+         caseId: id
+      }
+      
+      return this.http.patch<any>(`/api/cases/addView/${id}`, obj);
+   }
+
+
+
 
 
 

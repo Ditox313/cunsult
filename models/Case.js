@@ -12,6 +12,12 @@ const caseSchema = new Schema({
         required: true,
     },
 
+    orderViews: {
+        type: Number,
+        required: false,
+        default: 0,
+    },
+
     orderLocal: {
         type: Number,
         required: true,
