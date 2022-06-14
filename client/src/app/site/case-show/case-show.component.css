@@ -70,3 +70,17 @@ h1 {
 .xs_show_case___preview img {
     width: 100%;
 }
+
+.xs_show_case__order {
+    display: flex;
+    justify-content: space-between;
+}
+
+.xs_show_case__order___actions a {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.xs_show_case__order___actions span {
+    cursor: pointer;
+}
