@@ -2,7 +2,10 @@
     <div class="container">
         <main class="xs_show_case">
             <div class="xs_show_case__order">
-                <span>Кейс №{{caseOrder}}</span>
+                <h1>
+                    {{caseTitle}}
+                </h1>
+                <!-- <span>Кейс №{{caseOrder}}</span> -->
                 <div class="xs_show_case__order___actions">
                     <a [routerLink]="['/site','cases','edit',caseId]" title="Редактировать">
                         <svg width="40" height="50" viewBox="0 0 179 193" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,9 +41,7 @@
                 </div>
             </div>
 
-            <h1>
-                {{caseTitle}}
-            </h1>
+
 
             <div class="xs_show_case__top___date">
                 <div>
