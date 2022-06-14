@@ -5,6 +5,7 @@ import* as  Header from '@editorjs/header';
 import* as  Marker from '@editorjs/marker';
 import* as  SimpleImage  from '@editorjs/simple-image';
 import* as  ImageTool   from '@editorjs/image';
+import* as Table from '@editorjs/table';
 import List from '@editorjs/list';
 import { Case } from 'src/app/shared/other/interfaces';
 import { CaseService } from 'src/app/shared/services/case.service';
@@ -61,22 +62,24 @@ export class CaseShowComponent implements OnInit {
       // Настройки Editor
     this.editor = new EditorJS( {
       holderId: 'editor-js',
+      readOnly: true,
       tools: {
-        // header: {
-        //   class: Header,
-        //   inlineToolbar: ['link', 'bold']
-        // },
-        // list: {
-        //   class: List,
-        //   inlineToolbar: true,
-        //   config: {
-        //     defaultStyle: 'unordered'
-        //   }
-        // },
-        // marker: {
-        //   class: Marker,
-        //   shortcut: 'CMD+SHIFT+M'
-        // },
+        header: {
+          class: Header,
+          inlineToolbar: ['link', 'bold']
+        },
+        list: {
+          class: List,
+          inlineToolbar: true,
+          config: {
+            defaultStyle: 'unordered'
+          }
+        },
+        marker: {
+          class: Marker,
+          shortcut: 'CMD+SHIFT+M'
+        },
+        table: Table,
         image: SimpleImage,
       },
       data: res.content

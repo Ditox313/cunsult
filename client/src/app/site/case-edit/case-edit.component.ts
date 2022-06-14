@@ -4,6 +4,7 @@ import* as  Header from '@editorjs/header';
 import* as  Marker from '@editorjs/marker';
 import* as  SimpleImage  from '@editorjs/simple-image';
 import* as  ImageTool   from '@editorjs/image';
+import* as Table from '@editorjs/table';
 import List from '@editorjs/list';
 import { CaseService } from 'src/app/shared/services/case.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -73,6 +74,7 @@ export class CaseEditComponent implements OnInit {
           class: Header,
           inlineToolbar: ['link', 'bold']
         },
+        table: Table,
         list: {
           class: List,
           inlineToolbar: true,

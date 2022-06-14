@@ -4,7 +4,8 @@ import* as  Header from '@editorjs/header';
 import* as  Marker from '@editorjs/marker';
 import* as  SimpleImage  from '@editorjs/simple-image';
 import* as  ImageTool   from '@editorjs/image';
-import List from '@editorjs/list';
+import* as Table from '@editorjs/table';
+import* as List from '@editorjs/list';
 import { CaseService } from 'src/app/shared/services/case.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {Case} from '../../shared/other/interfaces'
@@ -53,6 +54,7 @@ export class CaseFormComponent implements OnInit {
           class: Header,
           inlineToolbar: ['link', 'bold']
         },
+        table: Table,
         list: {
           class: List,
           inlineToolbar: true,
@@ -65,6 +67,7 @@ export class CaseFormComponent implements OnInit {
           shortcut: 'CMD+SHIFT+M'
         },
         image: SimpleImage,
+        
         // image: {
         //   class: ImageTool,
         //   config: {

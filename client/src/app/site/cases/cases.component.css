@@ -22,6 +22,10 @@
     justify-content: flex-end;
 }
 
+.xs_keyses__nav ul>li {
+    list-style-type: none !important;
+}
+
 .xs_keyses__nav ul li {
     margin-left: 10px;
     cursor: pointer;
