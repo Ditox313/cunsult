@@ -91,6 +91,7 @@ export class CaseShowComponent implements OnInit {
     });
 
 
+    // Получаем список всех кейсов для удаления
     this.caseServise.fetch().subscribe((cases)=>{
       this.cases = this.cases.concat(cases)
     });
@@ -99,7 +100,7 @@ export class CaseShowComponent implements OnInit {
   }
 
 
-    // Удалить позицию
+  // Удалить позицию
   onDeleteCase(event: Event, xscase): void
   {
     event.stopPropagation();

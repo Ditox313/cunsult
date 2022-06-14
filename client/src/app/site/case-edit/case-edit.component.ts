@@ -24,7 +24,7 @@ export class CaseEditComponent implements OnInit {
   form!: FormGroup; //Инициализируем нашу форму
   caseId: string; //Для хранения id кейса
   xsActualCase: Case;//Текущий кейс, который будем редактировать
-
+  cases: Case[] = []//Список всех кейсов
   // Храним файл который будем сохранять на сервер
   xs_preview__file: File
   // Переменная для превью аватарки
@@ -63,6 +63,12 @@ export class CaseEditComponent implements OnInit {
       {
         this.previewSrc = res.previewSrc
       }
+
+
+      // Получаем список всех кейсов для удаления
+    this.caseServise.fetch().subscribe((cases)=>{
+      this.cases = this.cases.concat(cases)
+    });
 
     
 
@@ -124,6 +130,27 @@ export class CaseEditComponent implements OnInit {
   triggerClick()
   {
     this.inputRef.nativeElement.click();
+  }
+
+
+  // Удалить позицию
+  onDeleteCase(event: Event, xscase): void
+  {
+    event.stopPropagation();
+
+
+    const dicision = window.confirm(`Удалить кейс?`);
+
+    if (dicision) {
+      this.caseServise.delete(xscase._id).subscribe(res => {
+        const idxPos = this.cases.findIndex(p => p._id === xscase._id);
+        this.cases.splice(idxPos, 1);
+        MaterialService.toast(res.message)
+        this.router.navigate(['/site/cases'])
+      }, error => {
+        MaterialService.toast(error.error.message);
+      })
+    }
   }
 
 
