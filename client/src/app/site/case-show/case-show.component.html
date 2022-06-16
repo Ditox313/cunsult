@@ -172,6 +172,10 @@
                     <div id="editor-js"></div>
                 </div>
             </div>
+
+            <div class="xs_case__comments" *ngIf="currentUser">
+                <comments currentUser="{{currentUser._id}}" caseId="{{caseId}}"></comments>
+            </div>
         </main>
     </div>
 </div>

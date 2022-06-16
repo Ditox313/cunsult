@@ -78,8 +78,10 @@ img {
     outline: 0;
 }
 
-ul:not(.browser-default)>li {
-    list-style-type: square !important;
+ul.cdx-block:not(.browser-default)>li:before {
+    content: "•";
+    padding-right: 5px;
+    padding-left: 15px;
 }
 
 button::-moz-focus-inner,
@@ -209,4 +211,11 @@ h5 {
     .container {
         max-width: 1140px;
     }
+}
+
+
+/* Комментарии */
+
+.comment {
+    margin-top: 40px;
 }

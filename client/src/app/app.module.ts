@@ -22,6 +22,7 @@ import rulocale from '@angular/common/locales/ru';
 import { CaseFormComponent } from './site/case-form/case-form.component';
 import { CaseEditComponent } from './site/case-edit/case-edit.component';
 import { CaseShowComponent } from './site/case-show/case-show.component';
+import { CommentsModule } from './modules/comments-module/comments.module';
 
 
 registerLocaleData(rulocale, 'ru');
@@ -51,6 +52,7 @@ registerLocaleData(rulocale, 'ru');
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CommentsModule
   ],
   providers: [
     {

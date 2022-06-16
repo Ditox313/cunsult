@@ -1,0 +1,10 @@
+<div class="comments">
+    <h3 class="comments-title">Комментарии</h3>
+    <div class="comment-form-title">Напишите комментарий</div>
+    <comment-form submitLabel="Написать" (handleSubmit)="addComment({ text: $event, parentId: null, user: currentUser, caseId: caseId })"></comment-form>
+    <div class="comments-container">
+        <comment class="comment" *ngFor="let comment of comments" [comment]="comment">
+            {{comment.body}}
+        </comment>
+    </div>
+</div>

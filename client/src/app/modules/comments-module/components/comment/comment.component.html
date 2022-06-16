@@ -1,0 +1,13 @@
+<div class="comment">
+    <div class="comment-image-container">
+        <img src="/assets/user-icon.png" />
+    </div>
+
+    <div class="comment-right-part">
+        <div class="comment-content">
+            <div class="comment-author">{{ comment.username }}</div>
+            <div>{{ comment.date | date: 'mediumDate':null:'ru' }}</div>
+        </div>
+    </div>
+    <div class="comment-text">{{ comment.body }}</div>
+</div>

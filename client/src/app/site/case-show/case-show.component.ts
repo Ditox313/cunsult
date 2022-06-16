@@ -7,9 +7,10 @@ import* as  SimpleImage  from '@editorjs/simple-image';
 import* as  ImageTool   from '@editorjs/image';
 import* as Table from '@editorjs/table';
 import List from '@editorjs/list';
-import { Case } from 'src/app/shared/other/interfaces';
+import { Case, User } from 'src/app/shared/other/interfaces';
 import { CaseService } from 'src/app/shared/services/case.service';
 import { MaterialService } from 'src/app/shared/services/material.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-case-show',
@@ -17,6 +18,7 @@ import { MaterialService } from 'src/app/shared/services/material.service';
   styleUrls: ['./case-show.component.css']
 })
 export class CaseShowComponent implements OnInit {
+  currentUser: any
   caseId: string; //Для хранения id кейса
   xsActualCase: Case; //Текущий кейс, который будем редактировать
   cases: Case[] = []//Список всех кейсов
@@ -29,9 +31,14 @@ export class CaseShowComponent implements OnInit {
 
 
 
-  constructor(public caseServise: CaseService, private rote: ActivatedRoute, private router: Router ) { }
+  constructor(public caseServise: CaseService, private rote: ActivatedRoute, private router: Router, private auth: AuthService ) { }
 
   ngOnInit(): void {
+
+    // Получаем текущего юзера
+    this.auth.get_user().subscribe((user)=>{
+      this.currentUser = user
+    });
     
 
     // Достаем параметры
@@ -40,9 +47,7 @@ export class CaseShowComponent implements OnInit {
     });
 
     // Прибавляем просмотр
-    this.caseServise.addShowCase(this.caseId).subscribe((res)=>{
-      console.log(res);
-    });
+    this.caseServise.addShowCase(this.caseId).subscribe((res)=>{});
 
 
     // Получаем текущий кейс
@@ -84,10 +89,6 @@ export class CaseShowComponent implements OnInit {
       },
       data: res.content
     });
-
-    console.log(res);
-    
-
     });
 
 
