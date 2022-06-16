@@ -14,7 +14,7 @@ export class CommentsComponent implements OnInit {
   // Принимаем id текущего кейса из вне 
   @Input() caseId: string | undefined;
 
-  // Принимаем id текущего пользователя из вне
+  // Принимаем  текущего пользователя из вне
   @Input() currentUser: User;
 
   // Список комменатриев
@@ -45,12 +45,23 @@ export class CommentsComponent implements OnInit {
   // Добавляем комментарий
    addComment({text, parentId, user, caseId}: {text: string; parentId: string | null; user: User, caseId: string}): void {
 
-    console.log("Текущий пользователь", user);
-    
     this.commentsService.createComment(text, parentId, user, caseId).subscribe((newComment) => {
         this.comments = [...this.comments, newComment];
         // this.activeComment = null;
       });
+  }
+
+
+
+
+  // Получаем ответы
+  getReplies(commentId: string): CommentInterface[] {
+    return this.comments
+      .filter((comment) => comment.parentId === commentId)
+      .sort(
+        (a, b) =>
+          new Date(a.date).getTime() - new Date(b.date).getTime()
+      );
   }
 
 

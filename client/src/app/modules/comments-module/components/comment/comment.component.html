@@ -10,4 +10,11 @@
         </div>
     </div>
     <div class="comment-text">{{ comment.body }}</div>
+
+
+    <div class="comment_actions">
+        <div class="comment-action" *ngIf="canReply">Ответить</div>
+        <div class="comment-action" *ngIf="canEdit">Изменить</div>
+        <div class="comment-action" *ngIf="canDelete">Удалить</div>
+    </div>
 </div>

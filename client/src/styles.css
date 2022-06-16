@@ -219,3 +219,8 @@ h5 {
 .comment {
     margin-top: 40px;
 }
+
+.comment_actions {
+    background-color: pink;
+    display: inline-block;
+}
