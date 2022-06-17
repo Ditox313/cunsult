@@ -15,6 +15,14 @@ router.post('/', passport.authenticate('jwt', { session: false }), controller.cr
 
 
 
+// Роут на update
+router.patch('/update/:id', passport.authenticate('jwt', { session: false }), controller.update);
+
+
+
+
+
+
 
 
 

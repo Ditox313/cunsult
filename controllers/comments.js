@@ -46,3 +46,25 @@ module.exports.create = async function(req, res) {
         errorHandler(res, e);
     }
 };
+
+
+
+
+// Контроллер для update
+module.exports.update = async function(req, res) {
+    try {
+
+        const updated = req.body;
+
+        // Находим и обновляем позицию. 
+        const commentUpdated = await Comment.findOneAndUpdate({ _id: req.params.id }, //Ищем по id
+            { $set: updated }, //Обновлять мы будем body запроса. В req.body находятся данные на которые будем менять старые
+            { new: true } //обновит позицию и верет нам уже обновленную
+        );
+
+        // Возвращаем пользователю обновленную позицию 
+        res.status(200).json(commentUpdated);
+    } catch (e) {
+        errorHandler(res, e);
+    }
+};

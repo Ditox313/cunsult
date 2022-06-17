@@ -55,6 +55,37 @@ export class CommentsComponent implements OnInit {
   }
 
 
+    // Обновление комментария
+    updateComment({text}: {text: any; commentId: string;}): void {
+
+    this.commentsService.updateComment(text.comment, text.text).subscribe((updatedComment) => {
+        // this.comments = this.comments.map((comment) => {
+        //   if (comment._id === text.comment) {
+        //     return updatedComment;
+        //   }
+
+
+        this.mainComments = this.mainComments.map((comment) => {
+          if (comment._id === text.comment) {
+            return updatedComment;
+          }
+
+          return comment;
+        });
+
+        this.comments = this.comments.map((comment) => {
+          if (comment._id === text.comment) {
+            return updatedComment;
+          }
+
+          return comment;
+        });
+
+        this.activeComment = null;
+      });
+  }
+
+
 
 
   // Получаем ответы

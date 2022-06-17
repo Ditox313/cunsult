@@ -228,3 +228,7 @@ h5 {
 .replies {
     padding-left: 40px !important;
 }
+
+.replies .comment-action-reply {
+    display: none;
+}

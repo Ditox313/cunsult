@@ -47,6 +47,7 @@ activeCommentType = ActiveCommentTypeEnum;
 
 @Output() setActiveComment = new EventEmitter<ActiveCommentInterface | null>();
 @Output() addComment = new EventEmitter<{ text: string; parentId: string | null, user: User, caseId: string | undefined}>();
+@Output() updateComment = new EventEmitter<{ text: string; commentId: string }>();
 
 constructor( private auth: AuthService) {}
 ngOnInit(): void{
@@ -90,7 +91,7 @@ ngOnInit(): void{
 
 
 
-// Проверяем активный комменатрий
+// Ответ на коммент
 isReplying(): boolean {
     if (!this.activeComment) {
       return false;
@@ -98,6 +99,19 @@ isReplying(): boolean {
     return (
       this.activeComment._id === this.comment._id &&
       this.activeComment.type === this.activeCommentType.replying
+    );
+  }
+
+
+
+  // Редактирование коммента
+  isEditing(): boolean {
+    if (!this.activeComment) {
+      return false;
+    }
+    return (
+      this.activeComment._id === this.comment._id &&
+      this.activeComment.type === 'editing'
     );
   }
 
