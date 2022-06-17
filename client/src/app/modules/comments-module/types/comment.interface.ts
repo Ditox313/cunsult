@@ -3,7 +3,7 @@ export interface CommentInterface {
   body: string;
   username: string;
   parentId: null | string;
-  caseId?: string;
+  caseId: string;
   userId: string;
   date: Date;
 }

@@ -224,3 +224,7 @@ h5 {
     background-color: pink;
     display: inline-block;
 }
+
+.replies {
+    padding-left: 40px !important;
+}

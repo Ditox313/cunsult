@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from 'src/app/shared/other/interfaces';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CommentsService } from '../../services/comments.service';
+import { ActiveCommentInterface } from '../../types/activeComment.interface';
 // import { ActiveCommentInterface } from '../../types/activeComment.interface';
 import { CommentInterface } from '../../types/comment.interface';
 
@@ -14,14 +15,17 @@ export class CommentsComponent implements OnInit {
   // Принимаем id текущего кейса из вне 
   @Input() caseId: string | undefined;
 
+
   // Принимаем  текущего пользователя из вне
   @Input() currentUser: User;
 
   // Список комменатриев
   comments: CommentInterface[] = [];
+  mainComments: CommentInterface[] = [];
 
 
-  // activeComment: ActiveCommentInterface | null = null;
+  // Активный комментарий
+  activeComment: ActiveCommentInterface | null = null;
 
 
 
@@ -32,22 +36,21 @@ export class CommentsComponent implements OnInit {
     // Получаем текущего юзера
     this.auth.get_user().subscribe((user)=>{this.currentUser = user});
     
-
     
     // Получаем список комментариев
     this.commentsService.getComments(this.caseId).subscribe((comments) => {
-      this.comments = comments;
-      console.log(comments);
+      this.comments = comments
+      this.mainComments =comments.filter((comment) => comment.parentId === null)
     });
   }
 
 
   // Добавляем комментарий
    addComment({text, parentId, user, caseId}: {text: string; parentId: string | null; user: User, caseId: string}): void {
-
     this.commentsService.createComment(text, parentId, user, caseId).subscribe((newComment) => {
         this.comments = [...this.comments, newComment];
-        // this.activeComment = null;
+         this.mainComments = [...this.mainComments, newComment].filter((comment) => comment.parentId === null);
+        this.activeComment = null;
       });
   }
 
@@ -56,12 +59,25 @@ export class CommentsComponent implements OnInit {
 
   // Получаем ответы
   getReplies(commentId: string): CommentInterface[] {
-    return this.comments
+
+    const xsRep =  this.comments
       .filter((comment) => comment.parentId === commentId)
       .sort(
         (a, b) =>
           new Date(a.date).getTime() - new Date(b.date).getTime()
       );
+
+      // console.log("Ответы", xsRep);
+      
+
+
+      return xsRep
+  }
+
+
+  // Устанавливаем активный комментарий
+  setActiveComment(activeComment: ActiveCommentInterface | null): void {
+    this.activeComment = activeComment;
   }
 
 

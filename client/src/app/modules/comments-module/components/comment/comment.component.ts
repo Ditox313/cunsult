@@ -1,4 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { User } from 'src/app/shared/other/interfaces';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { ActiveCommentInterface } from '../../types/activeComment.interface';
+import { ActiveCommentTypeEnum } from '../../types/activeCommentType.enum';
 import { CommentInterface } from '../../types/comment.interface';
 
 @Component({
@@ -10,9 +14,24 @@ export class CommentComponent implements OnInit {
 canReply: boolean = false;
 canEdit: boolean = false;
 canDelete: boolean = false;
+replyId: string | null = null;
+
+// Принимаем id текущего кейса из вне 
+@Input() caseId: string | undefined;
+
+
+
+currentUser!: User | null
+
+// Свойство для перечисления состояний комментария
+activeCommentType = ActiveCommentTypeEnum;
 
 // id текущего пользователя
 @Input() currentUserId!: string;
+
+
+// Получаем активный комментарий
+@Input() activeComment!: ActiveCommentInterface | null;
 
 // Получаем текущий комментарий
 @Input() comment!: CommentInterface;
@@ -21,7 +40,27 @@ canDelete: boolean = false;
 @Input() replies!: CommentInterface[];
 
 
+
+// Получаем id родителя
+@Input() parentId!: string | null;
+
+
+@Output() setActiveComment = new EventEmitter<ActiveCommentInterface | null>();
+@Output() addComment = new EventEmitter<{ text: string; parentId: string | null, user: User, caseId: string | undefined}>();
+
+constructor( private auth: AuthService) {}
 ngOnInit(): void{
+
+
+  // console.log("Получили", this.replies);
+
+
+  
+
+    //Получаем текущего юзера
+    this.auth.get_user().subscribe((user)=>{this.currentUser = user});
+
+
     // Время когда можно отредактировать комментарий
     const fiveMinutes = 300000;
 
@@ -32,8 +71,6 @@ ngOnInit(): void{
     // Проверяем прошло ли время для редактирования комментария
     const timePassed = (Date.now() - new Date(this.comment.date).getTime()) > fiveMinutes;
 
-
-    console.log("Время",)
       
 
 
@@ -47,19 +84,25 @@ ngOnInit(): void{
 
 
 
-
-    
-    
-
+    this.replyId = this.parentId ? this.parentId : this.comment._id;
     // this.createdAt = new Date(this.comment.createdAt).toLocaleDateString();
-
-    
-
-    
-
-
-    // this.replyId = this.parentId ? this.parentId : this.comment.id;
 }
+
+
+
+// Проверяем активный комменатрий
+isReplying(): boolean {
+    if (!this.activeComment) {
+      return false;
+    }
+    return (
+      this.activeComment._id === this.comment._id &&
+      this.activeComment.type === this.activeCommentType.replying
+    );
+  }
+
+
+
 
 
 }

@@ -13,8 +13,31 @@
 
 
     <div class="comment_actions">
-        <div class="comment-action" *ngIf="canReply">Ответить</div>
-        <div class="comment-action" *ngIf="canEdit">Изменить</div>
+        <div class="comment-action" *ngIf="canReply" (click)="
+            setActiveComment.emit({
+                _id: comment._id,
+                type: activeCommentType.replying
+            })">Ответить
+        </div>
+
+
+        <div *ngIf="canEdit" class="comment-action" (click)="
+                  setActiveComment.emit({
+                    _id: comment.id,
+                    type: activeCommentType.editing
+                  })
+                ">
+            Изменить
+        </div>
+
+
         <div class="comment-action" *ngIf="canDelete">Удалить</div>
+    </div>
+
+    <comment-form *ngIf="isReplying()" submitLabel="Reply" (handleSubmit)="addComment.emit({ text: $event, parentId: replyId, user: currentUser, caseId: caseId })"></comment-form>
+
+    <div class="replies" *ngIf="replies.length > 0">
+        <comment *ngFor="let reply of replies " [comment]="reply" (setActiveComment)="setActiveComment.emit($event)" [activeComment]="activeComment" (addComment)="addComment.emit($event)" [parentId]="comment._id" [replies]="[]" [currentUserId]="currentUserId">
+        </comment>
     </div>
 </div>
