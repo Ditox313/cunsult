@@ -35,14 +35,16 @@
         </div>
 
 
-        <div class="comment-action" *ngIf="canDelete">Удалить</div>
+        <div *ngIf="canDelete" class="comment-action" (click)="deleteComment.emit(comment._id)">
+            Удалить
+        </div>
     </div>
 
     <comment-form *ngIf="isReplying()" submitLabel="Reply" (handleSubmit)="addComment.emit({ text: $event, parentId: replyId, user: currentUser, caseId: caseId })"></comment-form>
 
     <div class="replies" *ngIf="replies.length > 0">
         <comment *ngFor="let reply of replies " [comment]="reply" (setActiveComment)="setActiveComment.emit($event)" [activeComment]="activeComment" (addComment)="addComment.emit($event)" [parentId]="comment._id" [replies]="[]" (updateComment)="updateComment.emit($event)"
-            [currentUserId]="currentUserId">
+            (deleteComment)="deleteComment.emit($event)" [currentUserId]="currentUserId">
         </comment>
     </div>
 

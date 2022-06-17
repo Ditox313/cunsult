@@ -4,7 +4,7 @@
     <comment-form submitLabel="Написать" (handleSubmit)="addComment({ text: $event, parentId: null, user: currentUser, caseId: caseId })"></comment-form>
     <div class="comments-container">
         <comment class="comment" *ngFor="let comment of mainComments" [comment]="comment" [currentUserId]="currentUser._id" [replies]="getReplies(comment._id)" (setActiveComment)="setActiveComment($event)" [activeComment]="activeComment" (addComment)="addComment($event)"
-            (updateComment)="updateComment({text: $event, _id: comment._id})" [caseId]="caseId">
+            (updateComment)="updateComment({text: $event, _id: comment._id})" (deleteComment)="deleteComment($event)" [caseId]="caseId">
             {{comment.body}}
         </comment>
     </div>

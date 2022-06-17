@@ -21,6 +21,12 @@ router.patch('/update/:id', passport.authenticate('jwt', { session: false }), co
 
 
 
+// Роут на remove
+router.delete('/:id', passport.authenticate('jwt', { session: false }), controller.remove);
+
+
+
+
 
 
 

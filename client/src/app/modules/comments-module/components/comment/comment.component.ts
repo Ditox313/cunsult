@@ -45,9 +45,11 @@ activeCommentType = ActiveCommentTypeEnum;
 @Input() parentId!: string | null;
 
 
+// Действия
 @Output() setActiveComment = new EventEmitter<ActiveCommentInterface | null>();
 @Output() addComment = new EventEmitter<{ text: string; parentId: string | null, user: User, caseId: string | undefined}>();
 @Output() updateComment = new EventEmitter<{ text: string; commentId: string }>();
+@Output() deleteComment = new EventEmitter<string>();
 
 constructor( private auth: AuthService) {}
 ngOnInit(): void{

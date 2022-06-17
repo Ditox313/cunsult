@@ -25,12 +25,12 @@ export class CommentsService {
       return this.httpClient.post<CommentInterface>('api/comments/',fd);
   }
 
-  updateComment(  id: string , text: string): Observable<CommentInterface> {
+  updateComment(id: string , text: string): Observable<CommentInterface> {
     return this.httpClient.patch<CommentInterface>(`/api/comments/update/${id}`,{body: text}
     );
   }
 
-  // deleteComment(id: string): Observable<{}> {
-  //   return this.httpClient.delete(`http://localhost:3000/comments/${id}`);
-  // }
+  deleteComment(id: string): Observable<{}> {
+    return this.httpClient.delete(`/api/comments/${id}`);
+  }
 }

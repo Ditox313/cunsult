@@ -112,4 +112,24 @@ export class CommentsComponent implements OnInit {
   }
 
 
+
+
+  // Удаляем комментарий
+  deleteComment(commentId: string): void {
+    this.commentsService.deleteComment(commentId).subscribe(() => {
+      this.comments = this.comments.filter(
+        (comment) => comment._id !== commentId
+      );
+
+      this.mainComments = this.mainComments.filter(
+        (comment) => comment._id !== commentId
+      );
+
+      
+    });
+  }
+
+  
+
+
 }

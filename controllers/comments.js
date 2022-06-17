@@ -68,3 +68,24 @@ module.exports.update = async function(req, res) {
         errorHandler(res, e);
     }
 };
+
+
+
+
+
+// Контроллер для remove(Удалить категорию по id)
+module.exports.remove = async function(req, res) {
+    try {
+        await Comment.remove({
+            _id: req.params.id //Удаляем категорию по id
+        });
+
+
+        // Возвращаем результат
+        res.status(200).json({
+            message: "Комментарий успешно удален"
+        });
+    } catch (e) {
+        errorHandler(res, e);
+    }
+};
