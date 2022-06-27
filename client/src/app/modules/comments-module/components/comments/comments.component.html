@@ -15,7 +15,7 @@
     <div class="xs_comments__info">
         <div class="xs_comments__count">
             <span>Комментарии:</span> 
-            <span>892</span>
+            <span>{{mainComments.length}}</span>
         </div>
         
         <div class="xs_comments__filter">
@@ -25,8 +25,7 @@
     </div>
     <div class="xs_comments___write">
         <div class="xs_comments___write___avatar">
-            <!-- <img [src]="[currentUser]" alt="Изображение"> -->
-            <img src="https://static.tildacdn.com/tild3633-6532-4233-a631-363261663462/profile.png" alt="">
+            <img [src]="[commentAvatar]" alt="Изображение">
         </div>
         <div class="xs_comments___write___form">
             <comment-form submitLabel="Написать"

@@ -9,10 +9,11 @@
 
 h1 {
     font-weight: 800;
-    font-size: 40px;
+    font-size: 36px;
     line-height: 105%;
     color: #000000;
     margin-bottom: 40px;
+    width: 80%;
 }
 
 .xs_show_case__top___date {

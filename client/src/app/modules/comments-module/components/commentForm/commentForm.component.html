@@ -1,6 +1,6 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="xs_comments___write___form___wrap">
-      <textarea class="comment-form-textarea" formControlName="title" placeholder="Комментарий" rows="1" ></textarea>
+      <textarea class="comment-form-textarea" formControlName="title" placeholder="Комментарий" rows="1"></textarea>
       <div class="xs_comments___write___form___wrap___btns">
         <button *ngIf="hasCancelButton" type="button" class="comment-form-button comment-form-cancel-button"
           (click)="handleCancel.emit()">

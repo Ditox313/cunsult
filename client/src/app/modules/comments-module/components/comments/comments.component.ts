@@ -28,13 +28,20 @@ export class CommentsComponent implements OnInit {
   activeComment: ActiveCommentInterface | null = null;
 
 
+  // Аватар для комментария
+  commentAvatar = '';
+
+
 
   constructor(private commentsService: CommentsService, private auth: AuthService) {}
 
   ngOnInit(): void {
 
     // Получаем текущего юзера
-    this.auth.get_user().subscribe((user)=>{this.currentUser = user});
+    this.auth.get_user().subscribe((user)=>{
+      this.currentUser = user
+      this.commentAvatar = user.xsAvatar
+    });
     
     
     // Получаем список комментариев

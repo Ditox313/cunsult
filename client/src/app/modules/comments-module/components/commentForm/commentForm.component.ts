@@ -31,5 +31,4 @@ export class CommentFormComponent implements OnInit {
     this.form.reset();
   }
 
-
 }
