@@ -1,9 +1,13 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <textarea class="comment-form-textarea" formControlName="title"></textarea>
-    <button class="comment-form-button" type="submit" [disabled]="form.invalid">
-    {{ submitLabel }}
-  </button>
-    <button *ngIf="hasCancelButton" type="button" class="comment-form-button comment-form-cancel-button" (click)="handleCancel.emit()">
-    Cancel
-  </button>
+    <div class="xs_comments___write___form___wrap">
+      <textarea class="comment-form-textarea" formControlName="title" placeholder="Комментарий" rows="1" ></textarea>
+      <div class="xs_comments___write___form___wrap___btns">
+        <button *ngIf="hasCancelButton" type="button" class="comment-form-button comment-form-cancel-button"
+          (click)="handleCancel.emit()">
+          Отмена
+        </button>
+        <button class="comment-form-button comment-form-button-submit" type="submit" [disabled]="form.invalid">{{ submitLabel
+          }}</button>
+      </div>
+    </div>
 </form>

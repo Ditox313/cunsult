@@ -1,10 +1,44 @@
-<div class="comments">
+<!-- <div class="comments">
     <h3 class="comments-title">Комментарии</h3>
     <div class="comment-form-title">Напишите комментарий</div>
     <comment-form submitLabel="Написать" (handleSubmit)="addComment({ text: $event, parentId: null, user: currentUser, caseId: caseId })"></comment-form>
     <div class="comments-container">
         <comment class="comment" *ngFor="let comment of mainComments" [comment]="comment" [currentUserId]="currentUser._id" [replies]="getReplies(comment._id)" (setActiveComment)="setActiveComment($event)" [activeComment]="activeComment" (addComment)="addComment($event)"
             (updateComment)="updateComment({text: $event, _id: comment._id})" (deleteComment)="deleteComment($event)" [caseId]="caseId">
+            {{comment.body}}
+        </comment>
+    </div>
+</div> -->
+
+
+<div class="xs_comments">
+    <div class="xs_comments__info">
+        <div class="xs_comments__count">
+            <span>Комментарии:</span> 
+            <span>892</span>
+        </div>
+        
+        <div class="xs_comments__filter">
+            <a href="#" class="xs_comments__filter___active">Популярные</a>
+            <a href="#">Смотреть все</a>
+        </div>
+    </div>
+    <div class="xs_comments___write">
+        <div class="xs_comments___write___avatar">
+            <!-- <img [src]="[currentUser]" alt="Изображение"> -->
+            <img src="https://static.tildacdn.com/tild3633-6532-4233-a631-363261663462/profile.png" alt="">
+        </div>
+        <div class="xs_comments___write___form">
+            <comment-form submitLabel="Написать"
+                (handleSubmit)="addComment({ text: $event, parentId: null, user: currentUser, caseId: caseId })"></comment-form>
+        </div>
+    </div>
+    <div class="comments-container">
+        <comment class="comment" *ngFor="let comment of mainComments" [comment]="comment" [currentUserId]="currentUser._id"
+            [replies]="getReplies(comment._id)" (setActiveComment)="setActiveComment($event)"
+            [activeComment]="activeComment" (addComment)="addComment($event)"
+            (updateComment)="updateComment({text: $event, _id: comment._id})" (deleteComment)="deleteComment($event)"
+            [caseId]="caseId">
             {{comment.body}}
         </comment>
     </div>

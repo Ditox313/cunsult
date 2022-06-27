@@ -8,11 +8,11 @@ import { User } from 'src/app/shared/other/interfaces';
 export class CommentsService {
   constructor(private httpClient: HttpClient) {}
 
+
+  
   getComments(caseId: string): Observable<CommentInterface[]> {
     return this.httpClient.get<CommentInterface[]>(`/api/comments/${caseId}`);
   }
-
-
 
   createComment(text: string,parentId: string | null = null, user: User, caseId: string): Observable<CommentInterface> {
     const fd = {

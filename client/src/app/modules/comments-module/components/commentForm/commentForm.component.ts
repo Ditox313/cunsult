@@ -30,4 +30,6 @@ export class CommentFormComponent implements OnInit {
     this.handleSubmit.emit(this.form.value.title);
     this.form.reset();
   }
+
+
 }

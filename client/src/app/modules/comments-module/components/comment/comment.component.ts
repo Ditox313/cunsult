@@ -54,12 +54,6 @@ activeCommentType = ActiveCommentTypeEnum;
 constructor( private auth: AuthService) {}
 ngOnInit(): void{
 
-
-  // console.log("Получили", this.replies);
-
-
-  
-
     //Получаем текущего юзера
     this.auth.get_user().subscribe((user)=>{this.currentUser = user});
 
@@ -75,7 +69,6 @@ ngOnInit(): void{
     const timePassed = (Date.now() - new Date(this.comment.date).getTime()) > fiveMinutes;
 
       
-
 
     // Провепяем, можно ли редактировать комментарий
     this.canEdit = this.currentUserId === this.comment.userId && !timePassed;
@@ -116,9 +109,6 @@ isReplying(): boolean {
       this.activeComment.type === 'editing'
     );
   }
-
-
-
 
 
 }
