@@ -9,6 +9,9 @@ export interface User
     password: string
     name?: string
     _id?: string
+    secondName?: string
+    program?: string
+    specialization?: string
 }
 
 

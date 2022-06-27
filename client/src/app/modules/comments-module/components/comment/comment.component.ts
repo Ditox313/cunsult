@@ -20,7 +20,7 @@ replyId: string | null = null;
 @Input() caseId: string | undefined;
 
 
-
+// Текущий пользователь
 currentUser!: User | null
 
 // Свойство для перечисления состояний комментария

@@ -63,8 +63,8 @@
         <div>{{ comment.date | date: 'mediumDate':null:'ru' }}</div>
     </div>
     <div class="xs_comment__information">
-        <span class="xs_comment__information___name">Имя Фамилия</span> /
-        <span>МВА - Маркетинг и продажи (2021)</span>
+        <span class="xs_comment__information___name">{{currentUser.name}} {{currentUser.secondName}}</span> /
+        <span>{{currentUser.program}} - {{currentUser.specialization}}</span>
     </div>
 
     <div class="comment-text" *ngIf="!isEditing()">{{ comment.body }}</div>
