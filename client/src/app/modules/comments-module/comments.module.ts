@@ -5,6 +5,7 @@ import { CommentComponent } from './components/comment/comment.component';
 import { CommentFormComponent } from './components/commentForm/commentForm.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { CommentsService } from './services/comments.service';
+import { LoaderComponent } from '../../shared/other/loader/loader.component';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule],

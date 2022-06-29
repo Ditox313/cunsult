@@ -108,54 +108,5 @@ export class CasesComponent implements OnInit, OnDestroy {
 
 
 
-  // // Получаем триггер для переключения мобильного меню
-  // @ViewChildren('dot_trigger') dot_trigger : QueryList<ElementRef>;
-
-
-  // // Получаем мобильное меню
-  // @ViewChild('dot_area') dot_area : ElementRef;
-
-
-  // // Получаем крестик закрытия мобильного меню
-  // @ViewChildren('dotAreaClose') dotAreaClose : QueryList<ElementRef>;
-
-
-  // // Переключаем мобильное меню
-  // openArea() {
-  //   setTimeout(()=> {
-  //     this.dot_trigger.nativeElement.classList.add('xs_trigger__rotate');
-  //     setTimeout(()=>{
-  //       this.dot_area.nativeElement.classList.add('xs_area_on');
-  //     },300);
-  //   }, 300);
-
-  //   // this.dotAreaClose.nativeElement.classList.add('xs_trigger__rotate');
-    
-  //   // this.dotAreaClose.nativeElement.classList.remove('xs_trigger__rotate');
-  // }
-
-
-
-
-
-
-  
-
-
-
-  // closeArea()
-  // {
-  //   setTimeout(()=> {
-  //     this.dotAreaClose.nativeElement.classList.add('xs_trigger__rotate');
-  //     setTimeout(() => {
-  //       this.dot_area.nativeElement.classList.remove('xs_area_on');
-  //     }, 100);
-  //     this.dotAreaClose.nativeElement.classList.remove('xs_trigger__rotate');
-  //   }, 100);
-
-  //   this.dot_trigger.nativeElement.classList.remove('xs_trigger__rotate');
-    
-
-  // }
 
 }

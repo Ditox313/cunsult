@@ -5,7 +5,6 @@ const errorHandler = require('../Utils/errorHendler');
 
 
 
-
 module.exports.getAll = async function(req, res) {
     try {
 
@@ -15,7 +14,9 @@ module.exports.getAll = async function(req, res) {
             caseId: req.params.id
         }
 
-        const comments = await Comment.find(query)
+        const comments = await Comment.find(query).sort({ _id: -1 })
+            .skip(+req.query.offset) //Отступ для бесконечного скрола на фронтенде. Приводим к числу
+            .limit(+req.query.limit); //Сколько выводить на фронтенде. Приводим к числу
 
         res.status(200).json(comments);
     } catch (e) {

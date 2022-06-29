@@ -6,6 +6,9 @@ import { ActiveCommentInterface } from '../../types/activeComment.interface';
 // import { ActiveCommentInterface } from '../../types/activeComment.interface';
 import { CommentInterface } from '../../types/comment.interface';
 
+// Шаг пагинации
+const STEP = 3
+
 
 @Component({
   selector: 'comments',
@@ -22,6 +25,7 @@ export class CommentsComponent implements OnInit {
   // Список комменатриев
   comments: CommentInterface[] = [];
   mainComments: CommentInterface[] = [];
+  commentsAllPaginate: CommentInterface[] = [];
 
 
   // Активный комментарий
@@ -30,6 +34,12 @@ export class CommentsComponent implements OnInit {
 
   // Аватар для комментария
   commentAvatar = '';
+
+
+  // Параметры для пагинации
+  offset: any = 0
+  limit: any = STEP
+  noMoreComments: Boolean = false
 
 
 
@@ -43,20 +53,44 @@ export class CommentsComponent implements OnInit {
       this.commentAvatar = user.xsAvatar
     });
     
-    
-    // Получаем список комментариев
+    // Получаем комментарии на каждом шаге пагинации
+    this.fetch()
+
+    // Получаем список комментариев для счетчика пагинации
     this.commentsService.getComments(this.caseId).subscribe((comments) => {
-      this.comments = comments
-      this.mainComments =comments.filter((comment) => comment.parentId === null)
+      this.commentsAllPaginate = comments
     });
+
+  }
+
+
+  // Делаем отдельную функцию для пагинации
+  private fetch()
+  {
+    // Отправляем параметры для пагинации
+    const params = {
+      offset: this.offset,
+      limit: this.limit
+    }
+
+    this.commentsService.getComments(this.caseId, params).subscribe((comments) => {
+      this.comments = this.comments.concat(comments)
+      this.mainComments =this.mainComments.concat(comments.filter((comment) => comment.parentId === null))
+
+      if(comments.length < STEP)
+      {
+        this.noMoreComments = true
+      }
+    });
+    
   }
 
 
   // Добавляем комментарий
    addComment({text, parentId, user, caseId}: {text: string; parentId: string | null; user: User, caseId: string}): void {
     this.commentsService.createComment(text, parentId, user, caseId).subscribe((newComment) => {
-        this.comments = [...this.comments, newComment];
-         this.mainComments = [...this.mainComments, newComment].filter((comment) => comment.parentId === null);
+        this.comments = [newComment, ...this.comments];
+        this.mainComments = [newComment,...this.mainComments].filter((comment) => comment.parentId === null);
         this.activeComment = null;
       });
   }
@@ -136,7 +170,13 @@ export class CommentsComponent implements OnInit {
     });
   }
 
-  
 
+  
+  //Загрузить еще 
+  loadmore()
+  {
+    this.offset += STEP
+    this.fetch()
+  }
 
 }

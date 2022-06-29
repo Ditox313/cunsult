@@ -459,3 +459,20 @@ h5 {
     padding-left: 15px;
     border-left: 1px solid #BE1F4F;
 }
+
+.xs_comments__more
+{
+    background: #002E6E;
+    border-radius: 4px;
+    padding: 7px 15px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 97.7%;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 40px;
+}
