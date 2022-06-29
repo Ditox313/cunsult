@@ -55,8 +55,11 @@ constructor( private auth: AuthService) {}
 ngOnInit(): void{
 
     //Получаем текущего юзера
-    this.auth.get_user().subscribe((user)=>{this.currentUser = user});
+    this.auth.get_user().subscribe((user)=>{
+      this.currentUser = user
+    });
 
+    
 
     // Время когда можно отредактировать комментарий
     const fiveMinutes = 300000;

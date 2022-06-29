@@ -53,6 +53,9 @@ export class CaseShowComponent implements OnInit {
     // Получаем текущий кейс
     this.caseServise.getById(this.caseId).subscribe((res)=>{
       this.xsActualCase = res
+
+      console.log('qqq2',res);
+      
       
       if(res.previewSrc)
       {
@@ -64,7 +67,7 @@ export class CaseShowComponent implements OnInit {
       this.caseDate = res.date
       this.orderViews = res.orderViews
 
-      // Настройки Editor
+    // Настройки Editor
     this.editor = new EditorJS( {
       holderId: 'editor-js',
       readOnly: true,

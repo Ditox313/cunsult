@@ -87,6 +87,8 @@ export interface Case
     imageSrc?: any
     user?: any
     caseId?: any
+    otraslSpec?: any
+    functionsNapravlenie?: any
 }
 
 

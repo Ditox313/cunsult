@@ -4,7 +4,6 @@
     font-size: 33px;
     line-height: 125%;
     color: #000000;
-    margin-bottom: 30px;
 }
 
 h1 {
@@ -12,7 +11,6 @@ h1 {
     font-size: 36px;
     line-height: 105%;
     color: #000000;
-    margin-bottom: 40px;
     width: 80%;
 }
 
@@ -27,22 +25,16 @@ h1 {
 }
 
 .xs_show_case__top___date>div:first-child {
-    margin-right: 120px;
+    margin-right: 20px;
 }
 
 .xs_show_case__top___date>div svg {
     margin-right: 10px;
 }
 
-.xs_show_case__top___date {
-    margin-bottom: 20px;
-}
-
 .xs_show_case__top___likes {
     display: flex;
     align-items: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 .xs_show_case__top___likes>div {
@@ -72,6 +64,11 @@ h1 {
     width: 100%;
 }
 
+.xs_show_case___preview
+{
+    margin-bottom: 20px;
+}
+
 .xs_show_case__order {
     display: flex;
     justify-content: space-between;
@@ -84,4 +81,43 @@ h1 {
 
 .xs_show_case__order___actions span {
     cursor: pointer;
+}
+
+.xs_show_case___info
+{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(190,31,79, 0.3);
+    padding: 20px;
+    border-radius: 3px;
+}
+
+.xs_show_case___info > div
+{
+    margin-bottom: 20px;
+}
+
+.xs_show_case___info > div:last-child
+{
+    margin-bottom: 0px;
+}
+
+.xs_show_case___info____otraslSpec
+{
+    font-size: 18px;
+}
+
+.xs_show_case___info____functionsNapravlenie
+{
+    font-size: 18px;
+}
+
+.xs_show_case___info____otraslSpec span:last-child
+{
+    border-bottom: 1px solid #BE1F4F;
+}
+
+.xs_show_case___info____functionsNapravlenie span:last-child
+{
+    border-bottom: 1px solid #BE1F4F;
 }
