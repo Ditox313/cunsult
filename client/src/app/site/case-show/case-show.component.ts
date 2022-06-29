@@ -54,7 +54,6 @@ export class CaseShowComponent implements OnInit {
     this.caseServise.getById(this.caseId).subscribe((res)=>{
       this.xsActualCase = res
 
-      console.log('qqq2',res);
       
       
       if(res.previewSrc)

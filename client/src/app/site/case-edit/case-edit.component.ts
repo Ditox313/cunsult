@@ -41,6 +41,8 @@ export class CaseEditComponent implements OnInit {
     // Инициализируем форму
     this.form = new FormGroup({
       title: new FormControl(null, [Validators.required]),
+      otraslSpec: new FormControl(null, []),
+      functionsNapravlenie: new FormControl(null, []),
     }); 
 
 
@@ -57,6 +59,8 @@ export class CaseEditComponent implements OnInit {
       
       this.form.patchValue({ 
         title: res.title, 
+        otraslSpec: res.otraslSpec,
+        functionsNapravlenie: res.functionsNapravlenie,
       })
 
       if(res.previewSrc)
@@ -164,6 +168,8 @@ export class CaseEditComponent implements OnInit {
         // Формируем объект юзера
         const xscaseUpdate = {
           title: this.form.value.title,
+          otraslSpec: this.form.value.otraslSpec,
+          functionsNapravlenie: this.form.value.functionsNapravlenie,
           content: res,
           caseId: this.caseId,
         }
@@ -174,6 +180,8 @@ export class CaseEditComponent implements OnInit {
         this.caseServise.update(this.caseId, xscaseUpdate, this.xs_preview__file ).subscribe((res)=>{
           this.form.patchValue({ 
             title: res.title, 
+            otraslSpec: res.otraslSpec,
+            functionsNapravlenie: res.functionsNapravlenie,
           })
 
           if(res.previewSrc)

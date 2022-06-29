@@ -60,6 +60,8 @@ export class CaseService
 
       const fd = new FormData(); 
       fd.append('title', xscase.title);
+      fd.append('otraslSpec', xscase.otraslSpec);
+      fd.append('functionsNapravlenie', xscase.functionsNapravlenie);
       fd.append('content',  JSON.stringify(xscase.content) );
       fd.append('caseId', xscase.caseId);
 
