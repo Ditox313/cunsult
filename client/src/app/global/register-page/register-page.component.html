@@ -167,11 +167,23 @@
                     <div class="input-field col s6">
                         <select id="otraslSpec" formControlName="otraslSpec" [ngClass]="{'invalid': form.controls['otraslSpec'].invalid && form.controls['otraslSpec'].touched}">
                             <option value="" disabled selected>Выберите отрасль</option>
+                            <option value="Промышленность">Промышленность</option>
+                            <option value="Банковский сектор">Банковский сектор</option>
+                            <option value="Сельское хозяйство">Сельское хозяйство</option>
+                            <option value="Транспорт">Транспорт</option>
                             <option value="Образование">Образование</option>
-                            <option value="Медицина">Медицина</option>
+                            <option value="Здравоохранение">Здравоохранение</option>
+                            <option value="Социальное обеспечение">Социальное обеспечение</option>
                             <option value="Строительство">Строительство</option>
-                            <option value="Экономика">Экономика</option>
-                            <option value="IT">IT</option>
+                            <option value="Связь">Связь</option>
+                            <option value="Торговля">Торговля</option>
+                            <option value="Общественное питание">Общественное питание</option>
+                            <option value="Логистика">Логистика</option>
+                            <option value="Наука">Наука</option>
+                            <option value="ЖКХ">ЖКХ</option>
+                            <option value="Консалтинг">Консалтинг</option>
+                            <option value="Некоммерческая деятельность">Некоммерческая деятельность</option>
+                            <option value="НаДругоеука">Другое</option>
                         </select>
                     </div>
 
@@ -183,10 +195,20 @@
                     <div class="input-field col s6">
                         <select id="functionsNapravlenie" formControlName="functionsNapravlenie" [ngClass]="{'invalid': form.controls['functionsNapravlenie'].invalid && form.controls['functionsNapravlenie'].touched}">
                             <option value="" disabled selected>Выберите направление:</option>
-                            <option value="HR">HR</option>
-                            <option value="Маркетинг">Медицина</option>
-                            <option value="Строительство">Маркетинг</option>
-                            <option value="Логистика">Логистика</option>
+                            <option value="Стратегическое развитие">Стратегическое развитие</option>
+                            <option value="Управление человеческими ресурсами">Управление человеческими ресурсами</option>
+                            <option value="Маркетинг">Маркетинг</option>
+                            <option value="IT">IT</option>
+                            <option value="Производственный">Производственный</option>
+                            <option value="Операционный">Операционный</option>
+                            <option value="Финансовый">Финансовый</option>
+                            <option value="Инвестиционный">Инвестиционный</option>
+                            <option value="Инновационный">Инновационный</option>
+                            <option value="Управление качеством">Управление качеством</option>
+                            <option value="Антикризисное управление">Антикризисное управление</option>
+                            <option value="Логистика и управление цепями поставок">Логистика и управление цепями поставок</option>
+                            <option value="Внешнеэкономическая деятельность">Внешнеэкономическая деятельность</option>
+                            <option value="Другое">Другое</option>
                         </select>
                     </div>
                 </div>
