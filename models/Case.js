@@ -31,6 +31,20 @@ const caseSchema = new Schema({
     },
 
 
+    otraslSpec: {
+        type: String,
+        required: true,
+        default: '',
+    },
+
+
+    functionsNapravlenie: {
+        type: String,
+        required: true,
+        default: '',
+    },
+
+
     content: {
         type: Object,
         required: true,

@@ -53,6 +53,8 @@ module.exports.create = async function(req, res) {
             order: maxOrder + 1,
             orderLocal: maxOrderLocal + 1,
             title: req.body.title,
+            otraslSpec: req.body.otraslSpec,
+            functionsNapravlenie: req.body.functionsNapravlenie,
             content: JSON.parse(req.body.content),
             user: req.user.id,
             previewSrc: req.file ? req.file.path : '', //Если файл загружен то задаем путь до файла

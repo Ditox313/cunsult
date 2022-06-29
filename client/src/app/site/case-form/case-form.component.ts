@@ -42,6 +42,8 @@ export class CaseFormComponent implements OnInit {
     // Инициализируем форму
     this.form = new FormGroup({
       title: new FormControl(null, [Validators.required]),
+      otraslSpec: new FormControl(null, []),
+      functionsNapravlenie: new FormControl(null, []),
     }); 
 
 
@@ -107,6 +109,9 @@ export class CaseFormComponent implements OnInit {
         // }
       }
     });
+
+
+    MaterialService.updateTextInputs();
   }
 
 
@@ -121,7 +126,12 @@ export class CaseFormComponent implements OnInit {
         const xscase = {
           title: this.form.value.title,
           content: res,
+          otraslSpec: this.form.value.otraslSpec,
+          functionsNapravlenie: this.form.value.functionsNapravlenie,
         } 
+
+        console.log(xscase);
+        
 
         this.caseServise.create(xscase, this.xs_preview__file).subscribe((res)=>{
           MaterialService.toast('Кейс успешно создан')

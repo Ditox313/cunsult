@@ -32,6 +32,8 @@ export class CaseService
       const fd = new FormData(); 
       fd.append('title', xscase.title);
       fd.append('content',  JSON.stringify(xscase.content) );
+      fd.append('otraslSpec', xscase.otraslSpec);
+      fd.append('functionsNapravlenie', xscase.functionsNapravlenie);
 
       
       if(image)
