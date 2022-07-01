@@ -7,7 +7,7 @@ import { ActiveCommentInterface } from '../../types/activeComment.interface';
 import { CommentInterface } from '../../types/comment.interface';
 
 // Шаг пагинации
-const STEP = 3
+const STEP = 20
 
 
 @Component({
