@@ -8,7 +8,10 @@
     margin-bottom: 20px;
     margin-top: -10px;
 }
-
+.xs_add_case
+{
+    margin-bottom: 50px;
+}
 .create_case {
     background: #002E6E;
     border-radius: 4px;

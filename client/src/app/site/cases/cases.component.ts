@@ -7,7 +7,7 @@ import { CaseService } from 'src/app/shared/services/case.service';
 import { MaterialService } from 'src/app/shared/services/material.service';
 import {Message} from '../../shared/other/interfaces'
 import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, mergeMap } from 'rxjs/operators';
 
 // Шаг пагинации
 const STEP = 3
@@ -64,20 +64,28 @@ export class CasesComponent implements OnInit, OnDestroy {
       this.loading = false
       this.cases = this.cases.concat(cases)
 
-      of(this.cases).subscribe((xscases)=> {
-        xscases.forEach(xscase => {
-          this.commentsService.getComments(xscase._id).subscribe((comments) => {
-            console.log(xscase);
-            
-          })
-        })
-        
-        
+
+      // Преобразовываем массив с кейсами и добавляем в каждый кейс колличество комментариев
+      of(this.cases).pipe(
+        map(
+          cases => {
+            cases.forEach(xscase => {
+              this.commentsService.getComments(xscase._id).subscribe(data => {
+                xscase.comNum = data.length
+              })
+            });
+            return cases
+          }
+        )
+      ).subscribe(data => {
+        console.log('После подписки',data);
         
       })
+
     });
+
     
-    
+  
   }
 
 
@@ -125,6 +133,8 @@ export class CasesComponent implements OnInit, OnDestroy {
     
   }
 
+
+  
 
 
 
