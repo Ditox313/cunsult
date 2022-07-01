@@ -58,11 +58,11 @@
 
 
 
-<div class="xs_comment">
+<div class="xs_comment" *ngIf="currentUser">
     <div class="xs_comment__date">
         <div>{{ comment.date | date: 'mediumDate':null:'ru' }}</div>
     </div>
-    <div class="xs_comment__information" *ngIf="currentUser">
+    <div class="xs_comment__information" >
         <span class="xs_comment__information___name">{{currentUser.name}} {{currentUser.secondName}}</span> /
         <span>{{currentUser.program}} - {{currentUser.specialization}}</span>
     </div>

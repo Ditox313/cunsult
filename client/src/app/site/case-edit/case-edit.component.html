@@ -65,6 +65,12 @@
                                 <option value="Некоммерческая деятельность">Некоммерческая деятельность</option>
                                 <option value="Другое">Другое</option>
                             </select>
+
+                            <span class="helper-text red-text" *ngIf="form.controls['otraslSpec'].invalid && form.controls['otraslSpec'].touched">
+                                <p *ngIf="form.controls['otraslSpec'].errors?.required">
+                                    Поле не должно быть пустым
+                                </p>
+                            </span>
                         </div>
                 
                 
@@ -88,6 +94,12 @@
                                 <option value="Внешнеэкономическая деятельность">Внешнеэкономическая деятельность</option>
                                 <option value="Другое">Другое</option>
                             </select>
+                            <span class="helper-text red-text"
+                                *ngIf="form.controls['functionsNapravlenie'].invalid && form.controls['functionsNapravlenie'].touched">
+                                <p *ngIf="form.controls['functionsNapravlenie'].errors?.required">
+                                    Поле не должно быть пустым
+                                </p>
+                            </span>
                         </div>
                     </div>
                 </div>

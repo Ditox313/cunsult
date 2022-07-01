@@ -11,6 +11,7 @@ import { Case, User } from 'src/app/shared/other/interfaces';
 import { CaseService } from 'src/app/shared/services/case.service';
 import { MaterialService } from 'src/app/shared/services/material.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { CommentInterface } from 'src/app/modules/comments-module/types/comment.interface';
 
 @Component({
   selector: 'app-case-show',
@@ -28,6 +29,7 @@ export class CaseShowComponent implements OnInit {
   previewSrc : any= '';  // Переменная для превью аватарки
   orderViews: any //Колличество просмотров
   editor: any;
+  comments_counts: CommentInterface[] = [];
 
 
 
@@ -121,6 +123,13 @@ export class CaseShowComponent implements OnInit {
         MaterialService.toast(error.error.message);
       })
     }
+  }
+
+
+  // Получаем коментарии из модуля комментариев
+  comments_count(e)
+  {
+    this.comments_counts = e
   }
 
 }

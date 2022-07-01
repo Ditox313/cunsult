@@ -1,4 +1,5 @@
 const Comment = require('../models/Comment');
+const Case = require('../models/Case');
 const errorHandler = require('../Utils/errorHendler');
 
 

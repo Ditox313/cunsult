@@ -128,7 +128,7 @@
                         </svg>
                 
                 
-                        <span>892</span>
+                        <span>{{comments_counts.length}}</span>
                     </div>
                 
                 
@@ -184,7 +184,7 @@
             </div>
 
             <div class="xs_case__comments" *ngIf="currentUser">
-                <comments [currentUser]="currentUser._id" [caseId]="caseId"></comments>
+                <comments [currentUser]="currentUser._id" [caseId]="caseId" (commentsCount)="comments_count($event)"></comments>
             </div>
         </main>
     </div>

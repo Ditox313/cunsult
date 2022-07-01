@@ -42,8 +42,8 @@ export class CaseFormComponent implements OnInit {
     // Инициализируем форму
     this.form = new FormGroup({
       title: new FormControl(null, [Validators.required]),
-      otraslSpec: new FormControl(null, []),
-      functionsNapravlenie: new FormControl(null, []),
+      otraslSpec: new FormControl(null, [Validators.required]),
+      functionsNapravlenie: new FormControl(null,[Validators.required]),
     }); 
 
 

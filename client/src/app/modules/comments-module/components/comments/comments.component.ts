@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from 'src/app/shared/other/interfaces';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CommentsService } from '../../services/comments.service';
@@ -14,9 +14,11 @@ const STEP = 3
   selector: 'comments',
   templateUrl: './comments.component.html',
 })
-export class CommentsComponent implements OnInit {
+export class CommentsComponent implements OnInit{
   // Принимаем id текущего кейса из вне 
   @Input() caseId: string | undefined;
+
+  @Output() commentsCount: EventEmitter< CommentInterface[]> = new EventEmitter<CommentInterface[]>()
 
 
   // Принимаем  текущего пользователя из вне
@@ -40,6 +42,7 @@ export class CommentsComponent implements OnInit {
   offset: any = 0
   limit: any = STEP
   noMoreComments: Boolean = false
+  loading: Boolean = false
 
 
 
@@ -47,6 +50,8 @@ export class CommentsComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.loading = true
+    
     // Получаем текущего юзера
     this.auth.get_user().subscribe((user)=>{
       this.currentUser = user
@@ -59,9 +64,12 @@ export class CommentsComponent implements OnInit {
     // Получаем список комментариев для счетчика пагинации
     this.commentsService.getComments(this.caseId).subscribe((comments) => {
       this.commentsAllPaginate = comments
+       this.commentsCount.emit(this.commentsAllPaginate)
     });
 
   }
+
+
 
 
   // Делаем отдельную функцию для пагинации
@@ -81,6 +89,8 @@ export class CommentsComponent implements OnInit {
       {
         this.noMoreComments = true
       }
+
+      this.loading = false
     });
     
   }
@@ -93,6 +103,11 @@ export class CommentsComponent implements OnInit {
         this.mainComments = [newComment,...this.mainComments].filter((comment) => comment.parentId === null);
         this.activeComment = null;
       });
+
+      // Получаем список комментариев для счетчика пагинации
+    this.commentsService.getComments(this.caseId).subscribe((comments) => {
+      this.commentsAllPaginate = comments
+    });
   }
 
 
@@ -131,17 +146,12 @@ export class CommentsComponent implements OnInit {
 
   // Получаем ответы
   getReplies(commentId: string): CommentInterface[] {
-
     const xsRep =  this.comments
       .filter((comment) => comment.parentId === commentId)
       .sort(
         (a, b) =>
           new Date(a.date).getTime() - new Date(b.date).getTime()
       );
-
-      // console.log("Ответы", xsRep);
-      
-
 
       return xsRep
   }
@@ -165,6 +175,11 @@ export class CommentsComponent implements OnInit {
       this.mainComments = this.mainComments.filter(
         (comment) => comment._id !== commentId
       );
+
+       // Получаем список комментариев для счетчика пагинации
+    this.commentsService.getComments(this.caseId).subscribe((comments) => {
+      this.commentsAllPaginate = comments
+    });
 
       
     });

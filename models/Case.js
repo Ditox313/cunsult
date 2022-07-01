@@ -63,6 +63,8 @@ const caseSchema = new Schema({
         required: false,
     },
 
+    
+
     // Создаем поле с ID юзера
     user: {
         ref: 'users', // Аналог внешнего ключа php

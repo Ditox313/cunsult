@@ -89,6 +89,7 @@ export interface Case
     caseId?: any
     otraslSpec?: any
     functionsNapravlenie?: any
+    comNum?: any
 }
 
 

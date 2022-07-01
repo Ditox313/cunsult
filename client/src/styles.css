@@ -476,3 +476,8 @@ h5 {
     display: inline-block;
     margin-top: 40px;
 }
+
+button:disabled
+{
+    opacity: 0.5;
+}

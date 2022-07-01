@@ -20,7 +20,7 @@
                 (handleSubmit)="addComment({ text: $event, parentId: null, user: currentUser, caseId: caseId })"></comment-form>
         </div>
     </div>
-    <div class="comments-container">
+    <div class="comments-container" *ngIf="!loading">
         <comment class="comment" *ngFor="let comment of mainComments" [comment]="comment" [currentUserId]="currentUser._id"
             [replies]="getReplies(comment._id)" (setActiveComment)="setActiveComment($event)"
             [activeComment]="activeComment" (addComment)="addComment($event)"
@@ -32,6 +32,15 @@
         <div class="xs_comments__more" *ngIf="!noMoreComments">
             <span (click)="loadmore()">Загрузить еще комментарии...</span>
         </div>
-
     </div>
+
+
+    <div class="row" *ngIf="loading">
+        <div class="col s12 center">
+            <div class="progress" style="background-color: rgba(0,46,110,0.2);">
+                <div class="indeterminate" style="background-color: #BE1F4F;"></div>
+            </div>
+        </div>
+    </div>
+
 </div>

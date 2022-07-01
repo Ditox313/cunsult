@@ -1,10 +1,13 @@
 import { Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+import { CommentsService } from 'src/app/modules/comments-module/services/comments.service';
 import { Case } from 'src/app/shared/other/interfaces';
 import { CaseService } from 'src/app/shared/services/case.service';
 import { MaterialService } from 'src/app/shared/services/material.service';
 import {Message} from '../../shared/other/interfaces'
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 // Шаг пагинации
 const STEP = 3
@@ -19,19 +22,24 @@ export class CasesComponent implements OnInit, OnDestroy {
   
 
 
-
+ 
   loading: Boolean = false
   cases: Case[] = []
+  casesFinaly: Case[] = []
   offset: any = 0
   limit: any = STEP
   xsSub: Subscription
   noMoreCases: Boolean = false
 
-  constructor(public caseServise: CaseService, private rote: ActivatedRoute, private router: Router) { }
+
+  constructor(public caseServise: CaseService, private rote: ActivatedRoute, private router: Router, private commentsService: CommentsService) { }
 
   ngOnInit(): void {
     this.loading = true
     this.fetch()
+
+
+    
   }
 
   ngOnDestroy(): void {
@@ -55,7 +63,20 @@ export class CasesComponent implements OnInit, OnDestroy {
        
       this.loading = false
       this.cases = this.cases.concat(cases)
+
+      of(this.cases).subscribe((xscases)=> {
+        xscases.forEach(xscase => {
+          this.commentsService.getComments(xscase._id).subscribe((comments) => {
+            console.log(xscase);
+            
+          })
+        })
+        
+        
+        
+      })
     });
+    
     
   }
 
@@ -65,7 +86,6 @@ export class CasesComponent implements OnInit, OnDestroy {
     this.loading = true
     this.offset += STEP
     this.fetch()
-    this.loading = false
   }
 
 
@@ -104,7 +124,6 @@ export class CasesComponent implements OnInit, OnDestroy {
     console.log(el.parentElement.classList.remove('xs_area_on'));
     
   }
-
 
 
 

@@ -98,7 +98,7 @@ isReplying(): boolean {
       this.activeComment._id === this.comment._id &&
       this.activeComment.type === this.activeCommentType.replying
     );
-  }
+}
 
 
 
