@@ -40,9 +40,21 @@ module.exports.create = async function(req, res) {
 
         });
 
-        await comment.save(); //Сохраняем кейс
 
-        res.status(201).json(comment);
+        // Добавляем поле колличества комментариев в кейс
+        const commentsNumber = await Case.find({ _id: req.body.caseId });
+        const maxOrder = commentsNumber[0].commentsCount ? commentsNumber[0].commentsCount : 0;
+        const updated = {commentsCount: maxOrder + 1};
+        const caseUpdated = await Case.findOneAndUpdate({ _id: req.body.caseId }, //Ищем по id
+            { $set: updated }, //Обновлять мы будем body запроса. В req.body находятся данные на которые будем менять старые
+            { new: true } //обновит позицию и верет нам уже обновленную
+        );
+
+        
+
+        await comment.save(); //Сохраняем комментарий
+
+        await res.status(201).json(comment);
 
     } catch (e) {
         errorHandler(res, e);

@@ -481,3 +481,98 @@ button:disabled
 {
     opacity: 0.5;
 }
+
+.cases_home
+{
+    margin-top: 50px;
+}
+
+.cases_home h2
+{
+    font-weight: 400;
+    font-size: 55px;
+    line-height: 97.7%;
+    color: #010304;
+    margin-bottom: 40px;
+}
+
+.cases_home__list
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.cases_home__list .case_item
+{
+    width: 32%;
+    height: 320px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #EBEBEB;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+}
+
+.cases_home__list .case_item h3
+{
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 125%;
+    color: #fff;
+    position: relative;
+}
+
+.cases_home__list  .case_item__info .case_item__info___name
+{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 125%;
+    color: #010304;
+    position: relative;
+    color: #fff;
+}
+
+.cases_home__list  .case_item__info .case_item__programm
+{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 125%;
+    color: #010304;
+    position: relative;
+    color: #fff;
+}
+
+.case_item__wrap
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    left: 0;
+    top: 0;
+    z-index: 0;
+}
+
+.cases_home__btn
+{
+    width: 200px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #BE1F4F;
+    border-radius: 85px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 126.2%;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: all 0.3s;
+    margin-top: 30px;
+}

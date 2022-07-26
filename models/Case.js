@@ -63,6 +63,14 @@ const caseSchema = new Schema({
         required: false,
     },
 
+
+    commentsCount: {
+        type: Number,
+        default: '',
+        required: false,
+    },
+
+
     
 
     // Создаем поле с ID юзера

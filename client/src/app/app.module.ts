@@ -23,6 +23,7 @@ import { CaseFormComponent } from './site/case-form/case-form.component';
 import { CaseEditComponent } from './site/case-edit/case-edit.component';
 import { CaseShowComponent } from './site/case-show/case-show.component';
 import { CommentsModule } from './modules/comments-module/comments.module';
+import { HomeCaseListComponent } from './site/home-case-list/home-case-list.component';
 
 
 registerLocaleData(rulocale, 'ru');
@@ -45,6 +46,7 @@ registerLocaleData(rulocale, 'ru');
     CaseFormComponent,
     CaseEditComponent,
     CaseShowComponent,
+    HomeCaseListComponent,
   ],
   imports: [
     BrowserModule,
