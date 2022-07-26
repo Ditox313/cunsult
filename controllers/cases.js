@@ -27,6 +27,19 @@ module.exports.getAll = async function(req, res) {
 
 
 
+module.exports.getAllCases = async function(req, res) {
+    try {
+        const cases = await Case.find().sort({ _id: -1 })
+           
+        res.status(200).json(cases);
+    } catch (e) {
+        errorHandler(res, e);
+    }
+
+};
+
+
+
 
 module.exports.create = async function(req, res) {
     try {

@@ -59,6 +59,13 @@ export class AuthService
 
 
 
+  getById(id: string): Observable<UserProfile>
+  {
+     return this.http.get<UserProfile>(`api/auth/user/${id}`);
+  }
+
+
+
 
   // Редактируем позицию
   update(user: UserProfile, image?: File): Observable<UserProfile> {

@@ -90,6 +90,12 @@ export interface Case
     otraslSpec?: any
     functionsNapravlenie?: any
     comNum?: any
+    userName?: any
+    userSecondName?: any
+    userLastName?: any
+    userProgram?: any
+    userSpecialization?: any
+    commentsCount?: any
 }
 
 

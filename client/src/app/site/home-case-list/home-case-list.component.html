@@ -3,62 +3,12 @@
         <h2>Кейсы</h2>
 
         <div class="cases_home__list">
-            <a href="#" class="case_item" style="background: url(https://futureinyou.ru/media/news/images/VN_5543_web.jpg) no-repeat center center / cover;">
+            <a href="#" *ngFor="let case of cases$ | async ; let i = index"  class="case_item"  style="background: url('{{case.previewSrc}}') no-repeat center center / cover;">
                 <div class="case_item__wrap"></div>
-                <h3>Как найти директора программы ExEd?</h3>
+                <h3>{{case.title}}</h3>
                 <div class="case_item__info">
-                    <div class="case_item__info___name">Иванов Иван</div>
-                    <div class="case_item__programm"> MBA - Финансы</div>
-                </div>
-            </a>
-
-            <a href="#" class="case_item"
-                style="background: url(https://futureinyou.ru/media/news/images/VN_5543_web.jpg) no-repeat center center / cover;">
-                <div class="case_item__wrap"></div>
-                <h3>Как найти директора программы ExEd?</h3>
-                <div class="case_item__info">
-                    <div class="case_item__info___name">Иванов Иван</div>
-                    <div class="case_item__programm"> MBA - Финансы</div>
-                </div>
-            </a>
-
-            <a href="#" class="case_item"
-                style="background: url(https://futureinyou.ru/media/news/images/VN_5543_web.jpg) no-repeat center center / cover;">
-                <div class="case_item__wrap"></div>
-                <h3>Как найти директора программы ExEd?</h3>
-                <div class="case_item__info">
-                    <div class="case_item__info___name">Иванов Иван</div>
-                    <div class="case_item__programm"> MBA - Финансы</div>
-                </div>
-            </a>
-
-            <a href="#" class="case_item"
-                style="background: url(https://futureinyou.ru/media/news/images/VN_5543_web.jpg) no-repeat center center / cover;">
-                <div class="case_item__wrap"></div>
-                <h3>Как найти директора программы ExEd?</h3>
-                <div class="case_item__info">
-                    <div class="case_item__info___name">Иванов Иван</div>
-                    <div class="case_item__programm"> MBA - Финансы</div>
-                </div>
-            </a>
-
-            <a href="#" class="case_item"
-                style="background: url(https://futureinyou.ru/media/news/images/VN_5543_web.jpg) no-repeat center center / cover;">
-                <div class="case_item__wrap"></div>
-                <h3>Как найти директора программы ExEd?</h3>
-                <div class="case_item__info">
-                    <div class="case_item__info___name">Иванов Иван</div>
-                    <div class="case_item__programm"> MBA - Финансы</div>
-                </div>
-            </a>
-
-            <a href="#" class="case_item"
-                style="background: url(https://futureinyou.ru/media/news/images/VN_5543_web.jpg) no-repeat center center / cover;">
-                <div class="case_item__wrap"></div>
-                <h3>Как найти директора программы ExEd?</h3>
-                <div class="case_item__info">
-                    <div class="case_item__info___name">Иванов Иван</div>
-                    <div class="case_item__programm"> MBA - Финансы</div>
+                    <div class="case_item__info___name">{{case.userName}} {{case.userSecondName}}</div>
+                    <div class="case_item__programm"> {{case.userProgram}}-{{case.userSpecialization}}</div>
                 </div>
             </a>
         </div>

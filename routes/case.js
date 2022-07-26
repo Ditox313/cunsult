@@ -9,6 +9,7 @@ const controller = require('../controllers/cases.js');
 
 // Роут на getAll
 router.get('/', passport.authenticate('jwt', { session: false }), controller.getAll);
+router.get('/all', passport.authenticate('jwt', { session: false }), controller.getAllCases);
 
 
 

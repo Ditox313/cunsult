@@ -22,6 +22,10 @@ router.post('/register', controller.register);
 router.get('/user', passport.authenticate('jwt', { session: false }), controller.get_user);
 
 
+// get by id
+router.get('/user/:id', passport.authenticate('jwt', { session: false }), controller.get_by_id);
+
+
 // Роут на update
 router.patch('/update', passport.authenticate('jwt', { session: false }), upload.single('xsAvatar'), controller.update);
 

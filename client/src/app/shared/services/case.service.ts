@@ -24,6 +24,11 @@ export class CaseService
        });
     }
 
+    get_all_cases(): Observable<Case []>
+    {
+       return this.http.get<Case []>('/api/cases/all');
+    }
+
 
    
 
