@@ -23,10 +23,10 @@ import { CaseFormComponent } from './site/case-form/case-form.component';
 import { CaseEditComponent } from './site/case-edit/case-edit.component';
 import { CaseShowComponent } from './site/case-show/case-show.component';
 import { CommentsModule } from './modules/comments-module/comments.module';
-import { HomeCaseListComponent } from './site/home-case-list/home-case-list.component';
 import { CaseShowPublicComponent } from './global/case-show-public/case-show-public.component';
 import { PageLayoutComponent } from './shared/layouts/page-layout/page-layout.component';
 import { HeaderPageComponent } from './global/header-page/header-page.component';
+import { HomeCasesListComponent } from './global/home-cases-list/home-cases-list.component';
 
 
 registerLocaleData(rulocale, 'ru');
@@ -49,10 +49,10 @@ registerLocaleData(rulocale, 'ru');
     CaseFormComponent,
     CaseEditComponent,
     CaseShowComponent,
-    HomeCaseListComponent,
     CaseShowPublicComponent,
     PageLayoutComponent,
     HeaderPageComponent,
+    HomeCasesListComponent,
   ],
   imports: [
     BrowserModule,
