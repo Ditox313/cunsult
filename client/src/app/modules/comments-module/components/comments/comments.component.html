@@ -1,15 +1,15 @@
 
 <div class="xs_comments">
     <div class="xs_comments__info">
-        <div class="xs_comments__count">
+        <div class="xs_comments__count"  *ngIf="activeCase">
             <span>Комментарии:</span> 
-            <span>{{commentsAllPaginate.length}}</span>
+            <span>{{activeCase.commentsCount}}</span>
         </div>
         
-        <div class="xs_comments__filter">
+        <!-- <div class="xs_comments__filter">
             <a href="#" class="xs_comments__filter___active">Популярные</a>
             <a href="#">Смотреть все</a>
-        </div>
+        </div> -->
     </div>
     <div class="xs_comments___write">
         <div class="xs_comments___write___avatar">
@@ -24,7 +24,7 @@
         <comment class="comment" *ngFor="let comment of mainComments" [comment]="comment" [currentUserId]="currentUser._id"
             [replies]="getReplies(comment._id)" (setActiveComment)="setActiveComment($event)"
             [activeComment]="activeComment" (addComment)="addComment($event)"
-            (updateComment)="updateComment({text: $event, _id: comment._id})" (deleteComment)="deleteComment($event)"
+            (updateComment)="updateComment({text: $event, _id: comment._id})" (deleteComment)="deleteComment($event,comment.caseId)"
             [caseId]="caseId">
             {{comment.body}}
         </comment>

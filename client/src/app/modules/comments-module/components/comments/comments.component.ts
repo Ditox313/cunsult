@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { User } from 'src/app/shared/other/interfaces';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { CaseService } from 'src/app/shared/services/case.service';
 import { CommentsService } from '../../services/comments.service';
 import { ActiveCommentInterface } from '../../types/activeComment.interface';
 // import { ActiveCommentInterface } from '../../types/activeComment.interface';
@@ -14,12 +16,13 @@ const STEP = 20
   selector: 'comments',
   templateUrl: './comments.component.html',
 })
-export class CommentsComponent implements OnInit{
-  // Принимаем id текущего кейса из вне 
+export class CommentsComponent implements OnInit {
+  // Принимаем id текущего кейса из вне
   @Input() caseId: string | undefined;
 
-  @Output() commentsCount: EventEmitter< CommentInterface[]> = new EventEmitter<CommentInterface[]>()
-
+  @Output() commentsCount: EventEmitter<CommentInterface[]> = new EventEmitter<
+    CommentInterface[]
+  >();
 
   // Принимаем  текущего пользователя из вне
   @Input() currentUser: User;
@@ -29,98 +32,116 @@ export class CommentsComponent implements OnInit{
   mainComments: CommentInterface[] = [];
   commentsAllPaginate: CommentInterface[] = [];
 
-
   // Активный комментарий
   activeComment: ActiveCommentInterface | null = null;
-
 
   // Аватар для комментария
   commentAvatar = '';
 
+  // Текущий кейс
+  activeCase!: any;
 
   // Параметры для пагинации
-  offset: any = 0
-  limit: any = STEP
-  noMoreComments: Boolean = false
-  loading: Boolean = false
+  offset: any = 0;
+  limit: any = STEP;
+  noMoreComments: Boolean = false;
+  loading: Boolean = false;
 
-
-
-  constructor(private commentsService: CommentsService, private auth: AuthService) {}
+  constructor(
+    private commentsService: CommentsService,
+    private auth: AuthService,
+    private caseServise: CaseService
+  ) {}
 
   ngOnInit(): void {
+    this.loading = true;
 
-    this.loading = true
-    
-    // Получаем текущего юзера
-    this.auth.get_user().subscribe((user)=>{
-      this.currentUser = user
-      this.commentAvatar = user.xsAvatar
+    // Получить текущйи кейс
+    this.caseServise.getById(this.caseId).subscribe((xscase) => {
+      this.activeCase = xscase;
+      this.commentsCount.emit(this.activeCase.commentsCount);
     });
-    
+
+    // Получаем текущего юзера
+    this.auth.get_user().subscribe((user) => {
+      this.currentUser = user;
+      this.commentAvatar = user.xsAvatar;
+    });
+
     // Получаем комментарии на каждом шаге пагинации
-    this.fetch()
+    this.fetch();
 
     // Получаем список комментариев для счетчика пагинации
     this.commentsService.getComments(this.caseId).subscribe((comments) => {
       this.commentsAllPaginate = comments
-       this.commentsCount.emit(this.commentsAllPaginate)
+      //  this.commentsCount.emit(this.commentsAllPaginate)
     });
-
   }
 
-
-
-
   // Делаем отдельную функцию для пагинации
-  private fetch()
-  {
+  private fetch() {
     // Отправляем параметры для пагинации
     const params = {
       offset: this.offset,
-      limit: this.limit
-    }
+      limit: this.limit,
+    };
 
-    this.commentsService.getComments(this.caseId, params).subscribe((comments) => {
-      this.comments = this.comments.concat(comments)
-      this.mainComments =this.mainComments.concat(comments.filter((comment) => comment.parentId === null))
+    this.commentsService
+      .getComments(this.caseId, params)
+      .subscribe((comments) => {
+        this.comments = this.comments.concat(comments);
+        this.mainComments = this.mainComments.concat(
+          comments.filter((comment) => comment.parentId === null)
+        );
 
-      if(comments.length < STEP)
-      {
-        this.noMoreComments = true
-      }
+        if (comments.length < STEP) {
+          this.noMoreComments = true;
+        }
 
-      this.loading = false
-    });
-    
+        this.loading = false;
+      });
+
   }
 
-
   // Добавляем комментарий
-   addComment({text, parentId, user, caseId}: {text: string; parentId: string | null; user: User, caseId: string}): void {
-    this.commentsService.createComment(text, parentId, user, caseId).subscribe((newComment) => {
+  addComment({
+    text,
+    parentId,
+    user,
+    caseId,
+  }: {
+    text: string;
+    parentId: string | null;
+    user: User;
+    caseId: string;
+  }): void {
+    this.commentsService
+      .createComment(text, parentId, user, caseId).pipe(
+        map(data => {
+          // Получить текущйи кейс
+          this.caseServise.getById(this.caseId).subscribe((xscase) => {
+            this.activeCase = xscase;
+            this.commentsCount.emit(this.activeCase.commentsCount);
+          });
+          return data;
+        })
+      )
+      .subscribe((newComment) => {
         this.comments = [newComment, ...this.comments];
-        this.mainComments = [newComment,...this.mainComments].filter((comment) => comment.parentId === null);
+        this.mainComments = [newComment, ...this.mainComments].filter(
+          (comment) => comment.parentId === null
+        );
         this.activeComment = null;
       });
 
-      // Получаем список комментариев для счетчика пагинации
-    this.commentsService.getComments(this.caseId).subscribe((comments) => {
-      this.commentsAllPaginate = comments
-    });
+
   }
 
-
-    // Обновление комментария
-    updateComment({text}: {text: any; commentId: string;}): void {
-
-    this.commentsService.updateComment(text.comment, text.text).subscribe((updatedComment) => {
-        // this.comments = this.comments.map((comment) => {
-        //   if (comment._id === text.comment) {
-        //     return updatedComment;
-        //   }
-
-
+  // Обновление комментария
+  updateComment({ text }: { text: any; commentId: string }): void {
+    this.commentsService
+      .updateComment(text.comment, text.text)
+      .subscribe((updatedComment) => {
         this.mainComments = this.mainComments.map((comment) => {
           if (comment._id === text.comment) {
             return updatedComment;
@@ -141,33 +162,23 @@ export class CommentsComponent implements OnInit{
       });
   }
 
-
-
-
   // Получаем ответы
   getReplies(commentId: string): CommentInterface[] {
-    const xsRep =  this.comments
+    const xsRep = this.comments
       .filter((comment) => comment.parentId === commentId)
-      .sort(
-        (a, b) =>
-          new Date(a.date).getTime() - new Date(b.date).getTime()
-      );
+      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-      return xsRep
+    return xsRep;
   }
-
 
   // Устанавливаем активный комментарий
   setActiveComment(activeComment: ActiveCommentInterface | null): void {
     this.activeComment = activeComment;
   }
 
-
-
-
   // Удаляем комментарий
-  deleteComment(commentId: string): void {
-    this.commentsService.deleteComment(commentId).subscribe(() => {
+  deleteComment(commentId: string, caseId: any): void {
+    this.commentsService.deleteComment(commentId, caseId).subscribe(() => {
       this.comments = this.comments.filter(
         (comment) => comment._id !== commentId
       );
@@ -176,22 +187,17 @@ export class CommentsComponent implements OnInit{
         (comment) => comment._id !== commentId
       );
 
-       // Получаем список комментариев для счетчика пагинации
-    this.commentsService.getComments(this.caseId).subscribe((comments) => {
-      this.commentsAllPaginate = comments
-    });
-
-      
+      // Получить текущйи кейс
+      this.caseServise.getById(this.caseId).subscribe((xscase) => {
+        this.activeCase = xscase;
+        this.commentsCount.emit(this.activeCase.commentsCount);
+      });
     });
   }
 
-
-  
-  //Загрузить еще 
-  loadmore()
-  {
-    this.offset += STEP
-    this.fetch()
+  //Загрузить еще
+  loadmore() {
+    this.offset += STEP;
+    this.fetch();
   }
-
 }

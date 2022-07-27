@@ -90,9 +90,26 @@ module.exports.update = async function(req, res) {
 // Контроллер для remove(Удалить категорию по id)
 module.exports.remove = async function(req, res) {
     try {
+
+        const activeComment = await Comment.find({ _id: req.params.id })
+
+
+
+        // Изменяем колличество комменатриев в кейсе
+        const commentsNumber = await Case.find({ _id: activeComment[0].caseId});
+        const maxOrder = commentsNumber[0].commentsCount ? commentsNumber[0].commentsCount : 0;
+        const updated = {commentsCount: maxOrder - 1};
+
+        const caseUpdated = await Case.findOneAndUpdate({ _id: activeComment[0].caseId }, //Ищем по id
+            { $set: updated }, //Обновлять мы будем body запроса. В req.body находятся данные на которые будем менять старые
+            { new: true } //обновит позицию и верет нам уже обновленную
+        );
+
         await Comment.remove({
-            _id: req.params.id //Удаляем категорию по id
+            _id: req.params.id 
         });
+
+
 
 
         // Возвращаем результат

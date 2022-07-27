@@ -41,9 +41,7 @@ export class HomeCaseListComponent implements OnInit {
             
           // });
           cases.sort(function(a, b){
-            console.log(a.commentsCount - b.commentsCount);
-            
-              return a.commentsCount - b.commentsCount  ;
+              return b.commentsCount - a.commentsCount  ;
           });
 
           

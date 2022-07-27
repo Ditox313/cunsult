@@ -25,12 +25,12 @@ export class CommentsService {
 
   createComment(text: string,parentId: string | null = null, user: User, caseId: string): Observable<CommentInterface> {
     const fd = {
-        body: text,
-        username:user.name,
-        parentId: parentId,
-        caseId: caseId,
-        userId: user._id,
-      }
+      body: text,
+      username: user.name,
+      parentId: parentId,
+      caseId: caseId,
+      userId: user._id,
+    };
       return this.httpClient.post<CommentInterface>('api/comments/',fd);
   }
 
@@ -39,7 +39,9 @@ export class CommentsService {
     );
   }
 
-  deleteComment(id: string): Observable<{}> {
+  deleteComment(id: string, caseId: string): Observable<{}> {
     return this.httpClient.delete(`/api/comments/${id}`);
   }
 }
+
+

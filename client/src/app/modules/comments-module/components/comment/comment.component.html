@@ -1,70 +1,12 @@
-<!-- <div class="comment">
-    <div class="comment-image-container">
-        <img src="/assets/user-icon.png" />
-    </div>
-
-    <div class="comment-right-part">
-        <div class="comment-content">
-            <div class="comment-author">{{ comment.username }}</div>
-            <div>{{ comment.date | date: 'mediumDate':null:'ru' }}</div>
-        </div>
-    </div>
-    <div class="comment-text" *ngIf="!isEditing()">{{ comment.body }}</div>
-
-    <comment-form *ngIf="isEditing()" 
-    submitLabel="Update" 
-    [hasCancelButton]="true" 
-    [initialText]="comment.body" 
-    (handleSubmit)="updateComment.emit({  text: $event, comment: comment._id})" 
-    (handleCancel)="setActiveComment.emit(null)">
-    </comment-form>
-
-    <div class="comment_actions">
-        <div class="comment-action-reply " *ngIf="canReply" (click)="
-            setActiveComment.emit({
-                _id: comment._id,
-                type: activeCommentType.replying
-            })">Ответить
-        </div>
-
-
-        <div *ngIf="canEdit" class="comment-action" (click)="
-                  setActiveComment.emit({
-                    _id: comment._id,
-                    type: activeCommentType.editing
-                  })
-                ">
-            Изменить
-        </div>
-
-
-        <div *ngIf="canDelete" class="comment-action" (click)="deleteComment.emit(comment._id)">
-            Удалить
-        </div>
-    </div>
-
-    <comment-form *ngIf="isReplying()"
-     submitLabel="Reply" 
-     (handleSubmit)="addComment.emit({ text: $event, parentId: replyId, user: currentUser, caseId: caseId })">
-    </comment-form>
-
-    <div class="replies" *ngIf="replies.length > 0">
-        <comment *ngFor="let reply of replies " [comment]="reply" (setActiveComment)="setActiveComment.emit($event)" [activeComment]="activeComment" (addComment)="addComment.emit($event)" [parentId]="comment._id" [replies]="[]" (updateComment)="updateComment.emit($event)"
-            (deleteComment)="deleteComment.emit($event)" [currentUserId]="currentUserId">
-        </comment>
-    </div>
-</div> -->
-
-
 
 
 <div class="xs_comment" *ngIf="currentUser">
     <div class="xs_comment__date">
         <div>{{ comment.date | date: 'mediumDate':null:'ru' }}</div>
     </div>
-    <div class="xs_comment__information" >
-        <span class="xs_comment__information___name">{{currentUser.name}} {{currentUser.secondName}}</span> /
-        <span>{{currentUser.program}} - {{currentUser.specialization}}</span>
+    <div class="xs_comment__information" *ngIf="currentUserComment">
+        <span class="xs_comment__information___name">{{currentUserComment.name}} {{currentUserComment.secondName}}</span> /
+        <span>{{currentUserComment.program}} - {{currentUserComment.specialization}}</span>
     </div>
 
     <div class="comment-text" *ngIf="!isEditing()">{{ comment.body }}</div>
