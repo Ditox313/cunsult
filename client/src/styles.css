@@ -577,3 +577,29 @@ button:disabled
     transition: all 0.3s;
     margin-top: 30px;
 }
+
+.page_layout
+{
+    position: relative;
+}
+
+.page_layout___wrap
+{
+    position: relative;
+}
+
+
+.page_layout_fix_left
+{
+    position: absolute;
+    left: 0px;
+    top: 0;
+}
+
+
+.page_layout_fix_right
+{
+    position: absolute;
+    top: 0;
+    right: 0px;
+}

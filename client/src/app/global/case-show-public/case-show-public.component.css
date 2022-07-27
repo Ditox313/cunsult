@@ -1,0 +1,123 @@
+.xs_show_case .xs_show_case__order {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 33px;
+    line-height: 125%;
+    color: #000000;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 105%;
+    color: #000000;
+    width: 80%;
+}
+
+.xs_show_case__top___date {
+    display: flex;
+    align-items: center;
+}
+
+.xs_show_case__top___date>div {
+    display: flex;
+    align-items: center;
+}
+
+.xs_show_case__top___date>div:first-child {
+    margin-right: 20px;
+}
+
+.xs_show_case__top___date>div svg {
+    margin-right: 10px;
+}
+
+.xs_show_case__top___likes {
+    display: flex;
+    align-items: center;
+}
+
+.xs_show_case__top___likes>div {
+    display: flex;
+    align-items: center;
+    margin-right: 32px;
+    cursor: pointer;
+}
+
+.xs_show_case__top___likes>div:last-child {
+    margin-right: 0px;
+}
+
+.xs_show_case__top___likes>div svg {
+    margin-right: 5px;
+}
+
+.codex-editor__redactor {
+    padding-bottom: 0 !important;
+}
+
+.codex-editor__redactor {
+    padding-bottom: 20px !important;
+}
+
+.xs_show_case___preview img {
+    width: 100%;
+}
+
+.xs_show_case___preview
+{
+    margin-bottom: 20px;
+}
+
+.xs_show_case__order {
+    display: flex;
+    justify-content: space-between;
+}
+
+.xs_show_case__order___actions a {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.xs_show_case__order___actions span {
+    cursor: pointer;
+}
+
+.xs_show_case___info
+{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(190,31,79, 0.3);
+    padding: 20px;
+    border-radius: 3px;
+}
+
+.xs_show_case___info > div
+{
+    margin-bottom: 20px;
+}
+
+.xs_show_case___info > div:last-child
+{
+    margin-bottom: 0px;
+}
+
+.xs_show_case___info____otraslSpec
+{
+    font-size: 18px;
+}
+
+.xs_show_case___info____functionsNapravlenie
+{
+    font-size: 18px;
+}
+
+.xs_show_case___info____otraslSpec span:last-child
+{
+    border-bottom: 1px solid #BE1F4F;
+}
+
+.xs_show_case___info____functionsNapravlenie span:last-child
+{
+    border-bottom: 1px solid #BE1F4F;
+}

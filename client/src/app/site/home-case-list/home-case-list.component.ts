@@ -36,9 +36,17 @@ export class HomeCaseListComponent implements OnInit {
         )
       ).pipe(
         map(cases => {
+          // cases.forEach(element => {
+          //   console.log(element.commentsCount);
+            
+          // });
           cases.sort(function(a, b){
-              return b.commentsCount - a.commentsCount  ;
+            console.log(a.commentsCount - b.commentsCount);
+            
+              return a.commentsCount - b.commentsCount  ;
           });
+
+          
 
           return cases.slice(0, 6)
         })
