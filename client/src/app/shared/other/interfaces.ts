@@ -69,6 +69,7 @@ export interface UserProfile
     year? : string
     city? : string
     date? : Date
+    _id? : any
 }
 
 

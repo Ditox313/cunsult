@@ -323,7 +323,10 @@
                                     stroke="#9B9B9B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
 
-                            <span>1 проект</span>
+                            <div *ngIf="userCases">
+                                <span>{{userCases.length}} проект(ов)</span> 
+                            </div>
+                            
                         </div>
 
                         <div>

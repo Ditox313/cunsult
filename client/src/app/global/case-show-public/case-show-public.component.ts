@@ -12,6 +12,7 @@ import { CaseService } from 'src/app/shared/services/case.service';
 import { MaterialService } from 'src/app/shared/services/material.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CommentInterface } from 'src/app/modules/comments-module/types/comment.interface';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-case-show-public',
@@ -20,6 +21,8 @@ import { CommentInterface } from 'src/app/modules/comments-module/types/comment.
 })
 export class CaseShowPublicComponent implements OnInit {
   currentUser: any;
+  currentUserCase: any;
+  currentUserCases: Case[] = [];
   caseId: string; //Для хранения id кейса
   xsActualCase: Case; //Текущий кейс, который будем редактировать
   cases: Case[] = []; //Список всех кейсов
@@ -53,44 +56,68 @@ export class CaseShowPublicComponent implements OnInit {
     this.caseServise.addShowCase(this.caseId).subscribe((res) => {});
 
     // Получаем текущий кейс
-    this.caseServise.getById(this.caseId).subscribe((res) => {
-      this.xsActualCase = res;
+    this.caseServise
+      .getById(this.caseId)
+      .pipe(
+        map((data) => {
+          // // Получаем юзера текущего кейса
+          this.auth
+            .getById(data.user)
+            .pipe(
+              map((user) => {
+                this.caseServise
+                  .get_all_cases_by_id(user._id)
+                  .subscribe((cases) => {
+                    this.currentUserCases = cases;
+                  });
 
-      if (res.previewSrc) {
-        this.previewSrc = res.previewSrc;
-      }
+                return user;
+              })
+            )
+            .subscribe((user) => {
+              this.currentUserCase = user;
+            });
+          return data;
+        })
+      )
+      .subscribe((res) => {
+        this.xsActualCase = res;
 
-      this.caseOrder = res.order;
-      this.caseTitle = res.title;
-      this.caseDate = res.date;
-      this.orderViews = res.orderViews;
+        if (res.previewSrc) {
+          this.previewSrc = res.previewSrc;
+        }
 
-      // Настройки Editor
-      this.editor = new EditorJS({
-        holderId: 'editor-js',
-        readOnly: true,
-        tools: {
-          header: {
-            class: Header,
-            inlineToolbar: ['link', 'bold'],
-          },
-          list: {
-            class: List,
-            inlineToolbar: true,
-            config: {
-              defaultStyle: 'unordered',
+        this.caseOrder = res.order;
+        this.caseTitle = res.title;
+        this.caseDate = res.date;
+        this.orderViews = res.orderViews;
+
+        // Настройки Editor
+        this.editor = new EditorJS({
+          holderId: 'editor-js',
+          readOnly: true,
+          tools: {
+            header: {
+              class: Header,
+              inlineToolbar: ['link', 'bold'],
             },
+            list: {
+              class: List,
+              inlineToolbar: true,
+              config: {
+                defaultStyle: 'unordered',
+              },
+            },
+            marker: {
+              class: Marker,
+              shortcut: 'CMD+SHIFT+M',
+            },
+            table: Table,
+            image: SimpleImage,
           },
-          marker: {
-            class: Marker,
-            shortcut: 'CMD+SHIFT+M',
-          },
-          table: Table,
-          image: SimpleImage,
-        },
-        data: res.content,
+          data: res.content,
+        });
       });
-    });
 
     // Получаем список всех кейсов для удаления
     this.caseServise.fetch().subscribe((cases) => {

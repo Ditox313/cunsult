@@ -7,17 +7,12 @@
                 </h1>
             </div>
 
-            <div class="xs_show_case___info">
-                <div class="xs_show_case___info____otraslSpec" *ngIf="xsActualCase">
-                    <span>Отрасль профессиональной специализации: </span>
-                    <span>{{xsActualCase.otraslSpec}}</span>
-                </div>
+            <div class="xs_show_case___preview">
+                <img [src]="previewSrc" alt="Изображение" *ngIf="previewSrc !==''">
+            </div>
 
-                <div class="xs_show_case___info____functionsNapravlenie" *ngIf="xsActualCase">
-                    <span>Функциональное направление: </span>
-                    <span>{{xsActualCase.functionsNapravlenie}}</span>
-                </div>
 
+            <div class="xs_show_case___likesbox">
                 <div class="xs_show_case__top___date">
                     <div>
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -97,7 +92,7 @@
                         </svg>
 
 
-                        <span >{{comments_counts}}</span>
+                        <span>{{comments_counts}}</span>
                     </div>
 
 
@@ -142,13 +137,86 @@
                 </div>
             </div>
 
-            <div class="xs_show_case___preview">
-                <img [src]="previewSrc" alt="Изображение" *ngIf="previewSrc !==''">
-            </div>
-
             <div class="xs_show_case___content">
-                <div class="row">
-                    <div id="editor-js"></div>
+                <div class="xs_show_case___content____item xs_show_case___content____item____1">
+                    <div class="row">
+                        <div id="editor-js"></div>
+                    </div>
+                </div>
+                <div class="xs_show_case___content____item xs_show_case___content____item____2">
+                    <div class="xs_show_case___content___sidebar">
+                        <div class="xs_show_case___author">
+                            <h3>Автор кейса</h3>
+
+                            <div class="xs_show_case___author___info">
+                                <div class="xs_show_case___author___info___avatar">
+                                    <img src="uploads\avatars\27062022-180428_46-01062022-200316_75-15052022-212637_16-youtube-avatar-anime-48.jpg"
+                                        alt="Изображене">
+                                    <div *ngIf="currentUserCase">
+                                        <span>{{currentUserCase.name}}</span><br>
+                                        <span>{{currentUserCase.secondName}}</span>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="xs_show_case___author___info____program" *ngIf="currentUserCase">{{currentUserCase.program}} - {{currentUserCase.specialization}}</div>
+
+                                <div class="xs_show_case___author___info___projects">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.81795 17.3033C7.75729 20.4853 3.51465 20.4853 3.51465 20.4853C3.51465 20.4853 3.51465 16.2427 6.69663 15.182"
+                                            stroke="#BE1F4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M18.3639 9.87864L12 16.2426L7.75732 12L14.1213 5.636C16.531 3.22623 18.9408 3.24974 19.9685 3.40307C20.1267 3.42666 20.2732 3.50045 20.3863 3.61358C20.4995 3.7267 20.5733 3.87318 20.5969 4.03141C20.7502 5.05911 20.7737 7.46887 18.3639 9.87864Z"
+                                            stroke="#9B9B9B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M17.3033 10.9393V16.9926C17.3033 17.0911 17.2839 17.1887 17.2462 17.2796C17.2085 17.3706 17.1533 17.4533 17.0836 17.523L14.0516 20.555C13.9556 20.651 13.8354 20.7191 13.7037 20.7521C13.572 20.7852 13.4338 20.7818 13.3039 20.7425C13.174 20.7032 13.0572 20.6293 12.9659 20.5288C12.8747 20.4283 12.8124 20.3049 12.7858 20.1718L12 16.2426"
+                                            stroke="#9B9B9B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M13.0604 6.69666H7.00714C6.90865 6.69666 6.81112 6.71605 6.72013 6.75375C6.62913 6.79144 6.54645 6.84668 6.47681 6.91632L3.44477 9.94837C3.34878 10.0444 3.28064 10.1646 3.24762 10.2963C3.2146 10.4279 3.21794 10.5661 3.25728 10.696C3.29662 10.826 3.37048 10.9428 3.47099 11.034C3.57151 11.1253 3.6949 11.1875 3.82801 11.2141L7.75714 12"
+                                            stroke="#9B9B9B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                
+                                    <div *ngIf="currentUserCases">
+                                        <span>{{currentUserCases.length}} </span> проект(ов)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="xs_show_case___info">
+                            <h3>Статистика кейса</h3>
+                            <div class="xs_show_case___info____otraslSpec" *ngIf="xsActualCase">
+                                <span>Отрасль: </span>
+                                <span>{{xsActualCase.otraslSpec}}</span>
+                            </div>
+
+                            <div class="xs_show_case___info____functionsNapravlenie" *ngIf="xsActualCase">
+                                <span>Направление: </span>
+                                <span>{{xsActualCase.functionsNapravlenie}}</span>
+                            </div>
+
+
+                            <div class="xs_show_case___time">
+                                Осталось на решение <span>22 </span> дня
+                            </div>
+
+                            <div class="xs_show_case___dop___thanks">
+                                <h4>Отдельное спасибо:</h4>
+
+                                <div>
+                                    Иван Иванов
+                                </div>
+
+                                <div>
+                                    Иван Иванов
+                                </div>
+
+                                <div>
+                                    Иван Иванов
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

@@ -10,7 +10,7 @@ const controller = require('../controllers/cases.js');
 // Роут на getAll
 router.get('/', passport.authenticate('jwt', { session: false }), controller.getAll);
 router.get('/all', passport.authenticate('jwt', { session: false }), controller.getAllCases);
-
+router.get('/all/:id', passport.authenticate('jwt', { session: false }), controller.getAllCasesById);
 
 
 // Роут на create с загрузкой картинки

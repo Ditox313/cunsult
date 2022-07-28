@@ -41,6 +41,21 @@ module.exports.getAllCases = async function(req, res) {
 
 
 
+
+module.exports.getAllCasesById = async function(req, res) {
+    try {
+        const cases = await Case.find({user: req.params.id}).sort({ _id: -1 })
+           
+        res.status(200).json(cases);
+    } catch (e) {
+        errorHandler(res, e);
+    }
+
+};
+
+
+
+
 module.exports.create = async function(req, res) {
     try {
         // Ищем номер последнего заказа глобального
