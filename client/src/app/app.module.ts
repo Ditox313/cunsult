@@ -27,6 +27,7 @@ import { CaseShowPublicComponent } from './global/case-show-public/case-show-pub
 import { PageLayoutComponent } from './shared/layouts/page-layout/page-layout.component';
 import { HeaderPageComponent } from './global/header-page/header-page.component';
 import { HomeCasesListComponent } from './global/home-cases-list/home-cases-list.component';
+import { LikesModule } from './modules/likes/likes.module';
 
 
 registerLocaleData(rulocale, 'ru');
@@ -60,7 +61,8 @@ registerLocaleData(rulocale, 'ru');
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CommentsModule
+    CommentsModule,
+    LikesModule
   ],
   providers: [
     {

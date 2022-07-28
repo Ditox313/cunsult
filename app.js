@@ -2,6 +2,7 @@ const express = require('express');
 const authRoutes = require('./routes/auth.js');
 const caseRoutes = require('./routes/case.js');
 const commentRoutes = require('./routes/comment.js');
+const likesRoutes = require('./routes/likes.js');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -58,6 +59,10 @@ app.use('/api/cases', caseRoutes);
 
 // Регистрируем роут comment
 app.use('/api/comments', commentRoutes);
+
+
+// Регистрируем роут likes
+app.use('/api/likes', likesRoutes);
 
 
 

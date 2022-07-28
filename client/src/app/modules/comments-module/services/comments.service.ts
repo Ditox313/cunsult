@@ -5,6 +5,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { User } from 'src/app/shared/other/interfaces';
 
 @Injectable()
+
 export class CommentsService {
   constructor(private httpClient: HttpClient) {}
 

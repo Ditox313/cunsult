@@ -71,6 +71,17 @@ const caseSchema = new Schema({
     },
 
 
+    likes: {
+        type: Array,
+        required: false,
+    },
+
+    disLikes: {
+        type: Array,
+        required: false,
+    },
+
+
     
 
     // Создаем поле с ID юзера
