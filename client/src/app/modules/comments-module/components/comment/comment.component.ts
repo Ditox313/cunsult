@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from 'src/app/shared/other/interfaces';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ActiveCommentInterface } from '../../types/activeComment.interface';
@@ -14,6 +14,7 @@ export class CommentComponent implements OnInit {
   canEdit: boolean = false;
   canDelete: boolean = false;
   replyId: string | null = null;
+
 
   // Принимаем id текущего кейса из вне
   @Input() caseId: string | undefined;
@@ -90,6 +91,8 @@ export class CommentComponent implements OnInit {
     this.replyId = this.parentId ? this.parentId : this.comment._id;
     // this.createdAt = new Date(this.comment.createdAt).toLocaleDateString();
   }
+
+
 
   // Ответ на коммент
   isReplying(): boolean {

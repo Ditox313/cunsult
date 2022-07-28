@@ -16,9 +16,26 @@
         (handleSubmit)="updateComment.emit({  text: $event, comment: comment._id})"
         (handleCancel)="setActiveComment.emit(null)">
     </comment-form>
-    
+
+
     <div class="comment_actions">
-        <div class="comment-action-reply " *ngIf="canReply" (click)="
+        <div class="comment-action-reply" (click)=" 
+                    setActiveComment.emit({
+                        _id: comment._id,
+                        type: activeCommentType.replying
+                    })">
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M0 8.5C0 10 0.64 10.993 1.558 11.474C2.476 11.956 3.577 12 4.629 12H13.169V11H4.63C3.618 11 2.655 10.92 2.024 10.589C1.393 10.258 1 9.75 1 8.5V4H0V8.5Z"
+                    fill="#BE1F4F" />
+                <path
+                    d="M11.1689 9L11.1709 14C11.9309 13.652 12.7059 13.263 13.4939 12.834C14.2749 12.403 15.0279 11.958 15.7539 11.5C15.0279 11.051 14.2749 10.611 13.4939 10.18C12.7314 9.76332 11.9563 9.36981 11.1699 9H11.1689Z"
+                    fill="#BE1F4F" />
+            </svg>
+        </div>
+    
+    <!-- <div class="comment_actions">
+        <div class="comment-action-reply" *ngIf="canReply" (click)=" 
                 setActiveComment.emit({
                     _id: comment._id,
                     type: activeCommentType.replying
@@ -31,9 +48,7 @@
                         d="M11.1689 9L11.1709 14C11.9309 13.652 12.7059 13.263 13.4939 12.834C14.2749 12.403 15.0279 11.958 15.7539 11.5C15.0279 11.051 14.2749 10.611 13.4939 10.18C12.7314 9.76332 11.9563 9.36981 11.1699 9H11.1689Z"
                         fill="#BE1F4F" />
                 </svg>
-
-
-        </div>
+        </div> -->
     
     
         <div *ngIf="canEdit" class="comment-action-edit" (click)="

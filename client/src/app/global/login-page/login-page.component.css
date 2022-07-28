@@ -51,6 +51,11 @@
     z-index: 0;
 }
 
+.card-content input
+{
+    width: 95%;
+}
+
 @media screen and (max-width: 992px) {
     .xs_auth_component___form {
         padding-top: 70px;

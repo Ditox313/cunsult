@@ -41,6 +41,11 @@
     padding-bottom: 0 !important;
 }
 
+.card-content input
+{
+    width: 95%;
+}
+
 .xs_auth_component .btn,
 .xs_auth_component .btn-large,
 .xs_auth_component.btn-small {
