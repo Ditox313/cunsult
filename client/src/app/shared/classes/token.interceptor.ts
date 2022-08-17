@@ -5,10 +5,10 @@
 
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
-import { AuthService } from './../services/auth.service';
 import { Injectable } from "@angular/core";
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Injectable() //Означает что мы будем инжектировать в класс нужные сервисы
 
