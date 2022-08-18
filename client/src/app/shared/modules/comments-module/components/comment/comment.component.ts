@@ -90,6 +90,9 @@ export class CommentComponent implements OnInit {
 
     this.replyId = this.parentId ? this.parentId : this.comment._id;
     // this.createdAt = new Date(this.comment.createdAt).toLocaleDateString();
+
+    
+    
   }
 
 

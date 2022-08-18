@@ -13,6 +13,7 @@ import { FrontModule } from './front/front.module';
 import { CommentsModule } from './shared/modules/comments-module/comments.module';
 import { LikesModule } from './shared/modules/likes/likes.module';
 import { CasesModule } from './private/cases/cases.module';
+import { LikesCommentModule } from './shared/modules/likes-comment/likes-comment.module';
 
 
 registerLocaleData(rulocale, 'ru');
@@ -32,7 +33,8 @@ registerLocaleData(rulocale, 'ru');
     LikesModule,
     AuthModule,
     FrontModule,
-    CasesModule
+    CasesModule,
+    LikesCommentModule
   ],
   providers: [
     {

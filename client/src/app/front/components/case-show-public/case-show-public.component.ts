@@ -77,7 +77,6 @@ export class CaseShowPublicComponent implements OnInit {
             )
             .subscribe((user) => {
               this.currentUserCase = user;
-              console.log('111',this.currentUserCase);
             });
           return data;
         })

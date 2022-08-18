@@ -42,6 +42,17 @@ const commentSchema = new Schema({
     },
 
 
+    likes: {
+        type: Array,
+        required: false,
+    },
+
+    disLikes: {
+        type: Array,
+        required: false,
+    },
+
+
     // userId: {
     //     ref: 'users', // Аналог внешнего ключа php
     //     type: Schema.Types.ObjectId

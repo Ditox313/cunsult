@@ -120,3 +120,18 @@ module.exports.remove = async function(req, res) {
         errorHandler(res, e);
     }
 };
+
+
+
+
+
+
+// Контроллер для getById
+module.exports.getById = async function (req, res) {
+    try {
+        const xscomment = await Comment.findById(req.params.id); //Ищем категорию по id из переданных параметров
+        res.status(200).json(xscomment);
+    } catch (e) {
+        errorHandler(res, e);
+    }
+};

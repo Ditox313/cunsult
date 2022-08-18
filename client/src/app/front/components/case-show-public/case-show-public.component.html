@@ -126,9 +126,9 @@
 
                             <div class="xs_show_case___author___info">
                                 <div class="xs_show_case___author___info___avatar">
-                                    <img *ngIf="currentUserCase.xsAvatar" src="{{currentUserCase.xsAvatar}}"
+                                    <img *ngIf="currentUserCase" src="{{currentUserCase.xsAvatar}}"
                                         alt="Изображене">
-                                    <img *ngIf="!currentUserCase.xsAvatar" src="https://static.tildacdn.com/tild3633-6532-4233-a631-363261663462/profile.png" alt="Изображене">
+                                    <img *ngIf="!currentUserCase" src="https://static.tildacdn.com/tild3633-6532-4233-a631-363261663462/profile.png" alt="Изображене">
                                     <div *ngIf="currentUserCase">
                                         <span>{{currentUserCase.name}}</span><br>
                                         <span>{{currentUserCase.secondName}}</span>

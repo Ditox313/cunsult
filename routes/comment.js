@@ -19,6 +19,9 @@ router.post('/', passport.authenticate('jwt', { session: false }), controller.cr
 router.patch('/update/:id', passport.authenticate('jwt', { session: false }), controller.update);
 
 
+// Роут на getById
+router.get('/byId/:id', passport.authenticate('jwt', { session: false }), controller.getById);
+
 
 
 // Роут на remove

@@ -43,6 +43,7 @@ export class CommentsService {
   deleteComment(id: string, caseId: string): Observable<{}> {
     return this.httpClient.delete(`/api/comments/${id}`);
   }
+  
 }
 
 

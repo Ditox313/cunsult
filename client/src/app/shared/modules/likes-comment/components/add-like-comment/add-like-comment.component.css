@@ -1,0 +1,20 @@
+.add_like {
+    display: flex;
+    align-items: center;
+}
+
+.add_like>div {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.add_like>div svg {
+    margin-right: 5px;
+}
+
+
+.like_true svg {
+    fill: red;
+}
