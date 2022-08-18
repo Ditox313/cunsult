@@ -226,9 +226,7 @@ export class CaseFormComponent implements OnInit {
           functionsNapravlenie: this.form.value.functionsNapravlenie,
         } 
 
-        console.log(xscase);
-        
-
+      
         this.caseServise.create(xscase, this.xs_preview__file).subscribe((res)=>{
           MaterialService.toast('Кейс успешно создан')
           this.router.navigate(['/site/cases'])

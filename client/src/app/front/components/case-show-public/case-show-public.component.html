@@ -126,8 +126,9 @@
 
                             <div class="xs_show_case___author___info">
                                 <div class="xs_show_case___author___info___avatar">
-                                    <img src="uploads\avatars\27062022-180428_46-01062022-200316_75-15052022-212637_16-youtube-avatar-anime-48.jpg"
+                                    <img *ngIf="currentUserCase.xsAvatar" src="{{currentUserCase.xsAvatar}}"
                                         alt="Изображене">
+                                    <img *ngIf="!currentUserCase.xsAvatar" src="https://static.tildacdn.com/tild3633-6532-4233-a631-363261663462/profile.png" alt="Изображене">
                                     <div *ngIf="currentUserCase">
                                         <span>{{currentUserCase.name}}</span><br>
                                         <span>{{currentUserCase.secondName}}</span>

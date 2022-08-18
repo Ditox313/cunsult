@@ -77,6 +77,7 @@ export class CaseShowPublicComponent implements OnInit {
             )
             .subscribe((user) => {
               this.currentUserCase = user;
+              console.log('111',this.currentUserCase);
             });
           return data;
         })
@@ -124,6 +125,9 @@ export class CaseShowPublicComponent implements OnInit {
     this.caseServise.fetch().subscribe((cases) => {
       this.cases = this.cases.concat(cases);
     });
+
+  
+    
 
     MaterialService.updateTextInputs();
   }

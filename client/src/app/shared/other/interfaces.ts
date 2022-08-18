@@ -96,7 +96,7 @@ export interface Case
     userLastName?: any
     userProgram?: any
     userSpecialization?: any
-    commentsCount?: any
+    commentsCount?: any,
 }
 
 

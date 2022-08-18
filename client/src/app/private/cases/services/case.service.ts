@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Case } from 'src/app/shared/other/interfaces';
+import { map } from 'rxjs/operators';
 
 
 // Даем возможность инжектировать сервисы в класс
@@ -10,6 +11,9 @@ import { Case } from 'src/app/shared/other/interfaces';
 })
 export class CaseService {
   constructor(private http: HttpClient) {}
+
+  // Переменная для подсчета колличества проектов
+  xscases: Case[] = []
 
   fetch(params: any = {}): Observable<Case[]> {
     return this.http.get<Case[]>('/api/cases', {
@@ -27,7 +31,12 @@ export class CaseService {
 
 
   get_all_cases_by_id(userId: string): Observable<Case[]> {
-    return this.http.get<Case[]>(`/api/cases/all/${userId}`);
+    return this.http.get<Case[]>(`/api/cases/all/${userId}`).pipe(
+      map(res => {
+        this.xscases = res;
+        return res;
+      })
+    )
   }
 
 
@@ -43,7 +52,12 @@ export class CaseService {
       fd.append('previewSrc', image, image.name);
     }
 
-    return this.http.post<Case>('/api/cases/', fd);
+    return this.http.post<Case>('/api/cases/', fd).pipe(
+      map(res => {
+        this.xscases.push(res);
+        return res;
+      })
+    )
   }
 
   uploadEditorImage(): Observable<String> {
@@ -69,9 +83,14 @@ export class CaseService {
     return this.http.get<Case>(`api/cases/${id}`);
   }
 
-  // Удаление категории
   delete(id: any): Observable<any> {
-    return this.http.delete<any>(`/api/cases/${id}`);
+    return this.http.delete<any>(`/api/cases/${id}`).pipe(
+      map(res => {
+        const idxPos = this.xscases.findIndex(p => p._id === res.caseIdFromRemove);
+        this.xscases.splice(idxPos, 1);
+        return res;
+      })
+    )
   }
 
   // Добавляем 1 к колличеству просмотров

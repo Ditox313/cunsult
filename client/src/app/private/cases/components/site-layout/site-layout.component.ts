@@ -119,7 +119,7 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       .pipe(
         map((user) => {
           this.caseServise.get_all_cases_by_id(user._id).subscribe((cases) => {
-            this.userCases = cases;
+            this.userCases = this.caseServise.xscases
           });
 
           return user;

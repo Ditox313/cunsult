@@ -78,8 +78,7 @@ export class CasesComponent implements OnInit, OnDestroy {
           }
         )
       ).subscribe(data => {
-        console.log('После подписки',data);
-        
+        // console.log('После подписки',data);
       })
 
     });

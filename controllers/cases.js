@@ -170,14 +170,20 @@ module.exports.getById = async function(req, res) {
 module.exports.remove = async function(req, res) {
     try {
         await Case.remove({
-            _id: req.params.id //Удаляем категорию по id
+            _id: req.params.id 
         });
 
+
+        // xscases = await Case.find({
+        //     user : req.user.id
+        // });
 
         // Возвращаем результат
         res.status(200).json({
-            message: "Кейс успешно удален"
+            message: "Кейс успешно удален",
+            caseIdFromRemove: req.params.id
         });
+        
     } catch (e) {
         errorHandler(res, e);
     }
