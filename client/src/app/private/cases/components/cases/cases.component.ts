@@ -8,6 +8,7 @@ import { of } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { CommentsService } from 'src/app/shared/modules/comments-module/services/comments.service';
 import { CaseService } from '../../services/case.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 // Шаг пагинации
 const STEP = 3
@@ -18,11 +19,7 @@ const STEP = 3
   styleUrls: ['./cases.component.css']
 })
 export class CasesComponent implements OnInit, OnDestroy {
-
-  
-
-
- 
+  currentUser: any
   loading: Boolean = false
   cases: Case[] = []
   casesFinaly: Case[] = []
@@ -32,13 +29,17 @@ export class CasesComponent implements OnInit, OnDestroy {
   noMoreCases: Boolean = false
 
 
-  constructor(public caseServise: CaseService, private rote: ActivatedRoute, private router: Router, private commentsService: CommentsService) { }
+  constructor(public caseServise: CaseService, private rote: ActivatedRoute, private router: Router, private commentsService: CommentsService,private auth: AuthService) { }
 
   ngOnInit(): void {
     this.loading = true
     this.fetch()
 
 
+    // Получаем текущего юзера
+    this.auth.get_user().subscribe((user)=>{
+      this.currentUser = user
+    });
     
   }
 

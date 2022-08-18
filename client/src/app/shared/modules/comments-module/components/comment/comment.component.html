@@ -11,7 +11,7 @@
 
     <div class="comment-text" *ngIf="!isEditing()">{{ comment.body }}</div>
 
-
+1
     <comment-form class="xs_edit_form" *ngIf="isEditing()" submitLabel="Изменить" [hasCancelButton]="true" [initialText]="comment.body"
         (handleSubmit)="updateComment.emit({  text: $event, comment: comment._id})"
         (handleCancel)="setActiveComment.emit(null)">
