@@ -14,6 +14,7 @@ import { CommentsModule } from 'src/app/shared/modules/comments-module/comments.
 import { LikesModule } from 'src/app/shared/modules/likes/likes.module';
 import { CaseService } from './services/case.service';
 import { FrontModule } from 'src/app/front/front.module';
+import { AdditionalLikeCommentModule } from 'src/app/shared/modules/additional-like-comment/additional-like-comment.module';
 
 const routes = [
   {
@@ -61,7 +62,8 @@ const routes = [
     ReactiveFormsModule,
     CommentsModule,
     LikesModule,
-    FrontModule
+    FrontModule,
+    AdditionalLikeCommentModule
   ],
   providers: [CaseService],
 })

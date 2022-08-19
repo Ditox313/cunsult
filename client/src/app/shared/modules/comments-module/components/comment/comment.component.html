@@ -36,7 +36,11 @@
         <div class="likes_comment">
             <app-add-like-comment [commentId]="comment._id" [userId]="currentUser._id"></app-add-like-comment>
         </div>
-        
+
+
+        <div class="additional_like_comment" *ngIf="currentUserComment">
+            <app-additional-like-comment-component [caseId]="caseId" [currentUserId]="currentUser._id" [commentId]="comment._id" [commentUserId]="currentUserComment._id"></app-additional-like-comment-component>
+        </div>
 
     
         <div class="comment_rep_and_del">
@@ -88,11 +92,12 @@
     </comment-form>
     
     <div class="replies" *ngIf="replies.length > 0">
-        <comment *ngFor="let reply of replies " [comment]="reply" (setActiveComment)="setActiveComment.emit($event)"
+        <comment *ngFor="let reply of replies " [comment]="reply" [caseId]="caseId" (setActiveComment)="setActiveComment.emit($event)"
             [activeComment]="activeComment" (addComment)="addComment.emit($event)" [parentId]="comment._id" [replies]="[]"
             (updateComment)="updateComment.emit($event)" (deleteComment)="deleteComment.emit($event)"
             [currentUserId]="currentUserId">
         </comment>
+        
     </div>
 </div>
 

@@ -14,6 +14,7 @@ import { CommentsModule } from './shared/modules/comments-module/comments.module
 import { LikesModule } from './shared/modules/likes/likes.module';
 import { CasesModule } from './private/cases/cases.module';
 import { LikesCommentModule } from './shared/modules/likes-comment/likes-comment.module';
+import { AdditionalLikeCommentModule } from './shared/modules/additional-like-comment/additional-like-comment.module';
 
 
 registerLocaleData(rulocale, 'ru');
@@ -34,7 +35,8 @@ registerLocaleData(rulocale, 'ru');
     AuthModule,
     FrontModule,
     CasesModule,
-    LikesCommentModule
+    LikesCommentModule,
+    AdditionalLikeCommentModule
   ],
   providers: [
     {

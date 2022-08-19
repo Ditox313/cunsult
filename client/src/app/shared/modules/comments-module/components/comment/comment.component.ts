@@ -68,6 +68,7 @@ export class CommentComponent implements OnInit {
     this.auth.getById(this.comment.userId).subscribe((user) => {
       this.currentUserComment = user;
     });
+    
 
     // Время когда можно отредактировать комментарий
     const fiveMinutes = 300000;

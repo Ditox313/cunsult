@@ -13,6 +13,7 @@ import { CaseShowPublicComponent } from './components/case-show-public/case-show
 import { PageLayoutComponent } from './components/page-layout/page-layout.component';
 import { CommentsModule } from '../shared/modules/comments-module/comments.module';
 import { LikesModule } from '../shared/modules/likes/likes.module';
+import { AdditionalLikeCommentModule } from '../shared/modules/additional-like-comment/additional-like-comment.module';
 
 
 const routes = [
@@ -47,6 +48,7 @@ const routes = [
     ReactiveFormsModule,
     CommentsModule,
     LikesModule,
+    AdditionalLikeCommentModule
   ],
   exports: [FooterComponent, HeaderComponent, HeaderPageComponent, HomeLayoutComponent, HomeCasesListComponent, RouterModule,PageLayoutComponent,CaseShowPublicComponent]
 })

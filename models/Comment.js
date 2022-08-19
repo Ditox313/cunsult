@@ -52,6 +52,11 @@ const commentSchema = new Schema({
         required: false,
     },
 
+    additionalLike: {
+        type: Array,
+        required: false,
+    }
+
 
     // userId: {
     //     ref: 'users', // Аналог внешнего ключа php

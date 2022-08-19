@@ -623,3 +623,15 @@ button:disabled
     margin-left: 20px;
     margin-top: 3px;
 }
+
+.comment_actions
+{
+    position: relative;
+}
+
+.additional_like_comment
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
