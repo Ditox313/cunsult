@@ -81,8 +81,10 @@
                             <span>10</span>
                         </div> -->
 
-
-                        <app-add-like [caseId]="case._id" [userId]="currentUser._id"></app-add-like>
+                        <div *ngIf="currentUser">
+                            <app-add-like [caseId]="case._id" [userId]="currentUser._id"></app-add-like>    
+                        </div>
+                        
 
 
                         <div>

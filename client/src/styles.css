@@ -603,3 +603,23 @@ button:disabled
     top: 0;
     right: 0px;
 }
+
+
+.likes_comment .add_like div
+{
+    margin-right: 0 !important;
+    margin-left: 10px;
+}
+
+.likes_comment .add_like div span
+{
+    font-size: 14px;
+}
+
+.comment_rep_and_del
+{
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    margin-top: 3px;
+}

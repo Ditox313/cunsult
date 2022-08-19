@@ -84,8 +84,10 @@
 
                 <div class="xs_show_case__top___likes" *ngIf="currentUser">
                     
+                    <div *ngIf="currentUser">
+                        <app-add-like [caseId]="caseId" [userId]="currentUser._id"></app-add-like>  
+                    </div>
                     
-                    <app-add-like [caseId]="caseId" [userId]="currentUser._id"></app-add-like>
                 
                 
                     <div>

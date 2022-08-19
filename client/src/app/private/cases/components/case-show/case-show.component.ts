@@ -37,6 +37,9 @@ export class CaseShowComponent implements OnInit {
 
   ngOnInit(): void {
 
+    
+    
+
     // Получаем текущего юзера
     this.auth.get_user().subscribe((user)=>{
       this.currentUser = user
