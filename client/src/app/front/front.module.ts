@@ -41,7 +41,6 @@ const routes = [
   declarations: [FooterComponent, HeaderComponent, HeaderPageComponent, HomeLayoutComponent, HomeCasesListComponent,PageLayoutComponent,CaseShowPublicComponent],
   imports: [
     CommonModule,
-    CommonModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forChild(routes),

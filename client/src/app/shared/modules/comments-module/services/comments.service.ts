@@ -5,45 +5,60 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { User } from 'src/app/shared/other/interfaces';
 
 @Injectable()
-
 export class CommentsService {
   constructor(private httpClient: HttpClient) {}
 
-
-  
-  getComments(caseId: string, params: any = {}): Observable<CommentInterface[]> {
+  getComments(
+    caseId: string,
+    params: any = {}
+  ): Observable<CommentInterface[]> {
     return this.httpClient.get<CommentInterface[]>(`/api/comments/${caseId}`, {
-          params: new HttpParams({ //Даем возможность передавать параметры для пагинации
-             fromObject: params
-          })
-       });
+      params: new HttpParams({
+        //Даем возможность передавать параметры для пагинации
+        fromObject: params,
+      }),
+    });
   }
-
 
   getAll(caseId: string): Observable<CommentInterface[]> {
     return this.httpClient.get<CommentInterface[]>(`/api/comments/${caseId}`);
   }
 
-  createComment(text: string,parentId: string | null = null, user: User, caseId: string): Observable<CommentInterface> {
+  createComment(
+    text: string,
+    parentId: string | null = null,
+    user: User,
+    caseId: string
+  ): Observable<CommentInterface> {
     const fd = {
       body: text,
       username: user.name,
+      userSecondName: user.secondName,
       parentId: parentId,
       caseId: caseId,
       userId: user._id,
     };
-      return this.httpClient.post<CommentInterface>('api/comments/',fd);
+    return this.httpClient.post<CommentInterface>('api/comments/', fd);
   }
 
-  updateComment(id: string , text: string): Observable<CommentInterface> {
-    return this.httpClient.patch<CommentInterface>(`/api/comments/update/${id}`,{body: text}
+  updateComment(id: string, text: string): Observable<CommentInterface> {
+    return this.httpClient.patch<CommentInterface>(
+      `/api/comments/update/${id}`,
+      { body: text }
     );
   }
 
   deleteComment(id: string, caseId: string): Observable<{}> {
     return this.httpClient.delete(`/api/comments/${id}`);
   }
-  
+
+  getById(id: string): Observable<any> {
+    return this.httpClient.get<any>(`api/comments/byId/${id}`);
+  }
+
+  getByIdCase(id: string): Observable<any> {
+    return this.httpClient.get<any>(`api/comments/byIdCase/${id}`);
+  }
 }
 
 

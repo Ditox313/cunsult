@@ -18,6 +18,11 @@ const commentSchema = new Schema({
         required: true,
     },
 
+    userSecondName: {
+        type: String,
+        required: true,
+    },
+
 
     parentId: {
         type: String,

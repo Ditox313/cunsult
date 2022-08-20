@@ -14,6 +14,8 @@ import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { CommentInterface } from 'src/app/shared/modules/comments-module/types/comment.interface';
 import { CaseService } from 'src/app/private/cases/services/case.service';
+import { CommentsService } from 'src/app/shared/modules/comments-module/services/comments.service';
+import { AdditionalLikeCommentService } from 'src/app/shared/modules/additional-like-comment/servises/additional-like-comment.service';
 
 @Component({
   selector: 'app-case-show-public',
@@ -34,17 +36,29 @@ export class CaseShowPublicComponent implements OnInit {
   orderViews: any; //Колличество просмотров
   editor: any;
   comments_counts: CommentInterface[] = [];
+  actualCaseComments: any[] = [];
+  additionalUsers: any = []
 
   constructor(
     public caseServise: CaseService,
     private rote: ActivatedRoute,
     private router: Router,
-    private auth: AuthService
+    private auth: AuthService,
+    private commentsServise: CommentsService,
+    public additionalLikeCommentService: AdditionalLikeCommentService
   ) {}
 
   ngOnInit(): void {
-    // Получаем текущего юзера
-    this.auth.get_user().subscribe((user) => {
+    // Получаем текущего юзера и делаем запрос для получения всех комментариев с дополнительным лайком
+    this.auth.get_user().pipe(
+      map((user) => {
+          this.additionalLikeCommentService.getByIdCase(this.caseId).subscribe(res=>{
+            // Получаем комментарии с дополнительным лайком
+            this.actualCaseComments = this.additionalLikeCommentService.actualCaseAdditionalComments
+          });
+          return user;
+        })
+    ).subscribe((user) => {
       this.currentUser = user;
     });
 
@@ -53,8 +67,10 @@ export class CaseShowPublicComponent implements OnInit {
       this.caseId = params['id'];
     });
 
+
     // Прибавляем просмотр
     this.caseServise.addShowCase(this.caseId).subscribe((res) => {});
+
 
     // Получаем текущий кейс
     this.caseServise
@@ -120,18 +136,18 @@ export class CaseShowPublicComponent implements OnInit {
         });
       });
 
+
     // Получаем список всех кейсов для удаления
     this.caseServise.fetch().subscribe((cases) => {
       this.cases = this.cases.concat(cases);
     });
 
-  
-    
+
 
     MaterialService.updateTextInputs();
   }
 
-  // Удалить позицию
+  // Удалить кейс
   onDeleteCase(event: Event, xscase): void {
     event.stopPropagation();
 

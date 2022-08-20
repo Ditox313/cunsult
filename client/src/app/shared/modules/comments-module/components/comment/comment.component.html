@@ -39,7 +39,7 @@
 
 
         <div class="additional_like_comment" *ngIf="currentUserComment">
-            <app-additional-like-comment-component [caseId]="caseId" [currentUserId]="currentUser._id" [commentId]="comment._id" [commentUserId]="currentUserComment._id"></app-additional-like-comment-component>
+            <app-additional-like-comment-component [caseId]="caseId" [currentUser]="currentUser" [comment]="comment" [commentUserId]="currentUserComment._id"></app-additional-like-comment-component>
         </div>
 
     

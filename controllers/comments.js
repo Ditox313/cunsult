@@ -34,6 +34,7 @@ module.exports.create = async function(req, res) {
         const comment = new Comment({
             body: req.body.body,
             username: req.body.username,
+            userSecondName: req.body.userSecondName,
             parentId: req.body.parentId,
             caseId: req.body.caseId,
             userId: req.body.userId
@@ -135,3 +136,15 @@ module.exports.getById = async function (req, res) {
         errorHandler(res, e);
     }
 };
+
+
+// Контроллер для getById
+module.exports.getByIdCase = async function (req, res) {
+    try {
+        const xscomment = await Comment.find({caseId: req.params.id}); 
+        res.status(200).json(xscomment);
+    } catch (e) {
+        errorHandler(res, e);
+    }
+};
+

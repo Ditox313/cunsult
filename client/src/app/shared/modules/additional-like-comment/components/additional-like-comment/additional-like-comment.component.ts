@@ -16,10 +16,11 @@ export class AdditionalLikeCommentComponent implements OnInit {
   actualComment: any;
   actualCase: any;
   
+  
 
-  @Input() commentId: string | undefined;
+  @Input() comment: any | undefined;
   @Input() commentUserId: string | undefined;
-  @Input() currentUserId: string | undefined;
+  @Input() currentUser: any | undefined;
   @Input() caseId: string | undefined;
   
 
@@ -27,7 +28,7 @@ export class AdditionalLikeCommentComponent implements OnInit {
 
   ngOnInit(): void {
   
-    this.additionlLikeCommentService.getById(this.commentId).subscribe((res) => {
+    this.additionlLikeCommentService.getById(this.comment._id).subscribe((res) => {
       this.actualComment = res;
       if (res.additionalLike.find((item) => item.commentUserId === this.commentUserId)) {
         this.isLike = true;
@@ -37,21 +38,24 @@ export class AdditionalLikeCommentComponent implements OnInit {
 
     this.caseServise.getById(this.caseId).subscribe(res=>{
       this.actualCase = res;
-      // console.log('444',this.caseId);
-      // console.log('555',this.currentUserId);
     })
-
 
   }
 
 
 
   actionLike() {
-    if(this.currentUserId === this.actualCase.user)
+    if(this.currentUser._id === this.actualCase.user)
     {
       if (!this.isLike) {
         this.addLike$ = this.additionlLikeCommentService
-          .addLike(this.commentId, this.commentUserId)
+          .addLike(
+            this.comment._id,
+            this.commentUserId,
+            this.comment.username,
+            this.comment.userSecondName,
+            this.caseId
+          )
           .subscribe((res) => {
             this.actualComment = res.comment;
           });
@@ -59,7 +63,7 @@ export class AdditionalLikeCommentComponent implements OnInit {
         this.isLike = true;
       } else {
         this.additionlLikeCommentService
-          .removeLike(this.commentId, this.commentUserId)
+          .removeLike(this.comment._id, this.commentUserId)
           .subscribe((res) => {
             this.actualComment = res;
           });
@@ -67,25 +71,5 @@ export class AdditionalLikeCommentComponent implements OnInit {
       }
       }
     }
-
-  // actionDisLike() {
-  //   if (!this.isLike) {
-  //     if (!this.isDislike) {
-  //       this.additionlLikeCommentService
-  //         .addDisLike(this.commentId, this.userId)
-  //         .subscribe((res) => {
-  //           this.actualCase = res.comment;
-  //         });
-  //       this.isDislike = true;
-  //     } else {
-  //       this.additionlLikeCommentService
-  //         .removeDisLike(this.commentId, this.userId)
-  //         .subscribe((res) => {
-  //           this.actualCase = res;
-  //         });
-  //       this.isDislike = false;
-  //     }
-  //   }
-  // }
 
 }

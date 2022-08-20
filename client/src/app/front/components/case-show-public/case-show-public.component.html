@@ -180,16 +180,8 @@
                             <div class="xs_show_case___dop___thanks">
                                 <h4>Отдельное спасибо:</h4>
 
-                                <div>
-                                    Иван Иванов
-                                </div>
-
-                                <div>
-                                    Иван Иванов
-                                </div>
-
-                                <div>
-                                    Иван Иванов
+                                <div *ngFor="let comment of actualCaseComments">
+                                    {{comment.username}} {{comment.userSecondName}}
                                 </div>
                             </div>
                         </div>

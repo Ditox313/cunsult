@@ -22,6 +22,9 @@ router.patch('/update/:id', passport.authenticate('jwt', { session: false }), co
 // Роут на getById
 router.get('/byId/:id', passport.authenticate('jwt', { session: false }), controller.getById);
 
+// Роут на getByIdCase
+router.get('/byIdCase/:id', passport.authenticate('jwt', { session: false }), controller.getByIdCase);
+
 
 
 // Роут на remove
