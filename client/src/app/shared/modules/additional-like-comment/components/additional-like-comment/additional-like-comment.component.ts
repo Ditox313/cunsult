@@ -45,8 +45,7 @@ export class AdditionalLikeCommentComponent implements OnInit {
 
 
   actionLike() {
-    if(this.currentUser._id === this.actualCase.user)
-    {
+    if (this.currentUser._id === this.actualCase.user && this.comment.userId !== this.currentUser._id) {
       if (!this.isLike) {
         this.addLike$ = this.additionlLikeCommentService
           .addLike(
@@ -69,7 +68,7 @@ export class AdditionalLikeCommentComponent implements OnInit {
           });
         this.isLike = false;
       }
-      }
+    }
     }
 
 }

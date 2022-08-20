@@ -122,8 +122,6 @@ module.exports.get_user = async function(req, res) {
     });
 
 
-
-
     if (!user) {
         res.status(409).json({
             message: "Нет такого юзера"

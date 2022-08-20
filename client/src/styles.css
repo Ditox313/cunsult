@@ -635,3 +635,9 @@ button:disabled
     top: 0;
     right: 0;
 }
+
+.xs_dop_like
+{
+    color: #BE1F4F;
+    font-size: 18px;
+}

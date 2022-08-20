@@ -177,11 +177,13 @@
                                 Осталось на решение <span>22 </span> дня
                             </div>
 
-                            <div class="xs_show_case___dop___thanks">
+                            <div class="xs_show_case___dop___thanks" *ngIf="actualCaseComments.length !== 0">
                                 <h4>Отдельное спасибо:</h4>
 
                                 <div *ngFor="let comment of actualCaseComments">
-                                    {{comment.username}} {{comment.userSecondName}}
+                                    <div class="xs_dop_like">
+                                        {{comment.username}} {{comment.userSecondName}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
