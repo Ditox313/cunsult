@@ -632,7 +632,7 @@ button:disabled
 .additional_like_comment
 {
     position: absolute;
-    top: 0;
+    top: -67px;
     right: 0;
 }
 
