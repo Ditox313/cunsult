@@ -10,6 +10,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const keys = require('./config/keys.js');
+const keys = require('./config/keys.dev.js');
+const keys = require('./config/keys.prod.js');
 const passport = require('passport');
 
 
@@ -23,7 +25,7 @@ app.use(cors());
 
 
 // Подключаемся к MongoDB
-mongoose.connect("mongodb://localhost/cunsult")
+mongoose.connect(keys.mongoUri)
     .then(function() {
         console.log('Мы подключились к БД приложения!!!');
     })
