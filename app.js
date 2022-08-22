@@ -10,8 +10,6 @@ const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const keys = require('./config/keys.js');
-const keys = require('./config/keys.dev.js');
-const keys = require('./config/keys.prod.js');
 const passport = require('passport');
 
 
