@@ -23,7 +23,7 @@ app.use(cors());
 
 
 // Подключаемся к MongoDB
-mongoose.connect(keys.mongoUri)
+mongoose.connect("mongodb://localhost/cunsult")
     .then(function() {
         console.log('Мы подключились к БД приложения!!!');
     })
