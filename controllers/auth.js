@@ -170,7 +170,14 @@ module.exports.get_by_id = async function(req, res) {
 module.exports.update = async function(req, res) {
     try {
 
+        // Шифрование пароля пользователя
+        const salt = bcrypt.genSaltSync(10);
+
+
         const updated = req.body;
+        updated.password = bcrypt.hashSync(req.body.password, salt) ;
+
+        
 
 
         // Если объект file есть,то заполняем параметр путем фала

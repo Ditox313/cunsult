@@ -11,6 +11,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const keys = require('./config/keys.js');
 const passport = require('passport');
+// Что бы работали пути при деплое
 const path = require('path');
 
 

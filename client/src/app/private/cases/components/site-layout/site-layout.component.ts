@@ -236,13 +236,13 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Отправляем форму редактирования профиля
   onSubmitProfile() {
-    const salt = bcrypt.genSaltSync(10);
-    const password = this.form.value.password;
+    // const salt = bcrypt.genSaltSync(10);
+    // const password = this.form.value.password;
 
     // Формируем объект юзера
     const user = {
       email: this.form.value.email,
-      password: bcrypt.hashSync(password, salt),
+      password: this.form.value.password,
       phone: this.form.value.phone,
       name: this.form.value.name,
       secondName: this.form.value.secondName,
