@@ -41,35 +41,35 @@ export interface MaterialInstance
 
 
 // Интерфейс для Юзера
-export interface UserProfile
-{
-    socials: any
-    compitations: any
-    publication: any
-    hobby: any
-    family: any
-    dopInfo: any
-    languages: any
-    skills: any
-    education: any
-    opyt: any
-    functionsNapravlenie: any
-    otraslSpec: any
-    company: any
-    program: any
-    email: string
-    password: string
-    phone: string
-    name: string
-    secondName: string
-    thirdName: string
-    specialization: string
-    workPos?: string
-    xsAvatar?: any
-    year? : string
-    city? : string
-    date? : Date
-    _id? : any
+export interface UserProfile {
+  socials: any;
+  compitations: any;
+  publication: any;
+  hobby: any;
+  family: any;
+  dopInfo: any;
+  languages: any;
+  skills: any;
+  education: any;
+  opyt: any;
+  functionsNapravlenie: any;
+  otraslSpec: any;
+  company: any;
+  program: any;
+  email: string;
+  password: string;
+  phone: string;
+  name: string;
+  secondName: string;
+  thirdName: string;
+  specialization: string;
+  workPos?: string;
+  xsAvatar?: any;
+  year?: string;
+  city?: string;
+  date?: Date;
+  _id?: any;
+  additionalCommentsCount?: any
 }
 
 

@@ -27,6 +27,8 @@ module.exports.getAll = async function(req, res) {
 
 
 
+
+
 module.exports.getAllCases = async function(req, res) {
     try {
         const cases = await Case.find().sort({ _id: -1 })
@@ -36,7 +38,10 @@ module.exports.getAllCases = async function(req, res) {
         errorHandler(res, e);
     }
 
+
 };
+
+
 
 
 

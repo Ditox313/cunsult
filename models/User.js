@@ -194,14 +194,19 @@ const userSchema = new Schema({
     },
 
 
-    //Создаем поле для соцсетей
+    //Число кейсов
     casesCount: {
         type: String,
         required: false,
         default: '',
     },
 
-
+    //Число благодарностей
+    additionalCommentsCount: {
+        type: Number,
+        required: false,
+        default: 0,
+    },
 
 
 

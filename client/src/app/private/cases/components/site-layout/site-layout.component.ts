@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
 import { CaseService } from '../../services/case.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { MaterialService } from 'src/app/shared/services/material.service';
+import { AdditionalLikeCommentService } from 'src/app/shared/modules/additional-like-comment/servises/additional-like-comment.service';
 
 @Component({
   selector: 'app-site-layout',
@@ -22,7 +23,8 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private auth: AuthService,
-    public caseServise: CaseService
+    public caseServise: CaseService,
+    public additionalCommentService: AdditionalLikeCommentService
   ) {}
 
   // Получаем триггер для переключения мобильного меню
@@ -61,6 +63,7 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Переменная для стрима при получении юзера
   user$: any;
+  currentUser: any
 
   // Получаем массив кейсов данного юзера
   userCases: Case[] = []
@@ -83,6 +86,8 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   userBtnSpecOtrasl: string;
 
   ngOnInit(): void {
+    
+
     // Описываем элементы которые есть в форме(контролы). То есть инициализируем форму
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
@@ -114,18 +119,19 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       socials: new FormControl(null, []),
     });
 
-    this.user$ = this.auth
+    this.user$ = this.additionalCommentService
       .get_user()
       .pipe(
         map((user) => {
           this.caseServise.get_all_cases_by_id(user._id).subscribe((cases) => {
-            this.userCases = this.caseServise.xscases
+          this.userCases = this.caseServise.xscases;
           });
 
           return user;
         })
       )
       .subscribe((res) => {
+
         if (res.xsAvatar) {
           this.avatarPreview = res.xsAvatar;
         }
@@ -139,6 +145,8 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
         this.userBtnSpecMenedgment = res.functionsNapravlenie;
         this.userBtnSpecOtrasl = res.otraslSpec;
       });
+
+      
   }
 
   ngAfterViewInit(): void {

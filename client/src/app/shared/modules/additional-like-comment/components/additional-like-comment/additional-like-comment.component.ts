@@ -22,6 +22,7 @@ export class AdditionalLikeCommentComponent implements OnInit {
   @Input() commentUserId: string | undefined;
   @Input() currentUser: any | undefined;
   @Input() caseId: string | undefined;
+  actualAdditionalLikesCount: any;
   
 
   constructor(private additionlLikeCommentService: AdditionalLikeCommentService, private CommentsServise: CommentsService, private caseServise: CaseService) {}
