@@ -32,6 +32,8 @@ module.exports.getAll = async function(req, res) {
 module.exports.getAllCases = async function(req, res) {
     try {
         const cases = await Case.find().sort({ _id: -1 })
+            .skip(+req.query.offset) //Отступ для бесконечного скрола на фронтенде. Приводим к числу
+            .limit(+req.query.limit); //Сколько выводить на фронтенде. Приводим к числу
            
         res.status(200).json(cases);
     } catch (e) {

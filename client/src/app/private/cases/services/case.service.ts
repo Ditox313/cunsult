@@ -13,7 +13,7 @@ export class CaseService {
   constructor(private http: HttpClient) {}
 
   // Переменная для подсчета колличества проектов
-  xscases: Case[] = []
+  xscases: Case[] = [];
 
   fetch(params: any = {}): Observable<Case[]> {
     return this.http.get<Case[]>('/api/cases', {
@@ -24,22 +24,23 @@ export class CaseService {
     });
   }
 
-  get_all_cases(): Observable<Case[]> {
-    return this.http.get<Case[]>('/api/cases/all');
+  get_all_cases(params: any = {}): Observable<Case[]> {
+    return this.http.get<Case[]>('/api/cases/all', {
+      params: new HttpParams({
+        //Даем возможность передавать параметры для пагинации
+        fromObject: params,
+      }),
+    });
   }
-
-
 
   get_all_cases_by_id(userId: string): Observable<Case[]> {
     return this.http.get<Case[]>(`/api/cases/all/${userId}`).pipe(
-      map(res => {
+      map((res) => {
         this.xscases = res;
         return res;
       })
-    )
+    );
   }
-
-
 
   create(xscase: any, image?: File): Observable<Case> {
     const fd = new FormData();
@@ -53,11 +54,11 @@ export class CaseService {
     }
 
     return this.http.post<Case>('/api/cases/', fd).pipe(
-      map(res => {
+      map((res) => {
         this.xscases.push(res);
         return res;
       })
-    )
+    );
   }
 
   uploadEditorImage(): Observable<String> {
@@ -85,12 +86,14 @@ export class CaseService {
 
   delete(id: any): Observable<any> {
     return this.http.delete<any>(`/api/cases/${id}`).pipe(
-      map(res => {
-        const idxPos = this.xscases.findIndex(p => p._id === res.caseIdFromRemove);
+      map((res) => {
+        const idxPos = this.xscases.findIndex(
+          (p) => p._id === res.caseIdFromRemove
+        );
         this.xscases.splice(idxPos, 1);
         return res;
       })
-    )
+    );
   }
 
   // Добавляем 1 к колличеству просмотров

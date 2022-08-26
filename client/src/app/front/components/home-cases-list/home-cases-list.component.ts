@@ -11,6 +11,7 @@ import { CaseService } from 'src/app/private/cases/services/case.service';
 })
 export class HomeCasesListComponent implements OnInit {
   cases$: Subscription | any;
+  loading: Boolean = false;
 
   constructor(
     private caseServise: CaseService,
@@ -18,6 +19,7 @@ export class HomeCasesListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loading = true;
     this.cases$ = this.caseServise
       .get_all_cases()
       .pipe(
@@ -50,5 +52,8 @@ export class HomeCasesListComponent implements OnInit {
           return cases.slice(0, 6);
         })
       );
+      this.loading = false;
+      
   }
+  
 }

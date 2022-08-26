@@ -14,11 +14,13 @@ import { PageLayoutComponent } from './components/page-layout/page-layout.compon
 import { CommentsModule } from '../shared/modules/comments-module/comments.module';
 import { LikesModule } from '../shared/modules/likes/likes.module';
 import { AdditionalLikeCommentModule } from '../shared/modules/additional-like-comment/additional-like-comment.module';
+import { PageAllCasesComponent } from './components/page-all-cases/page-all-cases.component';
 
 
 const routes = [
   {
-    path: 'home', component: HomeLayoutComponent,
+    path: 'home',
+    component: HomeLayoutComponent,
   },
 
   {
@@ -29,16 +31,27 @@ const routes = [
         path: 'case-show-pablic/:id',
         component: CaseShowPublicComponent,
       },
+      {
+        path: 'page-all-cases',
+        component: PageAllCasesComponent,
+      },
     ],
     canActivate: [AuthGuard], //Защищаем роуты которые относятся к самому приложению
   },
-  
-
 ];
 
 
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent, HeaderPageComponent, HomeLayoutComponent, HomeCasesListComponent,PageLayoutComponent,CaseShowPublicComponent],
+  declarations: [
+    FooterComponent,
+    HeaderComponent,
+    HeaderPageComponent,
+    HomeLayoutComponent,
+    HomeCasesListComponent,
+    PageLayoutComponent,
+    CaseShowPublicComponent,
+    PageAllCasesComponent,
+  ],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -47,8 +60,18 @@ const routes = [
     ReactiveFormsModule,
     CommentsModule,
     LikesModule,
-    AdditionalLikeCommentModule
+    AdditionalLikeCommentModule,
   ],
-  exports: [FooterComponent, HeaderComponent, HeaderPageComponent, HomeLayoutComponent, HomeCasesListComponent, RouterModule,PageLayoutComponent,CaseShowPublicComponent]
+  exports: [
+    FooterComponent,
+    HeaderComponent,
+    HeaderPageComponent,
+    HomeLayoutComponent,
+    HomeCasesListComponent,
+    RouterModule,
+    PageLayoutComponent,
+    CaseShowPublicComponent,
+    PageAllCasesComponent,
+  ],
 })
-export class FrontModule { }
+export class FrontModule {}

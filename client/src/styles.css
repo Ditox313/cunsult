@@ -576,6 +576,7 @@ button:disabled
     text-decoration: none;
     transition: all 0.3s;
     margin-top: 30px;
+    cursor: pointer;
 }
 
 .page_layout

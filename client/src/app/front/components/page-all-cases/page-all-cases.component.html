@@ -1,0 +1,49 @@
+<div class="row" *ngIf="loading">
+    <div class="col s12 center">
+        <div class="progress" style="background-color: rgba(0,46,110,0.2);">
+            <div class="indeterminate" style="background-color: #BE1F4F;"></div>
+        </div>
+    </div>
+</div>
+
+
+<section class="cases_home">
+    <div class="container">
+        <h2>Все проекты</h2>
+
+        
+
+        <div class="cases_home__list__wrap">
+            <div class="cases_home__list" *ngIf="cases.length !== 0; else empty">
+                <a href="#" *ngFor="let case of cases ; let i = index" class="case_item"
+                    style="background: url('{{case.previewSrc}}') no-repeat center center / cover;"
+                    [routerLink]="['/page','case-show-pablic',case._id]">
+                    <div class="case_item__wrap"></div>
+                    <h3>{{case.title}}</h3>
+                    <div class="case_item__info">
+                        <div class="case_item__info___name">{{case.userName}} {{case.userSecondName}}</div>
+                        <div class="case_item__programm"> {{case.userProgram}}-{{case.userSpecialization}}</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="xs_keyses__more" *ngIf="!noMoreCases">
+                <span (click)="loadmore()" *ngIf="!loading" class="cases_home__btn">Загрузить еще...</span>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+    <ng-template #empty>
+        <div style="font-size: 20px;" *ngIf="!loading">
+            У вас пока нет кейсов...
+        </div>
+    </ng-template>
+</section>
+
+
+
+
+
