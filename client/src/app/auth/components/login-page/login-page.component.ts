@@ -76,14 +76,13 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
     // Когда auth.login(из сервиса auth.service) успешно отработает(как промис), перенаправляем на нужную страницу и обрататываем ошибку
     this.uSub = this.auth.login(user).subscribe(
-      (res) => this.router.navigate(['/site/cases']),
-      error => {
+      (res) => this.router.navigate(['/home']),
+      (error) => {
         // Запускам метод отображения ошибки materialyze
         MaterialService.toast(error.error.message);
         this.form.enable();
       }
-      
-    )
+    );
   }
 
 

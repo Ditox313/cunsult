@@ -15,6 +15,7 @@ import { CommentsModule } from '../shared/modules/comments-module/comments.modul
 import { LikesModule } from '../shared/modules/likes/likes.module';
 import { AdditionalLikeCommentModule } from '../shared/modules/additional-like-comment/additional-like-comment.module';
 import { PageAllCasesComponent } from './components/page-all-cases/page-all-cases.component';
+import { HomeAdvComponent } from './components/home-adv/home-adv.component';
 
 
 const routes = [
@@ -51,6 +52,7 @@ const routes = [
     PageLayoutComponent,
     CaseShowPublicComponent,
     PageAllCasesComponent,
+    HomeAdvComponent,
   ],
   imports: [
     CommonModule,
@@ -72,6 +74,7 @@ const routes = [
     PageLayoutComponent,
     CaseShowPublicComponent,
     PageAllCasesComponent,
+    HomeAdvComponent,
   ],
 })
 export class FrontModule {}
