@@ -100,6 +100,8 @@ export class CaseShowPublicComponent implements OnInit {
       .subscribe((res) => {
         this.xsActualCase = res;
 
+
+
         if (res.previewSrc) {
           this.previewSrc = res.previewSrc;
         }
@@ -172,4 +174,6 @@ export class CaseShowPublicComponent implements OnInit {
   comments_count(e) {
     this.comments_counts = e;
   }
+
+
 }

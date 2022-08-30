@@ -224,3 +224,40 @@ module.exports.addView = async function(req, res) {
         errorHandler(res, e);
     }
 };
+
+
+
+
+
+
+// Контроллер для получения кейсов и функционального направления
+module.exports.get_by_functionsNapravlenie_id = async function (req, res) {
+    try {
+        const cases1 = await Case.find({ functionsNapravlenie: req.params.id })
+            .skip(+req.query.offset) //Отступ для бесконечного скрола на фронтенде. Приводим к числу
+            .limit(+req.query.limit); //Сколько выводить на фронтенде. Приводим к числу
+
+        const cases2 = await Case.find({ otraslSpec: req.params.id })
+            .skip(+req.query.offset) //Отступ для бесконечного скрола на фронтенде. Приводим к числу
+            .limit(+req.query.limit); //Сколько выводить на фронтенде. Приводим к числу
+
+        if (cases1.length !== 0)
+        {
+            res.status(200).json(cases1);
+        } else if (cases2.length !== 0)
+        {
+            res.status(200).json(cases2);
+        }else
+        {
+            res.status(200).json([]);
+        }
+            
+        
+    } catch (e) {
+        errorHandler(res, e);
+    }
+};
+
+
+
+

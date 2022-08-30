@@ -4,7 +4,15 @@
             <h3>Кейсы по функциональному менеджменту</h3>
             
             <div class="home_filter__list">
-                <a href="#" *ngFor="let link of links" >{{link.name}}</a>
+                <a  *ngFor="let link of links" [routerLink]="link.url">{{link.name}}</a>
+            </div>
+        </div>
+
+        <div class="home_filter_row home_filter_row__2">
+            <h3>Кейсы по отраслям</h3>
+        
+            <div class="home_filter__list">
+                <a *ngFor="let link of links2" [routerLink]="link.url">{{link.name}}</a>
             </div>
         </div>
     </div>

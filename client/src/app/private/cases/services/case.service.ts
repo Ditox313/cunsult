@@ -104,4 +104,13 @@ export class CaseService {
 
     return this.http.patch<any>(`/api/cases/addView/${id}`, obj);
   }
+
+  // Получаем кейсы по id категории
+  get_by_cat_id(id, params: any = {}): Observable<Case[]> {
+    return this.http.get<Case[]>(`/api/cases/functionsNapravlenie/${id}`, {
+      params: new HttpParams({
+        fromObject: params,
+      }),
+    });
+  }
 }

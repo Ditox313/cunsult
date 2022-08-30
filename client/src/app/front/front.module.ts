@@ -37,6 +37,10 @@ const routes = [
         path: 'page-all-cases',
         component: PageAllCasesComponent,
       },
+      {
+        path: 'page-all-cases/:id',
+        component: PageAllCasesComponent,
+      },
     ],
     canActivate: [AuthGuard], //Защищаем роуты которые относятся к самому приложению
   },

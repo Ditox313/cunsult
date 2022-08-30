@@ -1,0 +1,26 @@
+@media screen and (max-width: 992px)
+{
+    .home_filter__list a {
+        padding: 8px 8px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .home_filter__list a {
+        padding: 4px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .home_filter__list a {
+        font-size: 14px;
+    }
+
+    .home_filter_row h3 {
+        font-size: 23px;
+    }
+
+    .home_filter {
+        padding: 55px 0;
+    }
+}

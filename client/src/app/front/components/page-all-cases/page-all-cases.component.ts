@@ -19,7 +19,7 @@ import { CaseService } from 'src/app/private/cases/services/case.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 // Шаг пагинации
-const STEP = 6
+const STEP = 3
 
 @Component({
   selector: 'app-page-all-cases',
@@ -41,8 +41,16 @@ export class PageAllCasesComponent implements OnInit {
   limit: any = STEP;
   noMoreCases: Boolean = false;
   xsSub: Subscription;
+  categorytId: string | undefined;
 
   ngOnInit(): void {
+    // Достаем параметры
+    this.rote.params.subscribe((params) => {
+      if (params['id']) {
+        this.categorytId = params['id'];
+      }
+    });
+
     this.loading = true;
     this.fetch();
   }
@@ -55,26 +63,66 @@ export class PageAllCasesComponent implements OnInit {
       limit: this.limit,
     };
 
-    this.xsSub = this.caseServise
-      .get_all_cases(params)
-      .pipe(
-        map((cases) => {
-          cases.forEach((xscase) => {
-            xscase.previewSrc = xscase.previewSrc.replace('\\', '/');
-            xscase.previewSrc = xscase.previewSrc.replace('\\', '/');
-          });
+    if (this.categorytId) {
+      this.xsSub = this.caseServise
+        .get_by_cat_id(this.categorytId, params)
+        .pipe(
+          map((cases) => {
+            cases.forEach((xscase) => {
+              xscase.previewSrc = xscase.previewSrc.replace('\\', '/');
+              xscase.previewSrc = xscase.previewSrc.replace('\\', '/');
 
-          return cases;
-        })
-      )
-      .subscribe((cases) => {
-        if (cases.length < STEP) {
-          this.noMoreCases = true;
-        }
+              this.auth.getById(xscase.user).subscribe((data) => {
+                xscase.userName = data.name;
+                xscase.userSecondName = data.secondName;
+                xscase.userProgram = data.program;
+                xscase.userSpecialization = data.specialization;
+              });
+            });
 
-        this.loading = false;
-        this.cases = this.cases.concat(cases);
-      });
+            return cases;
+          })
+        )
+        .subscribe((cases) => {
+          if (cases.length < STEP) {
+            this.noMoreCases = true;
+          }
+
+          this.loading = false;
+          this.cases = this.cases.concat(cases);
+
+          console.log('999', this.cases);
+          
+        });
+    }else{
+      this.xsSub = this.caseServise
+        .get_all_cases(params)
+        .pipe(
+          map((cases) => {
+            cases.forEach((xscase) => {
+              xscase.previewSrc = xscase.previewSrc.replace('\\', '/');
+              xscase.previewSrc = xscase.previewSrc.replace('\\', '/');
+
+              this.auth.getById(xscase.user).subscribe((data) => {
+                xscase.userName = data.name;
+                xscase.userSecondName = data.secondName;
+                xscase.userProgram = data.program;
+                xscase.userSpecialization = data.specialization;
+              });
+            });
+
+            return cases;
+          })
+        )
+        .subscribe((cases) => {
+          if (cases.length < STEP) {
+            this.noMoreCases = true;
+          }
+
+          this.loading = false;
+          this.cases = this.cases.concat(cases);
+        });
+    }
   }
 
   loadmore() {
