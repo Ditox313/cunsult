@@ -6,14 +6,14 @@
     </div>
 </div>
 
-<section class="home_filter">
+<section class="home_filter home_filter_all_cases">
     <div class="container">
         <div class="home_filter_row">
             <h3>Кейсы по функциональному менеджменту</h3>
 
             <div class="home_filter__list">
-                <span (click)="click_all()">Все</span>
-                <span *ngFor="let link of links" (click)="filter(link.name)">{{link.name}}</span>
+                <span (click)="click_all($event)">Все</span>
+                <span *ngFor="let link of links" (click)="filter(link.name, $event)" [class.xs_filter_active]="link.name === categorytId">{{link.name}}</span>
             </div>
         </div>
 
@@ -21,8 +21,8 @@
             <h3>Кейсы по отраслям</h3>
 
             <div class="home_filter__list">
-                <span (click)="click_all()">Все</span>
-                <span *ngFor="let link of links2" (click)="filter(link.name)">{{link.name}}</span>
+                <span (click)="click_all($event)">Все</span>
+                <span *ngFor="let link of links2" (click)="filter(link.name, $event)" [class.xs_filter_active]="link.name === categorytId">{{link.name}}</span>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
     <div class="container">
         <h2 *ngIf="!categorytId">Все проекты </h2>
         <h2 *ngIf="categorytId">
-            Кейсы - {{categorytId}}
+            Кейсы - <span style="border-bottom:3px solid #BE1F4F;">{{categorytId}}</span>
         </h2>
 
         

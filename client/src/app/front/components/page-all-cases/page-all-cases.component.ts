@@ -264,7 +264,12 @@ export class PageAllCasesComponent implements OnInit {
     }
   }
 
-  filter(id) {
+  filter(id, e) {
+    document.querySelectorAll('.home_filter__list span').forEach((item)=>{
+      item.classList.remove('xs_filter_active');
+    })
+    e.target.classList.add('xs_filter_active');
+    
     this.categorytId = id;
     this.noMoreCasesFilter = false;
 
@@ -305,11 +310,18 @@ export class PageAllCasesComponent implements OnInit {
     }
   }
 
-  click_all()
+  click_all(e)
   {
+    document.querySelectorAll('.home_filter__list span').forEach((item) => {
+      item.classList.remove('xs_filter_active');
+    });
+    e.target.classList.add('xs_filter_active');
+
+
     this.noMoreCases = false;
     this.categorytId = '';
-    // Отправляем параметры для пагинации
+
+
     const params = {
       offset: this.offset = 0,
       limit: this.limit,

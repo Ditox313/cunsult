@@ -713,3 +713,30 @@ button:disabled
 {
     margin-top: 70px;
 }
+
+.home_filter_all_cases
+{
+    padding: 0;
+    margin-top: 80px;
+}
+
+.home_filter_all_cases .home_filter_row__2
+{
+    margin-top: 30px;
+}
+
+.home_filter_all_cases .home_filter__list span
+{
+    padding: 4px;
+    font-size: 14px;
+}
+
+.home_filter_all_cases .home_filter_row h3
+{
+    font-size: 28px;
+}
+.xs_filter_active
+{
+    background-color: #BE1F4F;
+    color: #fff !important;
+}
