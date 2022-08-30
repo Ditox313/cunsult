@@ -49,9 +49,6 @@ export class PageAllCasesComponent implements OnInit {
   // Массив с ссылками на категории функционального менеджмента
   links: Array<any> = [
     {
-      name: 'Все',
-    },
-    {
       name: 'Стратегическое развитие',
     },
     {
@@ -256,7 +253,6 @@ export class PageAllCasesComponent implements OnInit {
           })
         )
         .subscribe((cases) => {
-          console.log('loadmoreFilter', cases);
 
           if (cases.length < STEP) {
             this.noMoreCasesFilter = true;
@@ -298,7 +294,6 @@ export class PageAllCasesComponent implements OnInit {
           })
         )
         .subscribe((cases) => {
-          console.log('filter', cases);
 
           if (cases.length < STEP) {
             this.noMoreCasesFilter = true;
@@ -308,5 +303,44 @@ export class PageAllCasesComponent implements OnInit {
           this.cases = cases;
         });
     }
+  }
+
+  click_all()
+  {
+    this.noMoreCases = false;
+    this.categorytId = '';
+    // Отправляем параметры для пагинации
+    const params = {
+      offset: this.offset = 0,
+      limit: this.limit,
+    };
+
+    this.xsSub = this.caseServise
+      .get_all_cases(params)
+      .pipe(
+        map((cases) => {
+          cases.forEach((xscase) => {
+            xscase.previewSrc = xscase.previewSrc.replace('\\', '/');
+            xscase.previewSrc = xscase.previewSrc.replace('\\', '/');
+
+            this.auth.getById(xscase.user).subscribe((data) => {
+              xscase.userName = data.name;
+              xscase.userSecondName = data.secondName;
+              xscase.userProgram = data.program;
+              xscase.userSpecialization = data.specialization;
+            });
+          });
+
+          return cases;
+        })
+      )
+      .subscribe((cases) => {
+        if (cases.length < STEP) {
+          this.noMoreCases = true;
+        }
+
+        this.loading = false;
+        this.cases = cases;
+      });
   }
 }

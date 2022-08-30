@@ -12,6 +12,7 @@
             <h3>Кейсы по функциональному менеджменту</h3>
 
             <div class="home_filter__list">
+                <span (click)="click_all()">Все</span>
                 <span *ngFor="let link of links" (click)="filter(link.name)">{{link.name}}</span>
             </div>
         </div>
@@ -20,6 +21,7 @@
             <h3>Кейсы по отраслям</h3>
 
             <div class="home_filter__list">
+                <span (click)="click_all()">Все</span>
                 <span *ngFor="let link of links2" (click)="filter(link.name)">{{link.name}}</span>
             </div>
         </div>
