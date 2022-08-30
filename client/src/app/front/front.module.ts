@@ -17,6 +17,7 @@ import { AdditionalLikeCommentModule } from '../shared/modules/additional-like-c
 import { PageAllCasesComponent } from './components/page-all-cases/page-all-cases.component';
 import { HomeAdvComponent } from './components/home-adv/home-adv.component';
 import { HomeFilterComponent } from './components/home-filter/home-filter.component';
+import { PageAllCasesFilterComponent } from './components/page-all-cases-filter/page-all-cases-filter.component';
 
 
 const routes = [
@@ -59,6 +60,7 @@ const routes = [
     PageAllCasesComponent,
     HomeAdvComponent,
     HomeFilterComponent,
+    PageAllCasesFilterComponent,
   ],
   imports: [
     CommonModule,
@@ -82,6 +84,7 @@ const routes = [
     PageAllCasesComponent,
     HomeAdvComponent,
     HomeFilterComponent,
+    PageAllCasesFilterComponent,
   ],
 })
 export class FrontModule {}

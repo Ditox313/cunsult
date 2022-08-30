@@ -1,5 +1,6 @@
 import {
   Component,
+  DoCheck,
   ElementRef,
   OnDestroy,
   OnInit,
@@ -39,9 +40,108 @@ export class PageAllCasesComponent implements OnInit {
   loading: Boolean = false;
   offset: any = 0;
   limit: any = STEP;
+  offsetFilter: any = 0;
   noMoreCases: Boolean = false;
+  noMoreCasesFilter: Boolean = false;
   xsSub: Subscription;
   categorytId: string | undefined;
+
+  // Массив с ссылками на категории функционального менеджмента
+  links: Array<any> = [
+    {
+      name: 'Все',
+    },
+    {
+      name: 'Стратегическое развитие',
+    },
+    {
+      name: 'Управление человеческими ресурсами',
+    },
+    {
+      name: 'Маркетинг',
+    },
+    {
+      name: 'IT',
+    },
+    {
+      name: 'Производственный',
+    },
+    {
+      name: 'Операционный',
+    },
+    {
+      name: 'Финансовый',
+    },
+    {
+      name: 'Инвестиционный',
+    },
+    {
+      name: 'Инновационный',
+    },
+    {
+      name: 'Управление качеством',
+    },
+    {
+      name: 'Антикризисное управление',
+    },
+    {
+      name: 'Логистика и управление цепями поставок',
+    },
+    {
+      name: 'Внешнеэкономическая деятельность',
+    },
+  ];
+
+  links2: Array<any> = [
+    {
+      name: 'Промышленность',
+    },
+    {
+      name: 'Банковский сектор',
+    },
+    {
+      name: 'Сельское хозяйство',
+    },
+    {
+      name: 'Транспорт',
+    },
+    {
+      name: 'Образование',
+    },
+    {
+      name: 'Здравоохранение',
+    },
+    {
+      name: 'Социальное обеспечение',
+    },
+    {
+      name: 'Строительство',
+    },
+    {
+      name: 'Связь',
+    },
+    {
+      name: 'Торговля',
+    },
+    {
+      name: 'Общественное питание',
+    },
+    {
+      name: 'Логистика',
+    },
+    {
+      name: 'Наука',
+    },
+    {
+      name: 'ЖКХ',
+    },
+    {
+      name: 'Консалтинг',
+    },
+    {
+      name: 'Некоммерческая деятельность',
+    },
+  ];
 
   ngOnInit(): void {
     // Достаем параметры
@@ -55,7 +155,6 @@ export class PageAllCasesComponent implements OnInit {
     this.fetch();
   }
 
-  // Получаем все кейсы
   private fetch() {
     // Отправляем параметры для пагинации
     const params = {
@@ -90,11 +189,8 @@ export class PageAllCasesComponent implements OnInit {
 
           this.loading = false;
           this.cases = this.cases.concat(cases);
-
-          console.log('999', this.cases);
-          
         });
-    }else{
+    } else {
       this.xsSub = this.caseServise
         .get_all_cases(params)
         .pipe(
@@ -129,5 +225,88 @@ export class PageAllCasesComponent implements OnInit {
     this.loading = true;
     this.offset += STEP;
     this.fetch();
+  }
+
+  loadmoreFilter() {
+    this.loading = true;
+
+    const params = {
+      offset: (this.offset += STEP),
+      limit: this.limit,
+    };
+
+    if (this.categorytId) {
+      this.caseServise
+        .get_by_cat_id(this.categorytId, params)
+        .pipe(
+          map((cases) => {
+            cases.forEach((xscase) => {
+              xscase.previewSrc = xscase.previewSrc.replace('\\', '/');
+              xscase.previewSrc = xscase.previewSrc.replace('\\', '/');
+
+              this.auth.getById(xscase.user).subscribe((data) => {
+                xscase.userName = data.name;
+                xscase.userSecondName = data.secondName;
+                xscase.userProgram = data.program;
+                xscase.userSpecialization = data.specialization;
+              });
+            });
+
+            return cases;
+          })
+        )
+        .subscribe((cases) => {
+          console.log('loadmoreFilter', cases);
+
+          if (cases.length < STEP) {
+            this.noMoreCasesFilter = true;
+          }
+
+          this.loading = false;
+          this.cases = this.cases.concat(cases);
+        });
+    }
+  }
+
+  filter(id) {
+    this.categorytId = id;
+    this.noMoreCasesFilter = false;
+
+    const params = {
+      offset: (this.offset = 0),
+      limit: this.limit,
+    };
+
+    if (this.categorytId) {
+      this.caseServise
+        .get_by_cat_id(this.categorytId, params)
+        .pipe(
+          map((cases) => {
+            cases.forEach((xscase) => {
+              xscase.previewSrc = xscase.previewSrc.replace('\\', '/');
+              xscase.previewSrc = xscase.previewSrc.replace('\\', '/');
+
+              this.auth.getById(xscase.user).subscribe((data) => {
+                xscase.userName = data.name;
+                xscase.userSecondName = data.secondName;
+                xscase.userProgram = data.program;
+                xscase.userSpecialization = data.specialization;
+              });
+            });
+
+            return cases;
+          })
+        )
+        .subscribe((cases) => {
+          console.log('filter', cases);
+
+          if (cases.length < STEP) {
+            this.noMoreCasesFilter = true;
+          }
+
+          this.loading = false;
+          this.cases = cases;
+        });
+    }
   }
 }

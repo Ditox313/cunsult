@@ -44,7 +44,7 @@ router.patch('/addView/:id', passport.authenticate('jwt', { session: false }), c
 
 
 // Роут на получение кейсов из functionsNapravlenie
-router.get('/functionsNapravlenie/:id', passport.authenticate('jwt', { session: false }), controller.get_by_functionsNapravlenie_id);
+router.get('/cat/:id', passport.authenticate('jwt', { session: false }), controller.get_by_functionsNapravlenie_id);
 
 
 

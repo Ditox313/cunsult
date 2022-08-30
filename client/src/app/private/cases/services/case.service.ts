@@ -107,7 +107,7 @@ export class CaseService {
 
   // Получаем кейсы по id категории
   get_by_cat_id(id, params: any = {}): Observable<Case[]> {
-    return this.http.get<Case[]>(`/api/cases/functionsNapravlenie/${id}`, {
+    return this.http.get<Case[]>(`/api/cases/cat/${id}`, {
       params: new HttpParams({
         fromObject: params,
       }),

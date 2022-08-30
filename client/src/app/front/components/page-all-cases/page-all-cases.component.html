@@ -6,6 +6,28 @@
     </div>
 </div>
 
+<section class="home_filter">
+    <div class="container">
+        <div class="home_filter_row">
+            <h3>Кейсы по функциональному менеджменту</h3>
+
+            <div class="home_filter__list">
+                <span *ngFor="let link of links" (click)="filter(link.name)">{{link.name}}</span>
+            </div>
+        </div>
+
+        <div class="home_filter_row home_filter_row__2">
+            <h3>Кейсы по отраслям</h3>
+
+            <div class="home_filter__list">
+                <span *ngFor="let link of links2" (click)="filter(link.name)">{{link.name}}</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
 
 <section class="cases_home">
     <div class="container">
@@ -27,8 +49,12 @@
                 </a>
             </div>
 
-            <div class="xs_keyses__more" *ngIf="!noMoreCases">
+            <div class="xs_keyses__more" *ngIf="!noMoreCases && !categorytId">
                 <span (click)="loadmore()" *ngIf="!loading" class="cases_home__btn">Загрузить еще...</span>
+            </div>
+
+            <div class="xs_keyses__more"  *ngIf=" !noMoreCasesFilter && categorytId">
+                <span (click)="loadmoreFilter()" *ngIf="!loading" class="cases_home__btn" style="background-color: blue;">Загрузить еще...</span>
             </div>
         </div>
 

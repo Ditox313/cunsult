@@ -686,6 +686,29 @@ button:disabled
     margin-right: 0px;
 }
 
+
+
+.home_filter__list span {
+    display: inline-block;
+    padding: 13px 15px;
+    color: #BE1F4F;
+    border: 1px solid #BE1F4F;
+    border-radius: 4px;
+    margin-right: 13px;
+    transition: all 0.3s;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.home_filter__list span:hover {
+    color: #fff;
+    background-color: #BE1F4F;
+}
+
+.home_filter__list span:last-child {
+    margin-right: 0px;
+}
+
 .home_filter_row__2
 {
     margin-top: 70px;
