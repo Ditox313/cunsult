@@ -33,7 +33,10 @@
 
 <section class="cases_home">
     <div class="container">
-        <h2>Все проекты</h2>
+        <h2 *ngIf="!categorytId">Все проекты </h2>
+        <h2 *ngIf="categorytId">
+            Кейсы - {{categorytId}}
+        </h2>
 
         
 
@@ -56,7 +59,7 @@
             </div>
 
             <div class="xs_keyses__more"  *ngIf=" !noMoreCasesFilter && categorytId">
-                <span (click)="loadmoreFilter()" *ngIf="!loading" class="cases_home__btn" style="background-color: blue;">Загрузить еще...</span>
+                <span (click)="loadmoreFilter()" *ngIf="!loading" class="cases_home__btn">Загрузить еще...</span>
             </div>
         </div>
 
