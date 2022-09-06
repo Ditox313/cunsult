@@ -21,17 +21,29 @@
                 </div>
             </div>
 
-            <div class="footer_content__item">
+            <div class="footer_content__item footer_content__item_menu">
                 <div class="footer__menu">
                     <ul>
-                        <li>Как это работает</li>
-                        <li>Все проекты</li>
-                        <li>Разместить кейс</li>
+                        <li>
+                            <a href="#" class="xs_active_link_nav ">Как это работает</a>
+                        </li>
+                        
+                        <li>
+                            <a [routerLink]="['/page','page-all-cases']">Все проекты</a>
+                        </li>
+                        
+                        <li>
+                            <a [routerLink]="['/site','cases','new']">Разместить кейс</a>
+                        </li>
                     </ul>
                 </div>
             </div>
 
-            <div class="footer_content__item">
+            <div class="footer_content__item footer_content__item_copy">
+                © Все права защищены {{year}}
+            </div>
+
+            <!-- <div class="footer_content__item">
                 <div class="footer__soc">
                     <a href="#">
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +67,7 @@
                         <button type="submit">Подписаться</button>
                     </form>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </footer>
