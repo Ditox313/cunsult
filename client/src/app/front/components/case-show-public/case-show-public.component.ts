@@ -36,7 +36,7 @@ export class CaseShowPublicComponent implements OnInit {
   orderViews: any; //Колличество просмотров
   editor: any;
   comments_counts: CommentInterface[] = [];
-  actualCaseComments: any[] = [];
+  // actualCaseComments: any[] = [];
   additionalUsers: any = []
 
   constructor(
@@ -53,8 +53,9 @@ export class CaseShowPublicComponent implements OnInit {
     this.auth.get_user().pipe(
       map((user) => {
           this.additionalLikeCommentService.getByIdCase(this.caseId).subscribe(res=>{
+
             // Получаем комментарии с дополнительным лайком
-            this.actualCaseComments = this.additionalLikeCommentService.actualCaseAdditionalComments
+            // this.actualCaseComments = this.additionalLikeCommentService.actualCaseAdditionalComments
           });
           return user;
         })
@@ -174,6 +175,7 @@ export class CaseShowPublicComponent implements OnInit {
   comments_count(e) {
     this.comments_counts = e;
   }
+
 
 
 }

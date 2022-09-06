@@ -740,3 +740,11 @@ button:disabled
     background-color: #BE1F4F;
     color: #fff !important;
 }
+
+.xs_show_case___dop___thanks___title
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+

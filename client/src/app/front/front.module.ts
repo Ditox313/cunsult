@@ -18,6 +18,7 @@ import { PageAllCasesComponent } from './components/page-all-cases/page-all-case
 import { HomeAdvComponent } from './components/home-adv/home-adv.component';
 import { HomeFilterComponent } from './components/home-filter/home-filter.component';
 import { PageAllCasesFilterComponent } from './components/page-all-cases-filter/page-all-cases-filter.component';
+import { HowWorksComponent } from './components/how-works/how-works.component';
 
 
 const routes = [
@@ -42,6 +43,10 @@ const routes = [
         path: 'page-all-cases/:id',
         component: PageAllCasesComponent,
       },
+      {
+        path: 'how-work',
+        component: HowWorksComponent,
+      },
     ],
     canActivate: [AuthGuard], //Защищаем роуты которые относятся к самому приложению
   },
@@ -61,6 +66,7 @@ const routes = [
     HomeAdvComponent,
     HomeFilterComponent,
     PageAllCasesFilterComponent,
+    HowWorksComponent,
   ],
   imports: [
     CommonModule,
@@ -85,6 +91,7 @@ const routes = [
     HomeAdvComponent,
     HomeFilterComponent,
     PageAllCasesFilterComponent,
+    HowWorksComponent
   ],
 })
 export class FrontModule {}

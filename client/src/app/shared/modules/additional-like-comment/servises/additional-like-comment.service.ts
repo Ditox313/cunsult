@@ -14,6 +14,7 @@ export class AdditionalLikeCommentService {
   // Для подписки на эти переменные лучше подписываться на прямую через сервис в html
   // Храним комментарии с дополнительным лайком
   actualCaseAdditionalComments: any[] = [];
+  actualCaseCommentsResult: any = {};
 
 
   // Храним колличество дополнительных лайков для юзера
@@ -37,6 +38,7 @@ export class AdditionalLikeCommentService {
       map((res) => {
         this.actualCaseAdditionalComments.push(res.comment); 
         this.actualAdditionalLikesCount = res.actualUserAdditionalLikesNumber;
+        this.exstractAdditionalCommentNameAndLastname()
         return res;
       })
     );
@@ -58,6 +60,7 @@ export class AdditionalLikeCommentService {
       .pipe(
         map((res) => {
           this.actualAdditionalLikesCount = res.actualUserAdditionalLikesNumber;
+          this.exstractAdditionalCommentNameAndLastname()
           return res;
         })
       );
@@ -74,6 +77,7 @@ export class AdditionalLikeCommentService {
         this.actualCaseAdditionalComments = res.filter(
           (item) => item.additionalLike.length > 0
         );
+        this.exstractAdditionalCommentNameAndLastname()
         return res;
       })
     );
@@ -87,5 +91,23 @@ export class AdditionalLikeCommentService {
         return res;
       })
     )
+  }
+
+
+  // Извлекаем имена людей которым сказали отдельное спасибо и считаем колличество повторений и сохраняем все это в объект
+  exstractAdditionalCommentNameAndLastname()
+  {
+    const newArr = [];
+    const arr = this.actualCaseAdditionalComments.forEach(comment => {
+      newArr.push(comment.username + ' ' + comment.userSecondName)
+    });
+
+    const result = newArr.reduce((acc, rec, index) => {
+      return (typeof acc[rec] !== 'undefined')
+        ? { ...acc, [rec]: acc[rec] + 1 }
+        : { ...acc, [rec]: 1 }
+    }, {})
+
+    this.actualCaseCommentsResult = result;
   }
 }
