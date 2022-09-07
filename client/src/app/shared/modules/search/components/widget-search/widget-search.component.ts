@@ -18,6 +18,7 @@ export class WidgetSearchComponent implements OnInit {
   constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
+    
   }
 
 

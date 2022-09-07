@@ -15,6 +15,7 @@ import { LikesModule } from 'src/app/shared/modules/likes/likes.module';
 import { CaseService } from './services/case.service';
 import { FrontModule } from 'src/app/front/front.module';
 import { AdditionalLikeCommentModule } from 'src/app/shared/modules/additional-like-comment/additional-like-comment.module';
+import { SearchModule } from 'src/app/shared/modules/search/search.module';
 
 const routes = [
   {
@@ -38,10 +39,6 @@ const routes = [
         path: 'cases/show/:id',
         component: CaseShowComponent,
       },
-      // {
-      //   path: 'case-show-pablic/:id',
-      //   component: CaseShowPublicComponent,
-      // },
     ],
     canActivate: [AuthGuard], //Защищаем роуты которые относятся к самому приложению
   },
@@ -63,7 +60,8 @@ const routes = [
     CommentsModule,
     LikesModule,
     FrontModule,
-    AdditionalLikeCommentModule
+    AdditionalLikeCommentModule,
+    SearchModule
   ],
   providers: [CaseService],
 })

@@ -14,7 +14,11 @@
         <p *ngIf="searchResult.length < 1 && hasQuery" class="search_noresult_item">Результатов не найдено...</p>
         
         <p *ngFor="let case of searchResult" class="search_result_item">
-            <a [routerLink]="['/page','case-show-pablic',case._id]">{{case.title}}</a>
+            <a [routerLink]="['/page','case-show-public',case._id]">{{case.title}}</a>
+        </p>
+
+        <p class="search_result_item_more" *ngIf="searchResult.length > 0 && hasQuery">
+            <a href="#">Смотреть результаты поиска</a>
         </p>
     </div>
 </div>

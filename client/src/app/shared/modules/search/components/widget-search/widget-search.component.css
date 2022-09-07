@@ -24,6 +24,7 @@
 
 .xs_header_search_result
 {
+    z-index: 9999;
     position: absolute;
     width: 200%;
     background-color: #002E6E;
@@ -47,4 +48,11 @@
     border: 1px solid #fff;
     padding: 5px;
     cursor: pointer;
+}
+
+
+.search_result_item_more a
+{
+    font-size: 13px;
+    border-bottom: 1px solid #fff;
 }
