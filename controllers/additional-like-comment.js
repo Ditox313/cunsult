@@ -11,12 +11,16 @@ module.exports.create = async function(req, res) {
 
 
         // Ищем текущего юзера
-        const currentUser = await User.findOne({
-            _id: req.user.id
+        // const currentUser = await User.findOne({
+        //     _id: req.user.id
+        // })
+
+        const currentUserComment = await User.findOne({
+            _id: req.body.commentUserId
         })
 
         // Получаем колличество дополнительх комментариев данного пользователя
-        const additionalLikeUserCount = currentUser.additionalCommentsCount ? currentUser.additionalCommentsCount : 0
+        const additionalLikeUserCount = currentUserComment.additionalCommentsCount ? currentUserComment.additionalCommentsCount : 0
 
 
         // Задаем значения для обновления 
@@ -26,12 +30,10 @@ module.exports.create = async function(req, res) {
 
 
         // Обновляем пользователя
-        const updateUserAdditionalComments = await User.findOneAndUpdate({ _id: req.user.id }, //Ищем по id
+        const updateUserAdditionalComments = await User.findOneAndUpdate({ _id: req.body.commentUserId }, //Ищем по id
             { $set: updateUser }, //Обновлять мы будем body запроса. В req.body находятся данные на которые будем менять старые
             { new: true } //обновит позицию и верет нам уже обновленную
         );
-
-
 
 
 
@@ -55,7 +57,7 @@ module.exports.create = async function(req, res) {
 
 
         // Находим обновленное свойство колличества благодарностей и возвращаем его
-        const actualUser = await (await User.find({ _id: req.user.id }))
+        const actualUser = await (await User.find({ _id: req.body.commentUserId }))
         const actualUserAdditionalLikesNumber = actualUser[0].additionalCommentsCount
 
         
@@ -78,12 +80,16 @@ module.exports.remove = async function (req, res) {
     try {
 
         // Ищем текущего юзера
-        const currentUser = await User.findOne({
-            _id: req.user.id
+        // const currentUser = await User.findOne({
+        //     _id: req.user.id
+        // })
+
+        const currentUserComment = await User.findOne({
+            _id: req.body.commentUserId
         })
 
         // Получаем колличество дополнительх комментариев данного пользователя
-        const additionalLikeUserCount = currentUser.additionalCommentsCount
+        const additionalLikeUserCount = currentUserComment.additionalCommentsCount
 
 
         // Задаем значения для обновления 
@@ -93,7 +99,7 @@ module.exports.remove = async function (req, res) {
 
 
         // Обновляем пользователя
-        const updateUserAdditionalComments = await User.findOneAndUpdate({ _id: req.user.id }, //Ищем по id
+        const updateUserAdditionalComments = await User.findOneAndUpdate({ _id: req.body.commentUserId }, //Ищем по id
             { $set: updateUser }, //Обновлять мы будем body запроса. В req.body находятся данные на которые будем менять старые
             { new: true } //обновит позицию и верет нам уже обновленную
         );
@@ -118,7 +124,7 @@ module.exports.remove = async function (req, res) {
         const actualComment = await Comment.findById({ _id: req.body.commentId })
         
         // Находим обновленное свойство колличества благодарностей и возвращаем его
-        const actualUser = await (await User.find({ _id: req.user.id }))
+        const actualUser = await (await User.find({ _id: req.body.commentUserId }))
         const actualUserAdditionalLikesNumber = actualUser[0].additionalCommentsCount
 
 
