@@ -18,7 +18,7 @@ export class AdditionalLikeCommentService {
 
 
   // Храним колличество дополнительных лайков для юзера
-  actualAdditionalLikesCount: any = 0;
+  // actualAdditionalLikesCount: any = 0;
 
   addLike(
     commentId: string,
@@ -37,7 +37,7 @@ export class AdditionalLikeCommentService {
     return this.httpClient.post<any>(`/api/additional-like-comment`, body).pipe(
       map((res) => {
         this.actualCaseAdditionalComments.push(res.comment); 
-        this.actualAdditionalLikesCount = res.actualUserAdditionalLikesNumber;
+        // this.actualAdditionalLikesCount = res.actualUserAdditionalLikesNumber;
         this.exstractAdditionalCommentNameAndLastname()
         return res;
       })
@@ -59,7 +59,7 @@ export class AdditionalLikeCommentService {
       .post<any>(`/api/additional-like-comment/remove`, body)
       .pipe(
         map((res) => {
-          this.actualAdditionalLikesCount = res.actualUserAdditionalLikesNumber;
+          // this.actualAdditionalLikesCount = res.actualUserAdditionalLikesNumber;
           this.exstractAdditionalCommentNameAndLastname()
           return res;
         })
@@ -87,7 +87,7 @@ export class AdditionalLikeCommentService {
   get_user(): Observable<UserProfile> {
     return this.httpClient.get<UserProfile>('/api/auth/user').pipe(
       map(res=>{
-        this.actualAdditionalLikesCount = res.additionalCommentsCount;
+        // this.actualAdditionalLikesCount = res.additionalCommentsCount;
         return res;
       })
     )

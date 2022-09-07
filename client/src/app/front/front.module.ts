@@ -19,6 +19,7 @@ import { HomeAdvComponent } from './components/home-adv/home-adv.component';
 import { HomeFilterComponent } from './components/home-filter/home-filter.component';
 import { PageAllCasesFilterComponent } from './components/page-all-cases-filter/page-all-cases-filter.component';
 import { HowWorksComponent } from './components/how-works/how-works.component';
+import { SearchModule } from '../shared/modules/search/search.module';
 
 
 const routes = [
@@ -77,6 +78,7 @@ const routes = [
     CommentsModule,
     LikesModule,
     AdditionalLikeCommentModule,
+    SearchModule
   ],
   exports: [
     FooterComponent,

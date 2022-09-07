@@ -57,8 +57,8 @@ module.exports.create = async function(req, res) {
 
 
         // Находим обновленное свойство колличества благодарностей и возвращаем его
-        const actualUser = await (await User.find({ _id: req.body.commentUserId }))
-        const actualUserAdditionalLikesNumber = actualUser[0].additionalCommentsCount
+        // const actualUser = await (await User.find({ _id: req.body.commentUserId }))
+        // const actualUserAdditionalLikesNumber = actualUser[0].additionalCommentsCount
 
         
 
@@ -66,7 +66,7 @@ module.exports.create = async function(req, res) {
             message: '+ 1 лайк',
             comment: actualComment,
             actualCaseAdditionalComments: actualCaseAdditionalComments,
-            actualUserAdditionalLikesNumber: actualUserAdditionalLikesNumber
+            // actualUserAdditionalLikesNumber: actualUserAdditionalLikesNumber
         });
 
     } catch (e) {
@@ -124,14 +124,14 @@ module.exports.remove = async function (req, res) {
         const actualComment = await Comment.findById({ _id: req.body.commentId })
         
         // Находим обновленное свойство колличества благодарностей и возвращаем его
-        const actualUser = await (await User.find({ _id: req.body.commentUserId }))
-        const actualUserAdditionalLikesNumber = actualUser[0].additionalCommentsCount
+        // const actualUser = await (await User.find({ _id: req.body.commentUserId }))
+        // const actualUserAdditionalLikesNumber = actualUser[0].additionalCommentsCount
 
 
 
         await res.status(201).json({
             actualComment: actualComment,
-            actualUserAdditionalLikesNumber: actualUserAdditionalLikesNumber
+            // actualUserAdditionalLikesNumber: actualUserAdditionalLikesNumber
         });
 
     } catch (e) {

@@ -1,6 +1,7 @@
 const express = require('express');
 const authRoutes = require('./routes/auth.js');
 const caseRoutes = require('./routes/case.js');
+const searchRoutes = require('./routes/search.js');
 const commentRoutes = require('./routes/comment.js');
 const likesRoutes = require('./routes/likes.js');
 const likesCommentRoutes = require('./routes/likes-comment.js');
@@ -74,6 +75,10 @@ app.use('/api/likes-comment', likesCommentRoutes);
 
 // Регистрируем роут additional-like-comment
 app.use('/api/additional-like-comment', additionalLikeCommentRoutes);
+
+
+// Регистрируем роут searchRoutes
+app.use('/api/search', searchRoutes);
 
 
 

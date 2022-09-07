@@ -75,6 +75,9 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   avatarPreview: any =
     'https://static.tildacdn.com/tild3633-6532-4233-a631-363261663462/profile.png';
 
+    // Храним колличество отдельных благодарностей
+  additionalCommentsCount: any;
+
   // Данные  пользователя в сайдбаре
   userNameSidebar: string;
   userSecondnameSidebar: string;
@@ -144,9 +147,8 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
         this.userDateSidebar = res.date;
         this.userBtnSpecMenedgment = res.functionsNapravlenie;
         this.userBtnSpecOtrasl = res.otraslSpec;
-      });
-
-      
+        this.additionalCommentsCount = res.additionalCommentsCount
+      }); 
   }
 
   ngAfterViewInit(): void {
