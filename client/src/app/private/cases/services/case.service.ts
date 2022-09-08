@@ -113,4 +113,10 @@ export class CaseService {
       }),
     });
   }
+
+
+
+  resetNewCommentsCount(caseId: string): Observable<any> {
+    return this.http.get<any>(`api/cases/reset-new-count/${caseId}`);
+  }
 }

@@ -47,6 +47,10 @@ router.patch('/addView/:id', passport.authenticate('jwt', { session: false }), c
 router.get('/cat/:id', passport.authenticate('jwt', { session: false }), controller.get_by_functionsNapravlenie_id);
 
 
+// Роут на сброс колличества новых комментарие
+router.get('/reset-new-count/:id', passport.authenticate('jwt', { session: false }), controller.resetNewCommentsCount);
+
+
 
 
 

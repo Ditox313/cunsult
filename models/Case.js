@@ -69,6 +69,11 @@ const caseSchema = new Schema({
         default: '',
         required: false,
     },
+    commentsCountNew: {
+        type: Number,
+        default: '',
+        required: false,
+    },
 
 
     likes: {

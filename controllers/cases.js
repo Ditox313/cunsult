@@ -171,6 +171,27 @@ module.exports.getById = async function(req, res) {
 
 
 
+// Сбрасываем колличество новых комментариев кейса
+module.exports.resetNewCommentsCount = async function (req, res) {
+    try {
+        const xscase = await Case.findById(req.params.id); //Ищем категорию по id из переданных параметров
+
+        const updated = { commentsCountNew: 0};
+        const caseUpdated2 = await Case.findOneAndUpdate({ _id: req.params.id }, //Ищем по id
+            { $set: updated }, //Обновлять мы будем body запроса. В req.body находятся данные на которые будем менять старые
+            { new: true } //обновит позицию и верет нам уже обновленную
+        );
+
+        res.status(200).json(xscase);
+    } catch (e) {
+        errorHandler(res, e);
+    }
+};
+
+
+
+
+
 
 
 // Контроллер для remove(Удалить категорию по id)

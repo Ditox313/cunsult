@@ -59,6 +59,9 @@ export class CommentsService {
   getByIdCase(id: string): Observable<any> {
     return this.httpClient.get<any>(`api/comments/byIdCase/${id}`);
   }
+
+
+ 
 }
 
 

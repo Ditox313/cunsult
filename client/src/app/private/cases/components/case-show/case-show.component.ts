@@ -37,9 +37,6 @@ export class CaseShowComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
-    
-
     // Получаем текущего юзера
     this.auth.get_user().subscribe((user)=>{
       this.currentUser = user
@@ -50,6 +47,11 @@ export class CaseShowComponent implements OnInit {
     this.rote.params.subscribe((params)=>{
       this.caseId = params['id'];
     });
+
+
+    
+    // Делаем сброс комментариев
+    this.caseServise.resetNewCommentsCount(this.caseId).subscribe()
 
     // Прибавляем просмотр
     this.caseServise.addShowCase(this.caseId).subscribe((res)=>{});
