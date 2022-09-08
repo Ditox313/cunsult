@@ -19,6 +19,7 @@ export class WidgetSearchComponent implements OnInit {
 
   ngOnInit(): void {
     
+   
   }
 
 
@@ -42,6 +43,13 @@ export class WidgetSearchComponent implements OnInit {
       this.searchResult = res;
       this.hasQuery = true;
     })
+  }
+
+
+  closeBody(e: any)
+  {
+    console.log(e);
+    
   }
 
 }

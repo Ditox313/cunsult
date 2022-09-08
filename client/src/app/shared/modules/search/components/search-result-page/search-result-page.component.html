@@ -1,0 +1,38 @@
+<div class="search_page">
+    <h1 >Результаты поиска</h1>
+
+    <form [formGroup]="form" class="card">
+        <div class="search_form_box">
+            <div class="input">
+                <input id="search" type="search" formControlName="search" placeholder="Введите запрос для поиска..."
+                (keyup)="searchData($event)">
+            </div>
+
+            <!-- <button class="search_btn" type="submit">Искать</button> -->
+        </div>
+    </form>
+
+
+    <div class="search_page__result" *ngIf="hasQuery && searchServise.searchResult">
+        <div class="search_page__result__number" *ngIf="searchServise.searchResult.length > 0">
+            Найдено <b>{{searchServise.searchResult.length}} </b>
+        </div>
+
+        <p *ngIf="searchServise.searchResult.length < 1 && hasQuery" class="search_noresult_item">Результатов не найдено...</p>
+
+        <div class="search_page__result___item" *ngFor="let case of searchServise.searchResult" [routerLink]="['/page','case-show-public',case._id]">
+            <h3>
+                {{case.title}}
+            </h3>
+            <p>
+                {{case.content.blocks[0].data.text | json | slice:0:500 | striphtml | deleteNbsp}}
+            </p>
+            <div class="search_more">
+                Читать далее...
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

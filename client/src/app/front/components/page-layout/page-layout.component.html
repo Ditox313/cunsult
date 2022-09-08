@@ -103,7 +103,7 @@
                 </div>
 
                 <div class="xs_header__entrance">
-                    <app-widget-search></app-widget-search>
+                    <app-widget-search *ngIf="this.router.url !== '/page/search-result-page'"></app-widget-search>
                     <!-- <a routerLink="/login" (click)="logout($event)">Выйти</a> -->
                     <a routerLink="/site/cases">Кабинет</a>
                 </div>

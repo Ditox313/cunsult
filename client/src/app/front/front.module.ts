@@ -78,7 +78,7 @@ const routes = [
     CommentsModule,
     LikesModule,
     AdditionalLikeCommentModule,
-    SearchModule
+    SearchModule,
   ],
   exports: [
     FooterComponent,

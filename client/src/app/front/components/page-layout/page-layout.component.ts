@@ -22,7 +22,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class PageLayoutComponent implements OnInit {
   constructor(
-    private router: Router,
+    public router: Router,
     private route: ActivatedRoute,
     private auth: AuthService
   ) {}

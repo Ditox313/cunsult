@@ -5,8 +5,9 @@ const controller = require('../controllers/search.js');
 
 
 
-// Роут на getAll
 router.post('/', passport.authenticate('jwt', { session: false }), controller.searchWidget);
+
+// router.post('/result', passport.authenticate('jwt', { session: false }), controller.searchResult);
 
 
 
